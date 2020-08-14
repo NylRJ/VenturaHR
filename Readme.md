@@ -75,10 +75,10 @@ O candidato que desejar responder a essa oportunidade deve poder pesquisar por v
 
 | Critério | Descrição | Conhecimento/ Experiência |
 | --- | --- | --- |
-| UML | O candidato deverá conhecer os principais diagramas da UML: casos de uso, classes e seqüência. | 5todo |
-| Inglês | Conversação e leitura de documentos técnicos. | 3médio |
-| Análise de Pontos de Função | Desejável conhecimentos de dimensionamento de sistemas. | 1nenhum/pouco |
-| Experiência Profissional | 2 anos de experiência em levantamento de requisitos e análise. | 5todo (tem 3anos) |
+| UML | O candidato deverá conhecer os principais diagramas da UML: casos de uso, classes e seqüência. | 5 todo |
+| Inglês | Conversação e leitura de documentos técnicos. | 3 médio |
+| Análise de Pontos de Função | Desejável conhecimentos de dimensionamento de sistemas. | 1 nenhum/pouco |
+| Experiência Profissional | 2 anos de experiência em levantamento de requisitos e análise. | 5 todo (tem 3 anos) |
 
 O candidato que respondeu à oferta teve o seu perfil calculado da seguinte forma:
 
