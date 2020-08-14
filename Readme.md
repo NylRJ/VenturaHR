@@ -2,22 +2,21 @@
 
 Escola Superior de Tecnologia da Informação
 
-Graduação em Engenharia da Computação - Disciplinada Engenharia de Software
+Graduação em Engenharia de Software - Engenharia Disciplinada de Software
 
-
-## Introdução
+# Introdução
 
 # **VenturaHR**
 
-# Documento de Visão
+Documento de Visão
 
 O RH 2.0 ganhou protagonismo e está sendo promovido a área estratégica, essencial para a tomada de decisão e crescimento do negócio.
 
 Problemas antigos como a dificuldade em medir o retorno sobre o investimento (ROI) das ações, ineficiência do recrutamento e baixo desempenho em treinamentos já têm suas soluções tecnológicas sob medida.
 
-As HRTechs são startups que desenvolvem soluções tecnológicas para a área de Recursos Humanos (Human Resources), agregando inteligência aos processos. A missão dessas empresas é levar a inovação ao RH, mostrando que a tecnologia pode reduzir custos, aumentar a eficiência e agilizar o crescimento dosetor.
+AsHRTechssão startups que desenvolvem soluções tecnológicas para a área de Recursos Humanos (Human Resources), agregando inteligência aos processos. A missão dessas empresas é levar a inovação ao RH, mostrando que a tecnologia pode reduzir custos, aumentar a eficiência e agilizar o crescimento dosetor.
 
-## Cenário Atual
+# Cenário Atual
 
 VenturaSoft é uma HRTech que atua no segmento de recolocação de profissionais de TI. Devido às peculiaridades desse mercado, os requisitos para contratação têm um dinamismo vertiginoso, pois as tecnologias e as &quot;stacks&quot; adotadas pelas empresas estão em constante evolução.
 
@@ -25,11 +24,11 @@ Aempresanecessitaquesejaconstruídaumasoluçãodesoftware,chamadodeVenturaHR,que
 
 A VenturaSoft tem como clientes empresas que precisam fazer processos seletivos para vagas em aberto.
 
-## Solução Desejada
+# Solução Desejada
 
 O software VenturaHR precisa ter como diferencial o fato de não manter um banco de curriculums e sim um banco de Vagas X Critérios X Candidatos.
 
-### Publicação da Vaga
+## Publicação da Vaga
 
 O fluxo de negócio é iniciado com a publicação de uma vaga de trabalho pelos responsáveis na empresa cliente. Cada empresa cliente pode ter várias contas que permitem o cadastro de vagas.
 
@@ -39,7 +38,7 @@ Uma vaga tem dados específicos e é descrita por uma lista de critérios de sel
 
 - Conhecimento emidiomas.
 - Graduação, Pós-Graduação, Mestrado,Doutorado.
-- Tempo de experiência em funçõesespecíficas.
+- Tempode experiência em funçõesespecíficas.
 
 Os critérios são variáveis e são informados durante a publicação da vaga. Cada vaga tem o seu conjunto de critérios exclusivo a fim de evitar que critérios semelhantes sejam reconhecidos como diferentes em função de erros de digitação / semântica.
 
@@ -55,7 +54,7 @@ Dessa forma, uma publicação pode ficar assim:
 | --- | --- | --- | --- |
 | UML | O candidato deverá conhecer os principais diagramas da UML: casos de uso, classes eseqüência. | 4 | 5 |
 | Inglês | Conversação e leitura de documentos técnicos. | 4 | 3 |
-| Análise de Pontos de Função | Desejável conhecimentos de dimensionamento de sistemas. | 1 | 1 |
+| Análise de Pontos de Função | Desejávelconhecimentosde dimensionamento desistemas. | 1 | 1 |
 | Experiência Profissional | 2 anos de experiência em levantamento de requisitos e análise. | 4 | 2 |
 
 \*Perfil Mínimo Desejado
@@ -68,8 +67,33 @@ A tabela acima mostra como o contato da empresa que publica a oportunidade deve 
 
 Cada vaga terá uma data/hora limite para receber as informações dos interessados.
 
-### Resposta Para a Vaga
+## Resposta Para a Vaga
 
 O candidato que desejar responder a essa oportunidade deve poder pesquisar por vários critérios, mas a pesquisa pelo cargo desejado é mandatória. Ao selecionar uma vaga, uma página deverá ser carregada e o candidato deve responder através de valores 1
 
-_-_ 2 _-_
+(nenhum/pouco), 2, 3, 4 e 5 (todo) qual é o seu conhecimento / experiência em cada critério, como por exemplo:
+
+| Critério | Descrição | Conhecimento/ Experiência |
+| --- | --- | --- |
+| UML | O candidato deverá conhecer os principais diagramas da UML: casos de uso, classes e seqüência. | 5todo |
+| Inglês | Conversação e leitura de documentos técnicos. | 3médio |
+| Análise de Pontos de Função | Desejável conhecimentos de dimensionamento de sistemas. | 1nenhum/pouco |
+| Experiência Profissional | 2 anos de experiência em levantamento de requisitos e análise. | 5todo (tem 3anos) |
+
+O candidato que respondeu à oferta teve o seu perfil calculado da seguinte forma:
+
+(5\*5) +( 3\*3) + (1\*1) + (5\*2) / (5 + 3 + 1 + 2) = 25 + 9 + 1 + 10 / 11 = 45 / 11 = **4,09**
+
+## Regras Gerais
+
+As vagas de emprego têm um período dentro do qual candidatos podem responder. Na data limite da vaga o sistema processará as respostas e mandará um e-mail para o contato da empresa que publicou a oportunidade. Esse e-mail contém um link para o resultado da coleta de dados e os valores de perfil de cada candidato (ranking).
+
+Na página com o resultado o contato da empresa que publicou a oferta pode renovar ou finalizar a publicação.
+
+A página que exibe o resultado de uma publicação de oferta fica disponível por até um mês. A renovação ou encerramento de uma publicação poderá ser feita em até dois dias. Caso nenhuma ação seja tomada pela empresa que publicou a oportunidade, a oferta será encerrada automaticamente pelo sistema. Nessa mesma página, o contato pode obter as informações dos candidatos através de uma consulta que lista todos os que responderam à oferta, os que tiveram pontuação igual ou acima do perfil da oferta ou os xprimeiros.
+
+O sistema precisa controlar cadastro e acesso de usuários e empresas e fazer a manutenção automática das ofertas vencidas.
+
+O sistema precisa tornar disponível para o administrador relatórios básicos de acesso por usuário, empresa e número de ofertas.
+
+_-_2_-_
