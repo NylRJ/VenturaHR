@@ -1,8 +1,9 @@
 # <p align="center">VenturaHR </center>
-## Documento de Visão
+## <p align="center">Documento de Visão</center>
 ## Introdução
 O RH 2.0 ganhou protagonismo e está sendo promovido a área estratégica, essencial para a tomada de decisão e crescimento do negócio.
-
+&nbsp;
+Problemas antigos como a dificuldade em medir o retorno sobre o investimento (ROI) das ações, ineficiência do recrutamento e baixo desempenho em treinamentos já têm suas soluções tecnológicas sob medida.
 Critério| Descrição|PMD |Peso
 --------- | ---------|----|----
 Exemplo 1 | R$ 10
