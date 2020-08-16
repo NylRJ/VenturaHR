@@ -97,3 +97,5 @@ O sistema precisa controlar cadastro e acesso de usuários e empresas e fazer a 
 O sistema precisa tornar disponível para o administrador relatórios básicos de acesso por usuário, empresa e número de ofertas.
 
 _-_2_-_
+# **Diagrama de Caso de Uso**
+![Diagrama de Caso de Uso](https://github.com/NylRJ/VenturaHR/blob/master/Imagens/Diagramas/VenturaRH_Diagram_case_use-Page-Fundo%20Branco.jpg)
