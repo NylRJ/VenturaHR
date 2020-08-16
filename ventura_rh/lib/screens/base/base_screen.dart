@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ventura_rh/common/custom_drawer/custom_drawer.dart';
 
 class BaseScreen extends StatelessWidget {
   final PageController pageController = PageController();
@@ -9,6 +10,14 @@ class BaseScreen extends StatelessWidget {
       controller: pageController,
       physics: NeverScrollableScrollPhysics(),
       children: [
+        Scaffold(
+          drawer: CustomDrawer(),
+          appBar: AppBar(
+            title: Text('Home'),
+            centerTitle: true,
+          ),
+
+        ),
         Container(
           color: Colors.yellow,
           child: Column(
