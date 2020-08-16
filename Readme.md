@@ -50,7 +50,7 @@ Por exemplo, uma vaga para Analista de Requisitos poderia ter 4 critérios: UML,
 
 Dessa forma, uma publicação pode ficar assim:
 
-| **Critério** | **Descrição** | **PMD\*** | **Peso** |
+| **Critério** | **Descrição** | **PMD** | **Peso** |
 | --- | --- | --- | --- |
 | UML | O candidato deverá conhecer os principais diagramas da UML: casos de uso, classes eseqüência. | 4 | 5 |
 | Inglês | Conversação e leitura de documentos técnicos. | 4 | 3 |
