@@ -50,8 +50,8 @@ Por exemplo, uma vaga para Analista de Requisitos poderia ter 4 critérios: UML,
 
 Dessa forma, uma publicação pode ficar assim:
 
-| **Critério** | **Descrição** | **PMD** | **Peso** |
-| --- | --- | --- | --- |
+| **Critério** | **Descrição** | **PMD*** | **Peso** |
+| --- | --- | ------- | --- |
 | UML | O candidato deverá conhecer os principais diagramas da UML: casos de uso, classes eseqüência. | 4 | 5 |
 | Inglês | Conversação e leitura de documentos técnicos. | 4 | 3 |
 | Análise de Pontos de Função | Desejávelconhecimentosde dimensionamento desistemas. | 1 | 1 |
@@ -97,3 +97,5 @@ O sistema precisa controlar cadastro e acesso de usuários e empresas e fazer a 
 O sistema precisa tornar disponível para o administrador relatórios básicos de acesso por usuário, empresa e número de ofertas.
 
 _-_2_-_
+# **Diagrama de Caso de Uso**
+![Diagrama de Caso de Uso](https://github.com/NylRJ/VenturaHR/blob/master/Imagens/Diagramas/VenturaRH_Diagram_case_use-Page-Fundo%20Branco.jpg)
