@@ -6,9 +6,12 @@ class CustomDrawer extends StatelessWidget {
     return Drawer(
       child: ListView(
         children: [
-          DrawerTile(icon: Icons.home,text: 'Inicio',),
-          DrawerTile(icon: Icons.list,text: 'Vagas',),
-          DrawerTile(icon: Icons.home,text: 'Inicio',),
+          DrawerTile(iconData: Icons.home,title: 'Inicio',),
+          Divider(),
+          DrawerTile(iconData: const IconData(0xe900, fontFamily: 'busca_vaga'),title: 'Vagas',),
+          Divider(),
+          DrawerTile(iconData: const IconData(0xe900, fontFamily: 'editar_vagas'),title: 'Vagas',),
+
         ],
       ),
     );
