@@ -12,13 +12,13 @@ class CustomDrawer extends StatelessWidget {
             title: 'Inicio',
             page: 0,
           ),
-          Divider(),
+          const Divider(),
           DrawerTile(
             iconData: const IconData(0xe900, fontFamily: 'busca_vaga'),
             title: 'Vagas',
             page: 1,
           ),
-          Divider(),
+          const Divider(),
           DrawerTile(
             iconData: const IconData(0xe900, fontFamily: 'editar_vagas'),
             title: 'Vagas',

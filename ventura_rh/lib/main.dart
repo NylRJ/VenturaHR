@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
 
-        primarySwatch: Colors.blue,
+        primaryColor: const Color.fromARGB(255, 0, 131 , 143),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 197, 200, 200),
 
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
