@@ -98,3 +98,7 @@ O sistema precisa tornar disponível para o administrador relatórios básicos d
 _-_2_-_
 # **Diagrama de Caso de Uso**
 ![Diagrama de Caso de Uso](https://github.com/NylRJ/VenturaHR/blob/master/Imagens/Diagramas/VenturaRH_Diagram_case_use-Page-Fundo%20Branco.jpg)
+_-_3_-_
+# **UI**
+## Tela de Login
+![Tela de Login](https://github.com/NylRJ/VenturaHR/blob/master/Imagens/Screen/LoginScreen-2020-08-17-180748.png)
