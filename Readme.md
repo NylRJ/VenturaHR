@@ -2,8 +2,7 @@
 
 Escola Superior de Tecnologia da Informação
 
-Graduação em Engenharia de Software - Engenharia Disciplinada de Software
-
+Graduação em Engenharia da Computação - Engenharia Disciplinada de Software
 # Introdução
 
 # **VenturaHR**
