@@ -13,19 +13,19 @@ O RH 2.0 ganhou protagonismo e está sendo promovido a área estratégica, essen
 
 Problemas antigos como a dificuldade em medir o retorno sobre o investimento (ROI) das ações, ineficiência do recrutamento e baixo desempenho em treinamentos já têm suas soluções tecnológicas sob medida.
 
-AsHRTechssão startups que desenvolvem soluções tecnológicas para a área de Recursos Humanos (Human Resources), agregando inteligência aos processos. A missão dessas empresas é levar a inovação ao RH, mostrando que a tecnologia pode reduzir custos, aumentar a eficiência e agilizar o crescimento dosetor.
+AsHRTechssão startups que desenvolvem soluções tecnológicas para a área de Recursos Humanos (Human Resources), agregando inteligência aos processos. A missão dessas empresas é levar a inovação ao RH, mostrando que a tecnologia pode reduzir custos, aumentar a eficiência e agilizar o crescimento do setor.
 
 # Cenário Atual
 
 VenturaSoft é uma HRTech que atua no segmento de recolocação de profissionais de TI. Devido às peculiaridades desse mercado, os requisitos para contratação têm um dinamismo vertiginoso, pois as tecnologias e as &quot;stacks&quot; adotadas pelas empresas estão em constante evolução.
 
-Aempresanecessitaquesejaconstruídaumasoluçãodesoftware,chamadodeVenturaHR,que tenha abrangência de todos os fluxos operacionais da sua atividadefim.
+A empresa necessita que seja construída uma solução de software, chamado de VenturaHR, que tenha abrangência de todos os fluxos operacionais da sua atividade-fim.
 
 A VenturaSoft tem como clientes empresas que precisam fazer processos seletivos para vagas em aberto.
 
 # Solução Desejada
 
-O software VenturaHR precisa ter como diferencial o fato de não manter um banco de curriculums e sim um banco de Vagas X Critérios X Candidatos.
+O software VenturaHR precisa ter como diferencial o fato de não manter um banco de Curriculum e sim um banco de Vagas X Critérios X Candidatos.
 
 ## Publicação da Vaga
 
@@ -33,11 +33,11 @@ O fluxo de negócio é iniciado com a publicação de uma vaga de trabalho pelos
 
 Uma vaga tem dados específicos e é descrita por uma lista de critérios de seleção que podem ser:
 
-- Conhecimento em tecnologiasespecificas.
+- Conhecimento em tecnologias especificas.  
 
-- Conhecimento emidiomas.
-- Graduação, Pós-Graduação, Mestrado,Doutorado.
-- Tempode experiência em funçõesespecíficas.
+- Conhecimento em idiomas.
+- Graduação, Pós-Graduação, Mestrado, Doutorado.
+- Tempo de experiência em funções específicas.
 
 Os critérios são variáveis e são informados durante a publicação da vaga. Cada vaga tem o seu conjunto de critérios exclusivo a fim de evitar que critérios semelhantes sejam reconhecidos como diferentes em função de erros de digitação / semântica.
 
@@ -51,9 +51,9 @@ Dessa forma, uma publicação pode ficar assim:
 
 | **Critério** | **Descrição** | **PMD*** | **Peso** |
 | --- | --- | ------- | --- |
-| UML | O candidato deverá conhecer os principais diagramas da UML: casos de uso, classes eseqüência. | 4 | 5 |
+| UML | O candidato deverá conhecer os principais diagramas da UML: casos de uso, classes e sequência. | 4 | 5 |
 | Inglês | Conversação e leitura de documentos técnicos. | 4 | 3 |
-| Análise de Pontos de Função | Desejávelconhecimentosde dimensionamento desistemas. | 1 | 1 |
+| Análise de Pontos de Função | Desejáveis conhecimentos de dimensionamento de sistemas. | 1 | 1 |
 | Experiência Profissional | 2 anos de experiência em levantamento de requisitos e análise. | 4 | 2 |
 
 \*Perfil Mínimo Desejado
@@ -74,9 +74,9 @@ O candidato que desejar responder a essa oportunidade deve poder pesquisar por v
 
 | Critério | Descrição | Conhecimento/ Experiência |
 | --- | --- | --- |
-| UML | O candidato deverá conhecer os principais diagramas da UML: casos de uso, classes e seqüência. | 5 todo |
+| UML | O candidato deverá conhecer os principais diagramas da UML: casos de uso, classes e sequência. | 5 todo |
 | Inglês | Conversação e leitura de documentos técnicos. | 3 médio |
-| Análise de Pontos de Função | Desejável conhecimentos de dimensionamento de sistemas. | 1 nenhum/pouco |
+| Análise de Pontos de Função | Desejáveis conhecimentos de dimensionamento de sistemas. | 1 nenhum/pouco |
 | Experiência Profissional | 2 anos de experiência em levantamento de requisitos e análise. | 5 todo (tem 3 anos) |
 
 O candidato que respondeu à oferta teve o seu perfil calculado da seguinte forma:
@@ -89,7 +89,7 @@ As vagas de emprego têm um período dentro do qual candidatos podem responder. 
 
 Na página com o resultado o contato da empresa que publicou a oferta pode renovar ou finalizar a publicação.
 
-A página que exibe o resultado de uma publicação de oferta fica disponível por até um mês. A renovação ou encerramento de uma publicação poderá ser feita em até dois dias. Caso nenhuma ação seja tomada pela empresa que publicou a oportunidade, a oferta será encerrada automaticamente pelo sistema. Nessa mesma página, o contato pode obter as informações dos candidatos através de uma consulta que lista todos os que responderam à oferta, os que tiveram pontuação igual ou acima do perfil da oferta ou os xprimeiros.
+A página que exibe o resultado de uma publicação de oferta fica disponível por até um mês. A renovação ou encerramento de uma publicação poderá ser feita em até dois dias. Caso nenhuma ação seja tomada pela empresa que publicou a oportunidade, a oferta será encerrada automaticamente pelo sistema. Nessa mesma página, o contato pode obter as informações dos candidatos através de uma consulta que lista todos os que responderam à oferta, os que tiveram pontuação igual ou acima do perfil da oferta ou os x primeiros.
 
 O sistema precisa controlar cadastro e acesso de usuários e empresas e fazer a manutenção automática das ofertas vencidas.
 
