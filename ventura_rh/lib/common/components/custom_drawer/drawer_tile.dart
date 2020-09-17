@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:ventura_rh/models/page_manager.dart';
 
 class DrawerTile extends StatelessWidget {
-   const DrawerTile({this.iconData,this.title,this.page});
+  const DrawerTile({this.iconData,this.title,this.page});
   final IconData iconData;
   final String title;
   final int page;
@@ -19,18 +19,18 @@ class DrawerTile extends StatelessWidget {
         debugPrint('toquei $page Atual $curPage');
       },
       child: SizedBox(
-        height: 60,
+        height: MediaQuery.of(context).size.width * 0.1,
         child: Row(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Icon(
                 iconData,
-              size: 32,
+              size: 30,
                 color: curPage == page ?primaryColor:Colors.grey[700],
               ),
             ),
-            const SizedBox(width: 32,),
+            const SizedBox(width: 2,),
             Text(
                 title,
               style: TextStyle(

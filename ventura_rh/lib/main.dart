@@ -1,13 +1,25 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:parse_server_sdk/parse_server_sdk.dart';
 import 'package:ventura_rh/screens/base/base_screen.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializeParse();
   runApp(MyApp());
-  Firestore.instance.collection('teste').add({'teste':'teste'});
-  
-  
-  
+
+
+}
+
+Future<void> initializeParse() async{
+  await Parse().initialize(
+    'qGZcg2jD43HfFw6YAbpcfN7RQgFB0udZIgtWWvw6',
+    'https://parseapi.back4app.com/',
+    clientKey: 'nZbpDwex4JsskmE02Lp9oEpzlD6vQWeEnFCZ54P3',
+    autoSendSessionId: true,
+    debug: true,
+  );
+
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +27,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'VenturaHR',
+      title: 'Ventura HR',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
 

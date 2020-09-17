@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ventura_rh/common/custom_drawer/custom_drawer.dart';
+import 'package:ventura_rh/common/components/custom_drawer/custom_drawer.dart';
+
 import 'package:ventura_rh/models/page_manager.dart';
+import 'package:ventura_rh/screens/home/home_screen.dart';
 import 'package:ventura_rh/screens/login/login_screen.dart';
 
 class BaseScreen extends StatelessWidget {
@@ -15,7 +17,7 @@ class BaseScreen extends StatelessWidget {
         controller: pageController,
         physics: NeverScrollableScrollPhysics(),
         children: [
-         LoginScreen(),
+          HomeScreen(),
           Scaffold(
             drawer: CustomDrawer(),
             appBar: AppBar(

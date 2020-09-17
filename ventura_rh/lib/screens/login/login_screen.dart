@@ -75,10 +75,7 @@ class LoginScreen extends StatelessWidget {
                           ) ,)
                       ],
                     ),),
-                  Container(
-
-                    child: LoginForm(),
-                  ),
+                  LoginForm(),
 
 
                 ],

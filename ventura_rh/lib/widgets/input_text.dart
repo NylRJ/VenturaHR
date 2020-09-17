@@ -6,10 +6,11 @@ class InputText extends StatelessWidget {
   final bool obscureText, borderEnabled;
   final double fontSize;
   final Icon sufixIco;
+  final Function validator2;
 
 
 
-  const InputText({Key key,this.labelText = '',this.keyboardType = TextInputType.text, this.obscureText = false, this.borderEnabled = true,this.fontSize = 15,this.sufixIco}):super(key: key);
+  const InputText({Key key,this.labelText = '',this.keyboardType = TextInputType.text, this.obscureText = false, this.borderEnabled = true,this.fontSize = 15,this.sufixIco,this.validator2}):super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +38,7 @@ class InputText extends StatelessWidget {
 
         ),
       ),
+      
     );
   }
 }
