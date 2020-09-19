@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ventura_rh/common/components/custom_drawer/drawer_tile.dart';
 import 'package:ventura_rh/common/components/custom_drawer/page_header.dart';
 
+import 'custom_drawer_header.dart';
+
 class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

@@ -46,6 +46,7 @@ dependencies:
   flutter_svg: ^0.18.0
   parse_server_sdk: ^1.0.26
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ventura_rh/models/page_manager.dart';
+import 'package:provider/provider.dart';
 
 class PageHeader extends StatelessWidget {
   @override
@@ -26,14 +28,23 @@ class PageHeader extends StatelessWidget {
 
                 ),
 
-                Text('Clique a Aqui',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400
+                GestureDetector(
+                  onTap: (){
 
-                ),
 
+                      Navigator.of(context).pushNamed('/login');
+
+                  },
+
+                  child: Text('Clique a Aqui',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400
+
+                  ),
+
+                  ),
                 )
 
               ],
