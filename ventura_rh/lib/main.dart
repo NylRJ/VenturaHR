@@ -1,11 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:parse_server_sdk/parse_server_sdk.dart';
 import 'package:provider/provider.dart';
 import 'package:ventura_rh/screens/base/base_screen.dart';
 import 'package:ventura_rh/screens/login/login_screen.dart';
+import 'package:ventura_rh/screens/splash/splash_screen.dart';
 
-
-import 'SplashScreen.dart';
 import 'models/users/user_manager.dart';
 
 void main() async{
@@ -25,54 +25,77 @@ Future<void> initializeParse() async{
 
 }
 
-
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (_) => UserManager(),
-          lazy: false,
-        ),
+    return MaterialApp(
+      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
 
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Ventura HR',
-        theme: ThemeData(
+        primarySwatch: Colors.blue,
 
-          primaryColor: const Color.fromARGB(255, 0, 131 , 143),
-          scaffoldBackgroundColor: const Color.fromARGB(255, 197, 200, 200),
-
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        initialRoute: '/base',
-        onGenerateRoute: (settings) {
-          switch (settings.name) {
-            case '/login':
-              return MaterialPageRoute(builder: (_) => LoginScreen());
-            case '/base':
-              return MaterialPageRoute(builder: (_) => SplashScreen());
-
-            default:
-              return MaterialPageRoute(builder: (_) => BaseScreen());
-          }
-        },
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key key, this.title}) : super(key: key);
+
+
+  final String title;
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
 
 
 
+  @override
+  Widget build(BuildContext context) {
 
+    return  MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (_) => UserManager(),
+            lazy: false,
+          ),
 
+        ],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Ventura HR',
+          theme: ThemeData(
 
+            primaryColor: const Color.fromARGB(255, 0, 131 , 143),
+            scaffoldBackgroundColor: const Color.fromARGB(255, 197, 200, 200),
 
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
+          initialRoute: '/splash',
+          onGenerateRoute: (settings) {
+            switch (settings.name) {
+              case '/login':
+                return MaterialPageRoute(builder: (_) => LoginScreen());
+              case '/base':
+              return MaterialPageRoute(builder: (_) => BaseScreen());
+              case '/splash':
+                return MaterialPageRoute(builder: (_) => SplashScreen());
 
+              default:
+                return MaterialPageRoute(builder: (_) => BaseScreen());
+            }
+          },
+        ),
+      );
+  }
+}
 
 
 
