@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ventura_rh/utils/app_colors.dart';
 
 class RoundedButton extends StatelessWidget {
   final String label;
   final VoidCallback onPressed;
+  final Color backgroundColor;
 
-  const RoundedButton({Key key, @required this.onPressed, @required this.label})
+  const RoundedButton({Key key, @required this.onPressed, @required this.label, this.backgroundColor})
       : assert(label != null),
         super(key: key);
 
@@ -15,7 +17,7 @@ class RoundedButton extends StatelessWidget {
       onPressed: onPressed,
       child: Container(
         decoration:  BoxDecoration(
-            color:  const Color(0xff37474f),
+            color: backgroundColor ?? AppColors.primaryColor ,
             borderRadius: BorderRadius.circular(30),
           boxShadow: [BoxShadow(
             color: Colors.black26,

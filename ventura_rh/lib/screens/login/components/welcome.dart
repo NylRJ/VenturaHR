@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ventura_rh/widgets/icon_container.dart';
 import '../../../utils/responsive.dart';
 
 class Welcome extends StatelessWidget {
@@ -56,13 +57,14 @@ class Welcome extends StatelessWidget {
                         width:constraints.maxWidth,
                         color: const Color(0xffb2ebf2),
                       ),
-                      const SizedBox(height: 20,),
-                       Text(
-                        'Welcome Back!',
+                      const SizedBox(height: 2,),
+
+                      Text(
+                        'Conectando as Melhores Empresas a Você.\n \t         E Você as Melhores Empresas!',
                         style: TextStyle(
-                          fontSize: responsive.ip(2),
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'raleway'
+                            fontSize: responsive.ip(1.2),
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'sans'
                         ),
 
                       ),
