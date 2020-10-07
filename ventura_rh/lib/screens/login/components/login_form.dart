@@ -11,9 +11,11 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
 
+
   @override
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
+    final Color primaryColor = Theme.of(context).primaryColor;
 
     return Positioned(
       bottom: 30,
@@ -21,7 +23,7 @@ class _LoginFormState extends State<LoginForm> {
       child: Container(
 
         constraints: BoxConstraints(
-          maxWidth: responsive.isTablet? 430: 360,
+          //maxWidth: responsive.isTablet? 430: 360,
         ),
         child: Column(
           children: <Widget>[
@@ -30,12 +32,9 @@ class _LoginFormState extends State<LoginForm> {
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
+                  // ignore: prefer_const_literals_to_create_immutables
                   boxShadow: [
-          BoxShadow(
-          color: Colors.black26,
-          blurRadius: 30,
-          offset: Offset(0,10),
-        ),
+           const BoxShadow(color: Colors.black26, blurRadius: 30, offset: Offset(0,10),),
           ]),
               child: Column(
                 children: [
@@ -43,13 +42,13 @@ class _LoginFormState extends State<LoginForm> {
                     sufixIco: Icon(Icons.email,color: Theme.of(context).primaryColor,size:18,),
                     labelText: 'ENDEREÇO DE E-MAIL',
                     keyboardType: TextInputType.emailAddress,
-                    borderEnabled: false,
-                    fontSize: responsive.dp(responsive.isTablet? 1.2:1.4) ,
+
+                    //fontSize: responsive.dp(responsive.isTablet? 1.2:1.4) ,
                   ),
-                  SizedBox(height: responsive.dp(5),),
+                  SizedBox(height: responsive.ip(5),),
                   Container(
 
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         border:Border(
                             bottom: BorderSide(
                                 color: Colors.black12
@@ -59,53 +58,66 @@ class _LoginFormState extends State<LoginForm> {
                       ),
                       child: Row(
                         children: <Widget>[
+                          //TODO: mudando inputText para textFormFild
                           Expanded(
-                            child: InputText(
-                              sufixIco: Icon(Icons.lock,color: Theme.of(context).primaryColor,size:18,),
-                              labelText: 'SENHA',
+                            child: TextFormField(
+                              decoration:  InputDecoration(
+                                icon: Icon(Icons.lock,size:18,color: primaryColor,),
+                                hintText: 'SENHA',
+                                enabledBorder: InputBorder.none,
+                              ),
+                             
                               keyboardType: TextInputType.visiblePassword,
                               obscureText: true,
-                              borderEnabled: false,
-                              fontSize: responsive.dp(responsive.isTablet? 1.2:1.4) ,
+
+                              
+                              validator: (pass){
+                                if(pass.isEmpty || pass.length <6){
+                                  return'Senha Invalida';
+                                }else{
+                                  return null;
+                                }
+                              },
+ 
                             ),
                           ),
                           FlatButton(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
+                            padding:const EdgeInsets.symmetric(horizontal: 10),
                             onPressed: (){},
                             child: Text('Esqueceu a senha?',
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: responsive.dp(responsive.isTablet? 1.2:1.5) ,),
+                              //style: TextStyle(fontWeight: FontWeight.bold, fontSize: responsive.ip(responsive.isTablet? 1.2:1.5) ,),
                             ),
                           ),
                         ],
                       )),
-
+                  //botao entrar
                   SizedBox(
                     width: double.infinity,
                     height: 44,
                     child: FlatButton(
-                      child: Text(
-                        'Entrar',
-                        style: TextStyle(color: Colors.white,
-                          fontSize:responsive.dp(1.5),
-                        ),
-                      ),
                       color: Theme.of(context).primaryColor,
                       onPressed: (){
 
                       },
+                      child: Text(
+                        'Entrar',
+                        style: TextStyle(color: Colors.white,
+                          fontSize:responsive.ip(1.5),
+                        ),
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
 
-            SizedBox(height: responsive.dp(2),),
+            SizedBox(height: responsive.ip(2),),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text('Novo Por Aqui? ',
                   style: TextStyle(
-                    fontSize:responsive.dp(1.5),
+                    fontSize:responsive.ip(1.5),
                   ),
                 ),
                 FlatButton(
@@ -113,13 +125,13 @@ class _LoginFormState extends State<LoginForm> {
                   child: Text(
                       'Inscrever-se',
                       style: TextStyle(
-                          color: Theme.of(context).primaryColor,fontSize:responsive.dp(1.5),
+                          color: Theme.of(context).primaryColor,fontSize:responsive.ip(1.5),
                       ),
                   ),
                 )
               ],
             ),
-            SizedBox(height: responsive.dp(10),),
+            SizedBox(height: responsive.ip(10),),
           ],
         ),
       ),

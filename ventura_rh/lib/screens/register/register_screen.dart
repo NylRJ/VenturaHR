@@ -63,15 +63,16 @@ class _RegisterPageState extends State<RegisterPage> {
                         "Hello!\nSign up to get started.",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: responsive.dp(1.6), color: Colors.white),
+                            fontSize: responsive.ip(1.6), color: Colors.white),
                       ),
-                      SizedBox(height: responsive.dp(4.5)),
+                      SizedBox(height: responsive.ip(4.5)),
                       // AvatarButton(
                       //   imageSize: responsive.wp(25),
                       // )
                     ],
                   ),
                 ),
+                
                 // RegisterForm(),
                 Positioned(
                   left: 15,

@@ -15,13 +15,13 @@ class BaseScreen extends StatelessWidget {
       create: (_) => PageManager(pageController),
       child: PageView(
         controller: pageController,
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         children: [
           HomeScreen(),
           Scaffold(
             drawer: CustomDrawer(),
             appBar: AppBar(
-              title: Text('Buscar Vagas'),
+              title: const Text('Buscar Vagas'),
               centerTitle: true,
             ),
 

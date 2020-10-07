@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:ventura_rh/screens/base/base_screen.dart';
+import 'package:ventura_rh/utils/responsive.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -12,7 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-
+  final Responsive responsive = Responsive.of(context);
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -42,14 +43,8 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
           ),
           Container(
-            width:MediaQuery
-                .of(context)
-                .size
-                .width,
-            height: MediaQuery
-                .of(context)
-                .size
-                .height,
+            width:responsive.width,
+            height: responsive.height,
             decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment(0.0, -1.0),
@@ -66,12 +61,12 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
           ),
           Transform.translate(
-            offset: const Offset(35.0, 232.0),
+            offset: const Offset(40.0, 230.0),
             child:
             // Adobe XD layer: 'logo Azul' (shape)
             Container(
-              width: 291.0,
-              height: 140.0,
+              width: responsive.ip(40.0),
+              height: responsive.ip(9.0),
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/logoRH.png'),

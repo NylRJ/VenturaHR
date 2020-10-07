@@ -50,7 +50,7 @@ class LoginScreen extends StatelessWidget {
                     left:-orangeSize * 0.15,
                     child: Circle(
                       size: orangeSize,
-                      colors:[
+                      colors:const [
                         Colors.black,
                         Colors.cyan,
                       ],
@@ -71,7 +71,7 @@ class LoginScreen extends StatelessWidget {
                           'Conectando as Melhores Empresas a Você.\n E Você as Melhores \n Empresas!',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: responsive.dp(1.6),
+                            fontSize: responsive.ip(1.6),
                           ) ,)
                       ],
                     ),),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:parse_server_sdk/parse_server_sdk.dart';
 import 'package:provider/provider.dart';
 import 'package:ventura_rh/screens/base/base_screen.dart';
+import 'package:ventura_rh/screens/login/login_page.dart';
 import 'package:ventura_rh/screens/login/login_screen.dart';
 import 'package:ventura_rh/screens/splash/splash_screen.dart';
 
@@ -29,16 +30,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
+    return MaterialApp(title: 'Ventura HR',
+    debugShowCheckedModeBanner: false,
+    theme: ThemeData(
+      fontFamily: 'sans',
+      primaryColor: const Color.fromARGB(255,0, 146, 164),
+      visualDensity: VisualDensity.adaptivePlatformDensity,
+      scaffoldBackgroundColor: const Color.fromARGB(255,118, 207, 218),
 
-        primarySwatch: Colors.blue,
-
-        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Ventura HR'),
     );
   }
 }
@@ -69,20 +70,24 @@ class _MyHomePageState extends State<MyHomePage> {
 
         ],
         child: MaterialApp(
+
           debugShowCheckedModeBanner: false,
           title: 'Ventura HR',
           theme: ThemeData(
+            fontFamily: 'sans',
+              primaryColor: const Color.fromARGB(255,0, 146, 164),
+              visualDensity: VisualDensity.adaptivePlatformDensity,
+              scaffoldBackgroundColor: const Color.fromARGB(255,118, 207, 218),
+            appBarTheme: const AppBarTheme(
+              elevation: 0,
+            ),
 
-            primaryColor: const Color.fromARGB(255, 0, 131 , 143),
-            scaffoldBackgroundColor: const Color.fromARGB(255, 197, 200, 200),
-
-            visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
           initialRoute: '/splash',
           onGenerateRoute: (settings) {
             switch (settings.name) {
               case '/login':
-                return MaterialPageRoute(builder: (_) => LoginScreen());
+                return MaterialPageRoute(builder: (_) => LoginPage());
               case '/base':
               return MaterialPageRoute(builder: (_) => BaseScreen());
               case '/splash':
