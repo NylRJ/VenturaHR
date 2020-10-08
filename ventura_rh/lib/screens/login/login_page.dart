@@ -23,29 +23,35 @@ class _LoginPageState extends State<LoginPage> {
       body: GestureDetector(
         onTap: (){
           FocusScope.of(context).unfocus();
+
+          print('Valor ${responsive.height}');
         },
         child: Container(
           width: double.infinity,
           height:double.infinity,
           color:  AppColors.textColor,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-
-              Stack(
+          child: SingleChildScrollView(
+            child: Container(
+              height: responsive.height,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Welcome(),
-                  Transform.translate(
-                      offset: const Offset(145.0, 260.0),
-                      child: IconContainer( size:responsive.wp(17),))
+                  Stack(
+                    children: [
+                       Welcome(),
+                      Transform.translate(
+                          offset:  Offset(responsive.wp(35), responsive.hp(32)),
+                          child: IconContainer( size:100,)),
+
+                    ],
+
+                  ),
+
+                   LoginPageForm(),
+
                 ],
-
               ),
-
-              LoginPageForm(),
-
-
-            ],
+            ),
           ),
         ),
       ),

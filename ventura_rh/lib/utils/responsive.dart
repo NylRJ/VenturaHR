@@ -21,14 +21,14 @@ class Responsive {
   }
 
   double wp(double percent) {
-    return width * percent / 100;
+    return this.width * percent / 100;
   }
 
   double hp(double percent) {
-    return height * percent / 100;
+    return this.height * percent / 100;
   }
 
   double ip(double percent) {
-    return inch * percent / 100;
+    return this.inch * percent / 100;
   }
 }

@@ -16,31 +16,35 @@ class LoginPageForm extends StatelessWidget {
     return SafeArea(
       top: false,
       child: Container(
-        width: 330,
+        width: 330 ,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
             InputTextLogin(
-                iconsPath: 'assets/images/login/icons/email.svg',
-                placeHolder: 'Endereço de E-mail'),
+                iconPath: 'assets/images/login/icons/email.svg',
+                placeholder: 'Endereço de E-mail'),
             SizedBox(
-              height: 20,
+              height: responsive.ip(1),
             ),
-            const InputTextLogin(
-                iconsPath: 'assets/images/login/icons/key.svg',
-                placeHolder: 'Senha'),
+             InputTextLogin(
+                iconPath: 'assets/images/login/icons/key.svg',
+                placeholder: 'Senha'),
             Container(
+              width: double.infinity,
               alignment: Alignment.centerRight,
               child: CupertinoButton(
-                padding: const EdgeInsets.symmetric(vertical: 15 ),
+                padding:  EdgeInsets.symmetric(vertical: 15 ),
                 onPressed: () {},
-                child: const Text(
+                child:  Text(
                   'Esqueceu a senha',
                   style:
-                      TextStyle(fontFamily: 'sans', color: Color(0xff4dd0e1)),
+                  TextStyle(fontFamily: 'sans', color: Color(0xff4dd0e1)),
                 ),
               ),
+            ),
+            SizedBox(
+              height: responsive.ip(0.2),
             ),
             RoundedButton(
               onPressed: () {},
@@ -48,7 +52,7 @@ class LoginPageForm extends StatelessWidget {
               backgroundColor: AppColors.button,
             ),
             SizedBox(
-              height: 10,
+              height: responsive.ip(0.2),
             ),
             Text(
               'ou continue com',
@@ -56,7 +60,7 @@ class LoginPageForm extends StatelessWidget {
                   fontFamily: 'sans', color: AppColors.secondaryColor),
             ),
             SizedBox(
-              height: 10,
+              height: responsive.ip(1),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -67,7 +71,7 @@ class LoginPageForm extends StatelessWidget {
                   backgroundColor: Color(0xff448AFF),
                 ),
                 SizedBox(
-                  width: 20,
+                  width: responsive.wp(3),
                 ),
                 CircleButton(
                   size: 55,
@@ -76,16 +80,16 @@ class LoginPageForm extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(width: 30,),
+            SizedBox(height: responsive.ip(0.5),),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('Não tem conta?'),
                 SizedBox(width: 10,),
                 CupertinoButton(
-                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  padding:  EdgeInsets.symmetric(vertical: 15),
                   onPressed: () {},
-                  child: const Text(
+                  child:  Text(
                     'Inscrever-se',
                     style:
                     TextStyle(fontFamily: 'sans', color: Color(0xff4dd0e1),fontWeight:FontWeight.w800 ),

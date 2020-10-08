@@ -3,10 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
 
 class InputTextLogin extends StatelessWidget {
-  final String iconsPath;
-  final String placeHolder;
-  const InputTextLogin({Key key,@required this.iconsPath, @required this.placeHolder}):
-        assert(iconsPath != null && placeHolder != null),super(key: key);
+  final String iconPath;
+  final String placeholder;
+  const InputTextLogin({Key key,@required this.iconPath, @required this.placeholder}):
+        assert(iconPath != null && placeholder != null),super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +16,11 @@ class InputTextLogin extends StatelessWidget {
         width: 40,
         height: 30,
         padding: const EdgeInsets.all(2),
-        child: SvgPicture.asset(iconsPath,color: const Color(0xff37474f),),
+        child: SvgPicture.asset(iconPath,color: const Color(0xff37474f),),
 
       ),
       style: const TextStyle(fontFamily: 'sans'),
-      placeholder: placeHolder,
+      placeholder: placeholder,
       placeholderStyle: TextStyle(fontFamily: 'sans',color: Color(0xffcccccc)),
       decoration: BoxDecoration(
         border: Border(

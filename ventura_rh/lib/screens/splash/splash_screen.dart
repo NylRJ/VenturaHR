@@ -20,14 +20,8 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Stack(
         children: <Widget>[
           Container(
-            width:MediaQuery
-                .of(context)
-                .size
-                .width,
-            height: MediaQuery
-                .of(context)
-                .size
-                .height,
+            width:responsive.width,
+            height:responsive.height,
             decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment(0.0, -1.0),
@@ -61,12 +55,12 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
           ),
           Transform.translate(
-            offset: const Offset(40.0, 230.0),
+            offset:  Offset(responsive.wp(20), responsive.hp(40)),
             child:
             // Adobe XD layer: 'logo Azul' (shape)
             Container(
-              width: responsive.ip(40.0),
-              height: responsive.ip(9.0),
+              width: responsive.wp(60),
+              height: responsive.hp(10),
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/logoRH.png'),
