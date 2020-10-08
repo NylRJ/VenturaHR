@@ -12,8 +12,8 @@ class IconContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     final Responsive respansive = Responsive.of(context);
     return Container(
-      width: respansive.ip(15),
-      height: respansive.ip(15),
+      width: respansive.ip(10),
+      height: respansive.ip(10),
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(size * 0.1),
