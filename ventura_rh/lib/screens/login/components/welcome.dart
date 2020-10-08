@@ -17,7 +17,7 @@ class Welcome extends StatelessWidget {
       child: LayoutBuilder(
         builder: (_, constraints) {
           return Container(
-            color: const Color.fromARGB(255, 128, 222, 234),
+            color:  Colors.white,
             child: Stack(
               children: [
                 Positioned(

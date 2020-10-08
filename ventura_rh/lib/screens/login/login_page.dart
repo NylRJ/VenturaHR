@@ -70,7 +70,16 @@ class _LoginPageState extends State<LoginPage> with AfterLayoutMixin {
               return Row(
                 children: <Widget>[
                   Expanded(
-                    child: Welcome(),
+                    child: SingleChildScrollView(
+                      physics: NeverScrollableScrollPhysics(),
+                      child: Container(
+                        height:  responsive.height,
+
+                        child: Center(
+                            child: Welcome(),
+                        ),
+                      ),
+                    ),
                   ),
 
                   Expanded(
