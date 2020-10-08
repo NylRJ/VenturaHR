@@ -1,4 +1,6 @@
+import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:ventura_rh/screens/login/components/welcome.dart';
 import 'package:ventura_rh/utils/app_colors.dart';
 import 'package:ventura_rh/utils/responsive.dart';
@@ -13,7 +15,17 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage> with AfterLayoutMixin{
+
+@override
+  void afterFirstLayout(BuildContext context) {
+    final bool isTablet = MediaQuery.of(context).size.shortestSide >= 600;
+    if (!isTablet) {
+      //Se estiver no SmartPhone Blouqeio a rotação do dispositivo
+      SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    }  
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -56,5 +68,11 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
   }
 }
