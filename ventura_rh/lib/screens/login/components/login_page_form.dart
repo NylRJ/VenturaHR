@@ -54,9 +54,12 @@ class _LoginPageFormState extends State<LoginPageForm> {
             onSuccess: (){
               Navigator.pushNamed(context, '/base');
             },
-          onFail: (){
-              Dialogs.alert(context,description: 'Login Falho',title: 'Sair');
-          }
+            onFail: (e){
+              final snac =   SnackBar(content: Text('Falha ao entrar $e',style: TextStyle(color: Colors.white),),
+                backgroundColor: AppColors.primaryColor,
+              );
+              Scaffold.of(context).showSnackBar(snac);
+            }
 
         );
       }else{
@@ -121,6 +124,7 @@ class _LoginPageFormState extends State<LoginPageForm> {
                 height: responsive.ip(0.2),
               ),
               RoundedButton(
+
                 onPressed: _submit,
 
                 label: 'Entrar',
