@@ -7,6 +7,8 @@ import 'package:ventura_rh/screens/home/home_screen.dart';
 import 'package:ventura_rh/screens/login/login_screen.dart';
 
 class BaseScreen extends StatelessWidget {
+
+
   final PageController pageController = PageController();
 
   @override

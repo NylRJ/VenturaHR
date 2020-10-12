@@ -28,6 +28,8 @@ class UserManager extends ChangeNotifier {
     try {
       final AuthResult result = await auth.signInWithEmailAndPassword(
           email: user.email, password: user.password);
+
+      print(result.user.uid);
       //delay de 4s
       //await Future.delayed(const Duration(seconds: 4));
      await _loadCurrentUser(firebaseUser: result.user);

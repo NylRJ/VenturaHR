@@ -21,8 +21,9 @@ class CustomDrawerHeader extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               const Icon(Icons.person, color: Colors.white,size: 35,),
+              //'Olá ${userManager.user?.name ?? ''}'
               Text(
-                  'Olá ${userManager.user?.name ?? ''}',
+                  '',
                 //caso o nome seja muito grande nao estoure a tela
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
@@ -33,12 +34,12 @@ class CustomDrawerHeader extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: (){
-                  if(userManager.isLoggedIn){
-                    context.read<PageManager>().setPage(0);
-                    userManager.signOut();
-                  }else{
-                    Navigator.of(context).pushNamed('/login');
-                  }
+                  // if(userManager.isLoggedIn){
+                  //   context.read<PageManager>().setPage(0);
+                  //   userManager.signOut();
+                  // }else{
+                  //   Navigator.of(context).pushNamed('/login');
+                  // }
                 },
                 child: Text(
                   false

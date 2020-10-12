@@ -14,10 +14,10 @@ class RoundedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoButton(
-      onPressed: onPressed,
+      onPressed: onPressed??null,
       child: Container(
         decoration:  BoxDecoration(
-            color: backgroundColor ?? AppColors.primaryColor ,
+            color: (onPressed == null)?Colors.grey[500] ?? AppColors.primaryColor:backgroundColor ,
             borderRadius: BorderRadius.circular(30),
           boxShadow: [BoxShadow(
             color: Colors.black26,

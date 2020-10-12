@@ -49,6 +49,7 @@ dependencies:
   after_layout: ^1.0.7+2
 
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -77,6 +78,7 @@ flutter:
     - assets/images/login/nuvens.svg
     - assets/images/login/icons/key.svg
     - assets/images/login/icons/email.svg
+    - assets/images/login/icons/avatar.svg
     - assets/images/rede_social/facebook.svg
     - assets/images/rede_social/google.svg
   #   - images/a_dot_ham.jpeg
