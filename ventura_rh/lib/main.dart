@@ -93,8 +93,6 @@ class _MyHomePageState extends State<MyHomePage> {
               return MaterialPageRoute(builder: (_) => BaseScreen());
             case '/splash':
               return MaterialPageRoute(builder: (_) => SplashScreen());
-            case '/register':
-              return MaterialPageRoute(builder: (_) => RegisterForm());
 
             default:
               return MaterialPageRoute(builder: (_) => BaseScreen());
