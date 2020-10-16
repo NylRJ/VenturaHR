@@ -31,8 +31,8 @@ class UserManager extends ChangeNotifier {
 
       print(result.user.uid);
       //delay de 4s
-      //await Future.delayed(const Duration(seconds: 4));
-     await _loadCurrentUser(firebaseUser: result.user);
+      await Future.delayed(const Duration(seconds: 4));
+     //await _loadCurrentUser(firebaseUser: result.user);
       onSuccess();
     } on PlatformException catch (e) {
       onFail(getErrorString(e.code));

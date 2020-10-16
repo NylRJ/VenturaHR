@@ -7,19 +7,23 @@ class InputTextLogin extends StatefulWidget {
   final String iconPath, placeholder, initValue;
   final bool Function(String text) validator;
   final bool obscureText;
+  final bool enable;
+
 
 
 
   final TextInputType keyboardType;
 
-  const InputTextLogin(
+   const InputTextLogin(
       {Key key,
         @required this.iconPath,
         @required this.placeholder,
         this.validator,
         this.initValue = '',
         this.obscureText = false,
-        this.keyboardType = TextInputType.text})
+        this.enable = false,
+        this.keyboardType = TextInputType.text,
+        })
       : assert(iconPath != null && placeholder != null),
         super(key: key);
 
@@ -32,6 +36,9 @@ class InputTextLoginState extends State<InputTextLogin> {
 
 
   bool _validationOk = false;
+
+
+
 
   bool get isOk => _validationOk;
   String get value => _controller.text;
@@ -66,6 +73,7 @@ class InputTextLoginState extends State<InputTextLogin> {
       controller: _controller,
       keyboardType: widget.keyboardType,
       obscureText: widget.obscureText,
+      enabled: widget.enable,
       onChanged: (text) => checkValidation(),
       padding: EdgeInsets.symmetric(vertical: 7, horizontal: 5),
       prefix: Container(
@@ -74,13 +82,13 @@ class InputTextLoginState extends State<InputTextLogin> {
         padding: EdgeInsets.all(2),
         child: SvgPicture.asset(
           this.widget.iconPath,
-          color: Color(0xffcccccc),
+          color: AppColors.secondaryColorlighter,
         ),
       ),
       suffix: widget.validator != null
           ? Icon(
         Icons.check_circle,
-        color: _validationOk ? AppColors.primaryColor : Colors.black12,
+        color: _validationOk ? AppColors.primaryColor : AppColors.secondaryColorlighter,
       )
           : null,
       placeholder: this.widget.placeholder,
@@ -90,7 +98,7 @@ class InputTextLoginState extends State<InputTextLogin> {
         border: Border(
           bottom: BorderSide(
             width: 1,
-            color: Color(0xffdddddd),
+            color: AppColors.secondaryColorlighter,
           ),
         ),
       ),

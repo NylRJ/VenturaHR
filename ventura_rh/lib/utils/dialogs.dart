@@ -10,10 +10,10 @@ class Dialogs {
         actions: <Widget>[
           CupertinoDialogAction(
             child: FlatButton(
-              child:Text('ok'),
-              onPressed: () async {
-                Navigator.of(context).pop(context);
-              }
+                child:Text(title),
+                onPressed: () async {
+                  Navigator.of(context).pop(context);
+                }
             ),
 
           )

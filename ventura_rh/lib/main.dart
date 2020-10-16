@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:parse_server_sdk/parse_server_sdk.dart';
 import 'package:provider/provider.dart';
+import 'package:ventura_rh/models/vaga/vaga_manager.dart';
 import 'package:ventura_rh/screens/base/base_screen.dart';
 import 'package:ventura_rh/screens/login/components/register_form.dart';
 import 'package:ventura_rh/screens/login/login_page.dart';
@@ -65,6 +66,10 @@ class _MyHomePageState extends State<MyHomePage> {
       providers: [
         ChangeNotifierProvider(
           create: (_) => UserManager(),
+          lazy: false,
+        ),
+        ChangeNotifierProvider(
+          create: (_)=> VagaManager(),
           lazy: false,
         ),
 

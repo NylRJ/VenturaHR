@@ -1,4 +1,5 @@
 import 'package:after_layout/after_layout.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ventura_rh/utils/app_colors.dart';
@@ -84,6 +85,7 @@ class _LoginPageState extends State<LoginPage> with AfterLayoutMixin {
     final bool _isTablet = MediaQuery.of(context).size.shortestSide >= 600;
 
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       body: GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus();
@@ -91,7 +93,7 @@ class _LoginPageState extends State<LoginPage> with AfterLayoutMixin {
         child: Container(
           width: double.infinity,
           height: double.infinity,
-          color: AppColors.textColor,
+          color: Colors.grey[200],
           child: OrientationBuilder(builder: (_, Orientation orientation) {
             if (isPortrait) {
               return SingleChildScrollView(
