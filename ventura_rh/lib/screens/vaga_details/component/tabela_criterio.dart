@@ -24,7 +24,6 @@ class _TabelaCriterioState extends State<TabelaCriterio> {
             columnSpacing: 23,
             horizontalMargin: 6,
             dataRowHeight: 60,
-
             onSelectAll: (b) {},
             sortColumnIndex: 0,
             sortAscending: true,

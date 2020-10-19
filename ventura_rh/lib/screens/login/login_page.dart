@@ -85,7 +85,7 @@ class _LoginPageState extends State<LoginPage> with AfterLayoutMixin {
     final bool _isTablet = MediaQuery.of(context).size.shortestSide >= 600;
 
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.white,
       body: GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus();
@@ -93,7 +93,7 @@ class _LoginPageState extends State<LoginPage> with AfterLayoutMixin {
         child: Container(
           width: double.infinity,
           height: double.infinity,
-          color: Colors.grey[200],
+
           child: OrientationBuilder(builder: (_, Orientation orientation) {
             if (isPortrait) {
               return SingleChildScrollView(
@@ -102,25 +102,61 @@ class _LoginPageState extends State<LoginPage> with AfterLayoutMixin {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Stack(
-                        children: [
-                          Welcome(),
-                          if (_isTablet)
-                            Transform.translate(
-                                offset: Offset(
-                                    responsive.wp(42.05), responsive.hp(45)),
-                                child: IconContainer(
-                                  size: responsive.ip(7),
-                                ))
-                          else
-                            Transform.translate(
-                                offset: Offset(
-                                    responsive.wp(35), responsive.hp(32)),
-                                child: IconContainer(
-                                  size: responsive.ip(7),
-                                )),
-                        ],
+                      Expanded(
+                        child: Stack(
+                          children: [
+                            Welcome(),
+
+                            if (_isTablet)
+                              Transform.translate(
+                                  offset: Offset(
+                                      responsive.wp(38.05), responsive.hp(35)),
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        width: 150,
+                                        height: 80,
+                                        child: IconContainer(
+                                          size: responsive.ip(6),
+                                        ),
+                                      ),
+                                      Text(
+                                        "Nova Conta",
+                                        style: TextStyle(
+                                            color: AppColors.primaryColor,
+                                            fontSize: 24,
+                                            fontFamily: 'raleway',
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                              )
+                            else
+                              Transform.translate(
+                                  offset: Offset(
+                                      responsive.wp(35), responsive.hp(30.5)),
+                                child: Column(
+                                  children: [
+                                    IconContainer(
+                                      size: responsive.ip(7),
+                                    ),
+                                    Text(
+                                      "Nova Conta",
+                                      style: TextStyle(
+                                          color: AppColors.primaryColor,
+                                          fontSize: 25,
+                                          fontFamily: 'raleway',
+                                          fontWeight: FontWeight.bold),
+                                    ),
+
+                                  ],
+                                ),
+                              ),
+
+                          ],
+                        ),
                       ),
+
                       Expanded(
                         child: _getForm(),
                       ),
@@ -133,11 +169,11 @@ class _LoginPageState extends State<LoginPage> with AfterLayoutMixin {
                 children: <Widget>[
                   Expanded(
                     child: SingleChildScrollView(
-                      physics: NeverScrollableScrollPhysics(),
+                     //TODO: physics: NeverScrollableScrollPhysics(),
                       child: Container(
                         padding: EdgeInsets.only(left: 20),
                         height: responsive.height,
-                        child: Center(
+                        child: const Center(
                           child: Welcome(),
                         ),
                       ),
@@ -147,19 +183,40 @@ class _LoginPageState extends State<LoginPage> with AfterLayoutMixin {
                     child: SingleChildScrollView(
                       child: Container(
                         height: responsive.height,
-                        child: Center(
-                            child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        child: Wrap(
                           children: [
-                            Transform.translate(
-                              offset: Offset(10,70),
-                              child: IconContainer(
-                                size: responsive.ip(7),
-                              ),
-                            ),
-                            Expanded(child: _getForm()),
+                            Center(
+                                child: LimitedBox(
+                                  maxHeight: responsive.height -10,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Transform.translate(
+                                        offset: Offset(10,28),
+                                        child: Column(
+                                          children: [
+                                            IconContainer(
+                                              size: responsive.ip(7),
+                                            ),
+                                            SizedBox(height: responsive.ip(1),),
+                                            Text(
+                                              "Nova Conta",
+                                              style: TextStyle(
+                                                  color: AppColors.primaryColor,
+                                                  fontSize: 24,
+                                                  fontFamily: 'raleway',
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
+                                        ),
+
+                                      ),
+                                      Expanded(child: _getForm()),
+                                    ],
+                                  ),
+                                ))
                           ],
-                        )),
+                        ),
                       ),
                     ),
                   ),

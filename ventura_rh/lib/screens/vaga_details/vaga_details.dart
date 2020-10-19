@@ -14,19 +14,12 @@ class VagaDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
-    print(vaga.criterio[1].pmd);
-    //1º alternativa descartada
-    //2º foi mapear dentro da propia tabela
 
-    // String  name = vaga.criterio.map((e) => e.name).toString();
-    // String  description = vaga.criterio.map((e) => e.description).toString();
-    // String  pmd = vaga.criterio.map((e) => e.pmd).toString();
-    // String  peso = vaga.criterio.map((e) => e.weight).toString();
 
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(vaga.companyTitle),
+        title: Text(vaga.companyTitle.toUpperCase(),style: TextStyle(fontWeight: FontWeight.bold),),
         centerTitle: true,
       ),
       body: ListView(
@@ -69,12 +62,30 @@ class VagaDetails extends StatelessWidget {
                         fontWeight: FontWeight.w500),
                   ),
                 ),
+                Divider(
+                  color: AppColors.secondaryColorlighter,
+                  thickness: 0.5,
+                ),
+                TabelaCriterio(
+                  vaga: vaga,
+                ),
 
-              TabelaCriterio(vaga: vaga,),
+
               ],
             ),
           ),
+
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: AppColors.primaryColor,
+
+        onPressed: (){},
+        child: Icon(
+          IconData(0xe900, fontFamily: 'editar_vagas'),
+          size: 40,
+          color: Colors.white,
+        ),
       ),
     );
   }
