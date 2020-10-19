@@ -21,7 +21,9 @@ class _TabelaCriterioState extends State<TabelaCriterio> {
         scrollDirection: Axis.vertical,
         child: DataTable(
             dividerThickness: 2,
-            columnSpacing: 15,
+            columnSpacing: 23,
+            horizontalMargin: 6,
+            dataRowHeight: 60,
 
             onSelectAll: (b) {},
             sortColumnIndex: 0,
@@ -42,7 +44,7 @@ class _TabelaCriterioState extends State<TabelaCriterio> {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   )),
               DataColumn(
-                  numeric: false,
+                  numeric: true,
                   onSort: (i, b) {
                     print("$i $b");
                     setState(() {
@@ -96,21 +98,32 @@ class _TabelaCriterioState extends State<TabelaCriterio> {
 
                   DataCell(
 
-                      Text(e.name),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: Wrap(
+                          children: [
+                            Text(e.name),
+                          ],
+                        ),
+                      ),
                       showEditIcon: false, placeholder: false),
 
                   DataCell(Text('${e.pmd}'),
                       showEditIcon: false, placeholder: false),
                   DataCell(Text('${e.weight}'),
                       showEditIcon: false, placeholder: false),
-                  DataCell(
+                 DataCell(
 
 
-                      SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-
-                          child: Text('${e.description}')),
-                      showEditIcon: false, placeholder: false),
+                     SingleChildScrollView(
+                       scrollDirection: Axis.vertical,
+                       child: Wrap(
+                         children: [
+                           Text('${e.description}'),
+                         ],
+                       ),
+                     ),
+                     showEditIcon: false, placeholder: false),
 
               ],
             ))
