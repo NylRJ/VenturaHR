@@ -21,14 +21,7 @@ class BaseScreen extends StatelessWidget {
           Scaffold(
             drawer: CustomDrawer(),
             appBar: AppBar(
-              title: const Text('Buscar Vagas'),
-              centerTitle: true,
-            ),
-          ),
-          Scaffold(
-            drawer: CustomDrawer(),
-            appBar: AppBar(
-              title: Text('Editar Vagas'),
+              title: const Text('Publicar Vagas'),
               centerTitle: true,
             ),
           ),

@@ -68,7 +68,6 @@ class _LoginPageState extends State<LoginPage> with AfterLayoutMixin {
             _switchForm(LoginFormType.login);
           },
         ),
-
         ForgotPasswordForm(
           onGoToLogin: (){
             _switchForm(LoginFormType.login);
@@ -120,14 +119,7 @@ class _LoginPageState extends State<LoginPage> with AfterLayoutMixin {
                                           size: responsive.ip(6),
                                         ),
                                       ),
-                                      Text(
-                                        "Nova Conta",
-                                        style: TextStyle(
-                                            color: AppColors.primaryColor,
-                                            fontSize: 24,
-                                            fontFamily: 'raleway',
-                                            fontWeight: FontWeight.bold),
-                                      ),
+
                                     ],
                                   ),
                               )
@@ -140,14 +132,7 @@ class _LoginPageState extends State<LoginPage> with AfterLayoutMixin {
                                     IconContainer(
                                       size: responsive.ip(7),
                                     ),
-                                    Text(
-                                      "Nova Conta",
-                                      style: TextStyle(
-                                          color: AppColors.primaryColor,
-                                          fontSize: 25,
-                                          fontFamily: 'raleway',
-                                          fontWeight: FontWeight.bold),
-                                    ),
+
 
                                   ],
                                 ),
@@ -199,14 +184,7 @@ class _LoginPageState extends State<LoginPage> with AfterLayoutMixin {
                                               size: responsive.ip(7),
                                             ),
                                             SizedBox(height: responsive.ip(1),),
-                                            Text(
-                                              "Nova Conta",
-                                              style: TextStyle(
-                                                  color: AppColors.primaryColor,
-                                                  fontSize: 24,
-                                                  fontFamily: 'raleway',
-                                                  fontWeight: FontWeight.bold),
-                                            ),
+
                                           ],
                                         ),
 

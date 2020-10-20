@@ -15,7 +15,7 @@ import 'input_text_login.dart';
 class LoginPageForm extends StatefulWidget {
   final VoidCallback onGoToRegister, onGoToForgotPassword;
 
-  LoginPageForm(
+  const LoginPageForm(
       {Key key,
       @required this.onGoToRegister,
       @required this.onGoToForgotPassword})
@@ -62,7 +62,6 @@ class _LoginPageFormState extends State<LoginPageForm> {
             Scaffold.of(context).showSnackBar(snac);
           });
     } else {
-
 
 
       var msg = CupertinoAlertDialog(

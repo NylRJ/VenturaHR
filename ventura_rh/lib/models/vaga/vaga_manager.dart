@@ -13,6 +13,7 @@ class VagaManager extends ChangeNotifier{
   final Firestore firestore = Firestore.instance;
 
   List<Vaga> allVagas = [];
+
   String _search = '';
 String  get search => _search;
 

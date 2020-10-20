@@ -85,7 +85,17 @@ class _RegisterFormState extends State<RegisterForm> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-
+                        Text(
+                          "Nova Conta",
+                          style: TextStyle(
+                              color: AppColors.primaryColor,
+                              fontSize: 24,
+                              fontFamily: 'raleway',
+                              fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: responsive.ip(1),
+                        ),
                         InputTextLogin(
                           iconPath: 'assets/images/login/icons/avatar.svg',
                           placeholder: "Username",

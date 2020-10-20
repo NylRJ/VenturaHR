@@ -3,16 +3,22 @@ import 'package:ventura_rh/models/page_manager.dart';
 import 'package:provider/provider.dart';
 
 class PageHeader extends StatelessWidget {
+
+  final bool isTablet ;
+
+  const PageHeader({Key key, this.isTablet}) : super(key: key);
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Theme.of(context).primaryColor,
-      height: 95,
+      height: isTablet? 200:95,
       padding: const EdgeInsets.symmetric(horizontal: 20) ,
 
       child: Row(
         children: [
-          const Icon(Icons.person, color: Colors.white,size: 35,),
+           Icon(Icons.person, color: Colors.white,size:isTablet? 75:35,),
           const SizedBox(width: 20,),
           Expanded(
             child: Column(
@@ -22,7 +28,7 @@ class PageHeader extends StatelessWidget {
                 Text('Acesse sua conta agora!',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: isTablet? 22:16,
                     fontWeight: FontWeight.w500
                   ),
 
@@ -39,7 +45,7 @@ class PageHeader extends StatelessWidget {
                   child: Text('Clique a Aqui',
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 14,
+                        fontSize: isTablet? 18:14,
                         fontWeight: FontWeight.w400
 
                   ),
