@@ -7,8 +7,12 @@ import 'components/search_dialog.dart';
 import 'components/vaga_list_tile.dart';
 
 class VagaScreen extends StatelessWidget {
+
+
   @override
   Widget build(BuildContext context) {
+    final bool isTablet = MediaQuery.of(context).size.shortestSide >= 600;
+
     return Scaffold(
       drawer: CustomDrawer(),
       appBar: AppBar(
@@ -76,8 +80,12 @@ class VagaScreen extends StatelessWidget {
               padding: EdgeInsets.all(4),
               itemCount: filteredVagas.length,
               itemBuilder: (_, index) {
-                return VagaListTile(
-                  vaga: filteredVagas[index],
+                return LimitedBox(
+                  maxHeight: isTablet?200:160,
+                  child: VagaListTile(
+                    isTablet: isTablet,
+                    vaga: filteredVagas[index],
+                  ),
                 );
               });
         },
