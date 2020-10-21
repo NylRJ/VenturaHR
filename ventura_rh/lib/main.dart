@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:parse_server_sdk/parse_server_sdk.dart';
 import 'package:provider/provider.dart';
+import 'package:ventura_rh/models/users/user_hr.dart';
 import 'package:ventura_rh/models/vaga/vaga.dart';
 import 'package:ventura_rh/models/vaga/vaga_manager.dart';
+import 'package:ventura_rh/screens/address/address_creen.dart';
 import 'package:ventura_rh/screens/base/base_screen.dart';
 import 'package:ventura_rh/screens/login/components/register_form.dart';
 import 'package:ventura_rh/screens/login/login_page.dart';
@@ -98,6 +100,8 @@ class _MyHomePageState extends State<MyHomePage> {
               return MaterialPageRoute(builder: (_) => LoginPage());
             case '/base':
               return MaterialPageRoute(builder: (_) => BaseScreen());
+            case '/address':
+              return MaterialPageRoute(builder: (_) => AddressScreen(settings.arguments as UserHR));
             case '/splash':
               return MaterialPageRoute(builder: (_) => SplashScreen());
             case '/vagaDetails':

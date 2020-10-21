@@ -13,8 +13,10 @@ class UserHR {
         this.phone,
         this.createdAt,
         this.updateAt}) {
-    this.accountType = "PF";
-    this.toString();
+    accountType = "fisica";
+    createdAt = DateTime.now();
+    updateAt = DateTime.now();
+
   }
 
   UserHR.company(
@@ -27,8 +29,10 @@ class UserHR {
         this.createdAt,
         this.updateAt,
         this.address}) {
-    this.accountType = "PJ";
-    this.toString();
+    this.accountType = "juridica";
+    createdAt = DateTime.now();
+    updateAt = DateTime.now();
+
   }
 
   UserHR.admin(
@@ -41,8 +45,24 @@ class UserHR {
         this.createdAt,
         this.updateAt,
         this.address}) {
-    this.accountType = "admin";
-    this.toString();
+    accountType = "admin";
+    createdAt = DateTime.now();
+    updateAt = DateTime.now();
+
+  }
+
+  UserHR.createCep(
+      {this.id,
+        this.name,
+        this.email,
+        this.password,
+        this.confirmPassword,
+        this.phone,
+
+       }) {
+
+
+
   }
 
   String id;
@@ -51,9 +71,15 @@ class UserHR {
   String phone;
   String password;
   String confirmPassword;
+  String cep;
   String accountType;
   DateTime createdAt;
   DateTime updateAt;
   bool admin = false;
   Address address;
+
+  @override
+  String toString() {
+
+  }
 }

@@ -97,6 +97,9 @@ flutter:
     - assets/images/login/icons/email.svg
     - assets/images/login/icons/avatar.svg
     - assets/images/rede_social/facebook.svg
+    - assets/images/login/icons/home-address.svg
+    - assets/images/login/icons/call.svg
+    - assets/images/login/icons/mail2.svg
     - assets/images/rede_social/google.svg
   #   - images/a_dot_ham.jpeg
 

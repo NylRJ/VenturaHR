@@ -9,8 +9,8 @@ class RoundedButton extends StatefulWidget {
   final Color backgroundColor;
   final Color disableColor ;
 
-  const RoundedButton({Key key, @required this.onPressed, @required this.label, this.backgroundColor, this.disableColor = Colors.grey, this.progress})
-      : assert(label != null),
+  const RoundedButton({Key key, @required this.onPressed, @required this.label, this.backgroundColor, this.disableColor , this.progress})
+      : assert(label != null, disableColor ?? Colors.grey),
         super(key: key);
 
   @override

@@ -81,7 +81,7 @@ class InputTextLoginState extends State<InputTextLogin> {
         height: 30,
         padding: EdgeInsets.all(2),
         child: SvgPicture.asset(
-          this.widget.iconPath,
+          widget.iconPath,
           color: AppColors.secondaryColorlighter,
         ),
       ),

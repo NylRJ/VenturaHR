@@ -158,8 +158,23 @@ class _LoginPageState extends State<LoginPage> with AfterLayoutMixin {
                       child: Container(
                         padding: EdgeInsets.only(left: 20),
                         height: responsive.height,
-                        child: const Center(
-                          child: Welcome(),
+                        child:  Center(
+                          child: Stack(
+                            children: [
+                              Column(
+                                children: [
+                                  SizedBox(height: 100,),
+                                  IconContainer(
+                                    size: responsive.ip(7),
+                                  ),
+                                  SizedBox(height: 20,),
+                                  Welcome(),
+                                ],
+                              )
+
+
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -173,25 +188,7 @@ class _LoginPageState extends State<LoginPage> with AfterLayoutMixin {
                             Center(
                                 child: LimitedBox(
                                   maxHeight: responsive.height -10,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Transform.translate(
-                                        offset: Offset(10,28),
-                                        child: Column(
-                                          children: [
-                                            IconContainer(
-                                              size: responsive.ip(7),
-                                            ),
-                                            SizedBox(height: responsive.ip(1),),
-
-                                          ],
-                                        ),
-
-                                      ),
-                                      Expanded(child: _getForm()),
-                                    ],
-                                  ),
+                                  child: Expanded(child: _getForm()),
                                 ))
                           ],
                         ),
