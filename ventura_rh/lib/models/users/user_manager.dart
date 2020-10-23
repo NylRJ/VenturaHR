@@ -29,18 +29,16 @@ class UserManager extends ChangeNotifier {
 
   bool get isLoggedIn => userHR != null;
 
-  Future<void> signin({User user, Function onFail, Function onSuccess}) async {
+  Future<void> signIn({User user, Function onFail, Function onSuccess}) async {
     loading = true;
     try {
       final AuthResult result = await auth.signInWithEmailAndPassword(
           email: user.email, password: user.password);
-      userHR.id = result.user.uid;
 
-      
-      //print(result.user.uid);
-      //delay de 4s
-      //await Future.delayed(const Duration(seconds: 4));
-     //await _loadCurrentUser(firebaseUser: result.user);
+
+     // userHR.id = result.user.uid;
+     await _loadCurrentUser(firebaseUser: result.user);
+
       onSuccess();
     } on PlatformException catch (e) {
       onFail(getErrorString(e.code));
@@ -60,7 +58,7 @@ class UserManager extends ChangeNotifier {
           email: user.email, password: user.password);
 
 
-      this.userHR = user;
+      userHR = user;
       userHR.id = result.user.uid;
       await userHR.saveData(user.accountType);
 
@@ -83,16 +81,18 @@ class UserManager extends ChangeNotifier {
 
 
   Future<void> _loadCurrentUser({FirebaseUser firebaseUser}) async {
-    final FirebaseUser currentUser = firebaseUser?? await auth.currentUser();
+    final FirebaseUser currentUser = firebaseUser ?? await auth.currentUser();
     if (currentUser != null) {
-      final DocumentSnapshot docUser =
-          await firestore.collection('users').document(currentUser.uid).get();
+      final DocumentSnapshot docUser = await firestore.collection('users')
+          .document(currentUser.uid).get();
       userHR = UserHR.fromDocument(docUser);
+
      final docAdmin = await firestore.collection('admins').document(userHR.id).get();
 
      if(docAdmin.exists){
        userHR.admin = true;
      }
+
 
       notifyListeners();
 

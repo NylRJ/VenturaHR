@@ -43,7 +43,7 @@ class _LoginPageFormState extends State<LoginPageForm> {
     final userNameOk = _emailKey.currentState.isOk;
     final passOk = _passKey.currentState.isOk;
     if (userNameOk && passOk) {
-      context.read<UserManager>().signin(
+      context.read<UserManager>().signIn(
           user: User(
             email: userName,
             password: pass,

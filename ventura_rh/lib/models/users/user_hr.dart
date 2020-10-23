@@ -190,6 +190,6 @@ class UserHR {
 
   @override
   String toString() {
-
+    return 'UserHR{id: $id, name: $name, email: $email, phone: $phone, password: $password, confirmPassword: $confirmPassword, cep: $cep, cnpj: $cnpj, razaoSocial: $razaoSocial, cpf: $cpf, accountType: $accountType, createdAt: $createdAt, updateAt: $updateAt, admin: $admin, address: $address}';
   }
 }

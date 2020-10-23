@@ -101,7 +101,7 @@ class _PaginaLoginState extends State<PaginaLogin> {
 
                     if (formkey.currentState.validate()) {
 
-                        context.read<UserManager>().signin(
+                        context.read<UserManager>().signIn(
                             user:User(email: emailController.text,password: passController.text),
                             onSuccess: (){
                               Navigator.pushNamed(context, '/base');
