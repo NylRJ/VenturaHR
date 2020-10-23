@@ -87,6 +87,7 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
                                   child: Text('← Voltar')),
                               RoundedButton(
                                 label: 'Enviar',
+                                disableColor: AppColors.secondaryColorlighter,
                                 backgroundColor: AppColors.button,
                                 onPressed: () {},
                               ),

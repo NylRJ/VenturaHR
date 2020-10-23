@@ -9,9 +9,6 @@ import 'components/address_card.dart';
 class AddressScreen extends StatelessWidget {
 
 
-  const AddressScreen(this.userHR);
-  final UserHR userHR;
-
   Widget subFormPF(UserManager userManager,Responsive responsive){
     return Container(
       child: Column(
@@ -52,11 +49,13 @@ class AddressScreen extends StatelessWidget {
   }
   @override
   Widget build(BuildContext context) {
-    print(userHR.name);
+
+
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Endereço'),
+        centerTitle: true,
 
       ),
       body: ListView(

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ventura_rh/helpers/validators.dart';
+import 'package:ventura_rh/models/users/user.dart';
 import 'package:ventura_rh/models/users/user_hr.dart';
 import 'package:ventura_rh/models/users/user_manager.dart';
 import 'package:ventura_rh/utils/app_colors.dart';
-import 'package:ventura_rh/utils/dialogs.dart';
 import 'package:ventura_rh/utils/responsive.dart';
 import 'package:ventura_rh/widgets/rounded_button.dart';
 
@@ -45,7 +45,7 @@ class _RegisterFormState extends State<RegisterForm> {
 
 
 
-  _buscarCEP() {
+  _buscarCEP(UserManager userManager) {
     final userName = _nameKey.currentState.value;
     final email = _emailKey.currentState.value;
     final pass = _passKey.currentState.value;
@@ -67,6 +67,7 @@ class _RegisterFormState extends State<RegisterForm> {
       if (pass == passConfirm) {
 
         UserHR userHR = UserHR.createCep(email: email,password: pass,name:userName,phone: call );
+        userManager.userHR = userHR;
         Navigator.popAndPushNamed(context, '/address', arguments: userHR);
 //        Navigator.pushNamed(context, '/base');
       } else {
@@ -94,84 +95,6 @@ class _RegisterFormState extends State<RegisterForm> {
   }
 
 
-Widget subFormPJ(UserManager userManager,Responsive responsive){
-    return Container(
-      child: Column(
-        children: [
-          InputTextLogin(
-            iconPath: 'assets/images/login/icons/email.svg',
-            placeholder: "Razão Social",
-            enable: !userManager.loading,
-            keyboardType: TextInputType.emailAddress,
-            validator: (email) {
-              if (!emailValid(email)) {
-                return false;
-              }
-
-              return true;
-            },
-          ),
-          SizedBox(
-            height: responsive.ip(1),
-          ),
-          InputTextLogin(
-            iconPath: 'assets/images/login/icons/email.svg',
-            placeholder: "CNPJ ",
-            enable: !userManager.loading,
-            keyboardType: TextInputType.emailAddress,
-            validator: (email) {
-              if (!emailValid(email)) {
-                return false;
-              }
-
-              return true;
-            },
-          ),
-
-        ],
-      ),
-    );
-}
-
-
-  Widget subFormPF(UserManager userManager,Responsive responsive){
-    return Container(
-      child: Column(
-        children: [
-          InputTextLogin(
-            iconPath: 'assets/images/login/icons/email.svg',
-            placeholder: "Razão Social",
-            enable: !userManager.loading,
-            keyboardType: TextInputType.emailAddress,
-            validator: (email) {
-              if (!emailValid(email)) {
-                return false;
-              }
-
-              return true;
-            },
-          ),
-          SizedBox(
-            height: responsive.ip(1),
-          ),
-          InputTextLogin(
-            iconPath: 'assets/images/login/icons/email.svg',
-            placeholder: "CNPJ ",
-            enable: !userManager.loading,
-            keyboardType: TextInputType.emailAddress,
-            validator: (email) {
-              if (!emailValid(email)) {
-                return false;
-              }
-
-              return true;
-            },
-          ),
-
-        ],
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -277,11 +200,6 @@ Widget subFormPJ(UserManager userManager,Responsive responsive){
                             return text.trim().length >= 6;
                           },
                         ),
-
-                        SizedBox(
-                          height: responsive.ip(0.1),
-                        ),
-
                         Row(
                           children: [
                             FlatButton(
@@ -290,8 +208,9 @@ Widget subFormPJ(UserManager userManager,Responsive responsive){
                             RoundedButton(
                               label: 'Continuar',
                               backgroundColor: AppColors.primaryColor,
+                              disableColor:AppColors.primaryColor.withAlpha(100) ,
                               onPressed: (){
-                                _buscarCEP();
+                                _buscarCEP(userManager);
                               },
                             ),
                           ],
