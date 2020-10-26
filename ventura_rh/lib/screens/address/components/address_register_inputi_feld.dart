@@ -184,7 +184,7 @@ class _AddressRegisterInputFieldState extends State<AddressRegisterInputField> {
     Responsive responsive = Responsive.of(context);
 
     String emptyValidator(String text) {
-      text.isEmpty ? 'Campo Obrigatorio' : null;
+      return text.isEmpty ? 'Campo Obrigatorio' : null;
     }
 
     if (widget.address.zipCode != null) {

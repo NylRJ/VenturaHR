@@ -18,10 +18,8 @@ class VagaEdit extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          ImagesForm(vaga: vaga,),
-          TextFormField(
-            initialValue: 'Vaga',
-          )
+          ImagesFormUser(vaga: vaga,),
+
         ],
       ),
     );
