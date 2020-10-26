@@ -16,6 +16,16 @@ class Criterio{
   int pmd;
   int weight;
 
+
+  Map<String, dynamic> toMap(){
+    return {
+      'name': name,
+      'description': description,
+      'pmd': pmd,
+      'weight':weight
+    };
+  }
+
   @override
   String toString() {
     return 'Criterio{name: $name, description: $description, pmd: $pmd, weight: $weight}';

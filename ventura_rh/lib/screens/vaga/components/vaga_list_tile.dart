@@ -35,7 +35,7 @@ class VagaListTile extends StatelessWidget {
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
-                      image: NetworkImage(vaga.image),
+                      image: NetworkImage(vaga.images.first),
                       fit: BoxFit.cover,
                     ),
                   ),

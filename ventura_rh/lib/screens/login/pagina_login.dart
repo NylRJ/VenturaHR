@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ventura_rh/helpers/validators.dart';
 import 'package:ventura_rh/models/users/user.dart';
+import 'package:ventura_rh/models/users/user_hr.dart';
 import 'package:ventura_rh/models/users/user_manager.dart';
 import 'package:ventura_rh/utils/app_colors.dart';
 import 'package:ventura_rh/widgets/rounded_button.dart';
@@ -102,7 +103,7 @@ class _PaginaLoginState extends State<PaginaLogin> {
                     if (formkey.currentState.validate()) {
 
                         context.read<UserManager>().signIn(
-                            user:User(email: emailController.text,password: passController.text),
+                            user:UserHR(email: emailController.text,password: passController.text),
                             onSuccess: (){
                               Navigator.pushNamed(context, '/base');
 

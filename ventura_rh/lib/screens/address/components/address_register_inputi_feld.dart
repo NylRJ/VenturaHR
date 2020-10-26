@@ -1,9 +1,13 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:ventura_rh/models/address/address.dart';
 import 'package:ventura_rh/models/users/user_hr.dart';
 import 'package:ventura_rh/models/users/user_manager.dart';
+import 'package:ventura_rh/screens/vaga/vaga_edit/components/image_source_sheet.dart';
 import 'package:ventura_rh/utils/app_colors.dart';
 import 'package:ventura_rh/utils/responsive.dart';
 import 'package:ventura_rh/widgets/rounded_button.dart';
@@ -18,13 +22,15 @@ class AddressRegisterInputField extends StatefulWidget {
       _AddressRegisterInputFieldState();
 }
 
-_submit(UserManager userManager, String valueSelected, Address address,BuildContext context) {
+_submit(UserManager userManager, String valueSelected, Address address,
+    BuildContext context) {
   if (valueSelected == 'juridica') {
     UserHR userHR = UserHR.company(
       name: userManager.userHR.name,
       email: userManager.userHR.email,
       password: userManager.userHR.password,
       phone: userManager.userHR.phone,
+      images: userManager.userHR.images,
       cnpj: userManager.userHR.cnpj,
       razaoSocial: userManager.userHR.razaoSocial,
       address: address,
@@ -33,16 +39,13 @@ _submit(UserManager userManager, String valueSelected, Address address,BuildCont
         user: userHR,
         onSuccess: () {
           Navigator.of(context).pushNamed('/home');
-
         },
         onFail: (e) {
           Scaffold.of(context).showSnackBar(SnackBar(
             content: Text('Falha ao cadastrar: $e'),
             backgroundColor: Colors.red,
           ));
-        }
-
-    );
+        });
     // print('User: $userHR');
 
   } else if (valueSelected == 'fisica') {
@@ -51,6 +54,7 @@ _submit(UserManager userManager, String valueSelected, Address address,BuildCont
       email: userManager.userHR.email,
       password: userManager.userHR.password,
       phone: userManager.userHR.phone,
+      images: userManager.userHR.images,
       cpf: userManager.userHR.cpf,
       address: address,
     );
@@ -59,16 +63,13 @@ _submit(UserManager userManager, String valueSelected, Address address,BuildCont
         user: userHR,
         onSuccess: () {
           Navigator.of(context).pushNamed('/home');
-
         },
         onFail: (e) {
           Scaffold.of(context).showSnackBar(SnackBar(
             content: Text('Falha ao cadastrar: $e'),
             backgroundColor: Colors.red,
           ));
-        }
-
-        );
+        });
   }
 }
 
@@ -82,12 +83,11 @@ Widget subForm(
             enabled: !userManager.loading,
             decoration: const InputDecoration(
                 isDense: true, labelText: 'Razão Social', hintText: 'Nunbank'),
-
             keyboardType: TextInputType.name,
             validator: (razao) {
               if (razao.isEmpty) {
                 return 'Campo Obrigatorio';
-              } else if (razao.length <3) {
+              } else if (razao.length < 3) {
                 return 'Campo Invalido';
               } else {
                 return null;
@@ -111,7 +111,7 @@ Widget subForm(
             validator: (cnpj) {
               if (cnpj.isEmpty) {
                 return 'Campo Obrigatorio';
-              } else if (cnpj.length <3 && cnpj.length > 11) {
+              } else if (cnpj.length < 3 && cnpj.length > 11) {
                 return 'Campo Invalido';
               } else {
                 return null;
@@ -154,8 +154,30 @@ Widget subForm(
   }
 }
 
+Widget imagePhoto(File file, BuildContext context, Function(File) onImageSelected,UserManager userManager) {
+  if (file == null) {
+    return null;
+  } else {
+    return Container(
+      child: ClipOval(
+        child: Align(
+          heightFactor: 1.0,
+          widthFactor: 0.5,
+          child: Image.file(file, fit: BoxFit.cover),
+        ),
+      ),
+    );
+  }
+}
+
 class _AddressRegisterInputFieldState extends State<AddressRegisterInputField> {
   String valueSelected = 'fisica';
+
+  File imageFileUser;
+
+  Future<void> onImageSelected(File file) async {
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -289,6 +311,10 @@ class _AddressRegisterInputFieldState extends State<AddressRegisterInputField> {
               const SizedBox(
                 height: 8,
               ),
+              imagePhoto(imageFileUser,context,onImageSelected,userManager),
+              const SizedBox(
+                height: 8,
+              ),
               if (userManager.loading)
                 LinearProgressIndicator(
                   valueColor: AlwaysStoppedAnimation(
@@ -303,13 +329,14 @@ class _AddressRegisterInputFieldState extends State<AddressRegisterInputField> {
                 onPressed: userManager.loading
                     ? null
                     : () {
-                        if (Form.of(context).validate()) {
-                          Form.of(context).save();
+                  if (Form.of(context).validate()) {
+                    Form.of(context).save();
 
-                          print(userManager.userHR);
-                          _submit(userManager, valueSelected, widget.address,context);
-                        }
-                      },
+                    print(userManager.userHR);
+                    _submit(userManager, valueSelected, widget.address,
+                        context);
+                  }
+                },
               ),
             ],
           );
