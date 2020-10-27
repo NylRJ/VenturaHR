@@ -12,7 +12,7 @@ import 'aggregates/criterio.dart';
 class Vaga extends ChangeNotifier {
   Vaga.fromDocument(DocumentSnapshot document) {
     id = document.documentID;
-    userId = document['user'] as String;
+    userId = document['userId'] as String;
     companyTitle = document['companyTitle'] as String;
     titleVacancy = document['titleVacancy'] as String;
     descriptionVacancy = document['descriptionVacancy'] as String;

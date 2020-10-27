@@ -33,6 +33,7 @@ _submit(UserManager userManager, String valueSelected, Address address,
       images: userManager.userHR.images,
       cnpj: userManager.userHR.cnpj,
       razaoSocial: userManager.userHR.razaoSocial,
+      newImages: userManager.userHR.newImages,
       address: address,
     );
     userManager.signUp(
@@ -55,6 +56,7 @@ _submit(UserManager userManager, String valueSelected, Address address,
       password: userManager.userHR.password,
       phone: userManager.userHR.phone,
       images: userManager.userHR.images,
+      newImages: userManager.userHR.newImages,
       cpf: userManager.userHR.cpf,
       address: address,
     );
@@ -333,7 +335,7 @@ class _AddressRegisterInputFieldState extends State<AddressRegisterInputField> {
                   if (Form.of(context).validate()) {
                     Form.of(context).save();
 
-                    print(userManager.userHR);
+                    print(userManager.userHR.newImages);
                     _submit(userManager, valueSelected, widget.address,
                         context);
                   }

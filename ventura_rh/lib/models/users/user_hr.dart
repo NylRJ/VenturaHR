@@ -7,8 +7,12 @@ import 'package:uuid/uuid.dart';
 import 'package:ventura_rh/models/address/address.dart';
 
 class UserHR extends ChangeNotifier {
-  UserHR({this.email, this.password, this.name, this.id}){
-    images??['https://firebasestorage.googleapis.com/v0/b/venturahr-e2021.appspot.com/o/userDefault%2Fperfil.png?alt=media&token=ebaea627-a9a8-421a-8ba9-d1524df5ef63'];
+  UserHR({this.email, this.password, this.name, this.id}) {
+    newImages = [];
+    images ??
+        [
+          'https://firebasestorage.googleapis.com/v0/b/venturahr-e2021.appspot.com/o/userDefault%2Fperfil.png?alt=media&token=ebaea627-a9a8-421a-8ba9-d1524df5ef63'
+        ];
   }
 
   UserHR.fromDocument(DocumentSnapshot document) {
@@ -27,13 +31,13 @@ class UserHR extends ChangeNotifier {
       address =
           Address.fromMap(document.data['address'] as Map<String, dynamic>);
     }
-
   }
 
   String id;
   String name;
   String email;
-  List<String> images ;
+  List<String> images;
+
   String phone;
   String password;
   String confirmPassword;
@@ -47,7 +51,8 @@ class UserHR extends ChangeNotifier {
   bool admin = false;
   Address address;
   List<dynamic> newImages;
-  String imageDefault = 'https://firebasestorage.googleapis.com/v0/b/venturahr-e2021.appspot.com/o/userDefault%2Fperfil.png?alt=media&token=ebaea627-a9a8-421a-8ba9-d1524df5ef63';
+  String imageDefault =
+      'https://firebasestorage.googleapis.com/v0/b/venturahr-e2021.appspot.com/o/userDefault%2Fperfil.png?alt=media&token=ebaea627-a9a8-421a-8ba9-d1524df5ef63';
 
   bool _loading = false;
 
@@ -63,6 +68,7 @@ class UserHR extends ChangeNotifier {
       this.name,
       this.email,
       this.images,
+      this.newImages,
       this.phone,
       this.password,
       this.cpf,
@@ -73,7 +79,7 @@ class UserHR extends ChangeNotifier {
     createdAt = DateTime.now();
     updateAt = DateTime.now();
     address = address;
-    images.add(imageDefault);
+    images ??= [];
   }
 
   UserHR.company(
@@ -82,6 +88,7 @@ class UserHR extends ChangeNotifier {
       this.email,
       this.images,
       this.phone,
+      this.newImages,
       this.password,
       this.razaoSocial,
       this.cnpj,
@@ -92,7 +99,7 @@ class UserHR extends ChangeNotifier {
     createdAt = DateTime.now();
     updateAt = DateTime.now();
     address = address;
-    images??['https://firebasestorage.googleapis.com/v0/b/venturahr-e2021.appspot.com/o/userDefault%2Fperfil.png?alt=media&token=ebaea627-a9a8-421a-8ba9-d1524df5ef63'];
+    images ??= [];
   }
 
   UserHR.admin(
@@ -100,6 +107,7 @@ class UserHR extends ChangeNotifier {
       this.name,
       this.email,
       this.images,
+      this.newImages,
       this.password,
       this.confirmPassword,
       this.phone,
@@ -109,19 +117,22 @@ class UserHR extends ChangeNotifier {
     accountType = "admin";
     createdAt = DateTime.now();
     updateAt = DateTime.now();
-    images??['https://firebasestorage.googleapis.com/v0/b/venturahr-e2021.appspot.com/o/userDefault%2Fperfil.png?alt=media&token=ebaea627-a9a8-421a-8ba9-d1524df5ef63'];
+    images ??= [];
   }
 
-  UserHR.createCep({
-    this.id,
-    this.name,
-    this.email,
-    this.password,
-    this.confirmPassword,
-    this.phone,
-    this.images
-  }) {
-    images = ['https://firebasestorage.googleapis.com/v0/b/venturahr-e2021.appspot.com/o/userDefault%2Fperfil.png?alt=media&token=ebaea627-a9a8-421a-8ba9-d1524df5ef63'];
+  UserHR.createCep(
+      {this.id,
+      this.name,
+      this.email,
+      this.password,
+      this.confirmPassword,
+      this.phone,
+      this.images,
+      this.newImages}) {
+    newImages = [];
+    images = [
+      'https://firebasestorage.googleapis.com/v0/b/venturahr-e2021.appspot.com/o/userDefault%2Fperfil.png?alt=media&token=ebaea627-a9a8-421a-8ba9-d1524df5ef63'
+    ];
   }
 
   DocumentReference get firestoreRef =>
@@ -151,7 +162,7 @@ class UserHR extends ChangeNotifier {
       await firestoreCandidate.setData({'user': '$id'});
     } else if (accountType == 'juridica') {
       //cria doc users
-      await firestoreRef.setData(await toMapcompany());
+      await firestoreRef.setData(await toMapCompany());
 
       // tipa users
       await firestoreCompany.setData({'user': '$id'});
@@ -160,41 +171,53 @@ class UserHR extends ChangeNotifier {
 
   Future<Map<String, dynamic>> toMapCandidate() async {
     loading = true;
+
+    for (final newImage in newImages) {
+      if (!images.contains(newImage)) {
+        final StorageUploadTask task =
+            storageRefCandidate.child(Uuid().v1()).putFile(newImage as File);
+        final StorageTaskSnapshot snapshot = await task.onComplete;
+        final String url = await snapshot.ref.getDownloadURL() as String;
+        images.clear();
+        images.add(url);
+      }
+    }
+
     final Map<String, dynamic> data = {
       'id': id,
       'name': name,
       'email': email,
       'phone': phone,
-      if (images != null) 'images': images.map((e) => e),
+      'images': images,
       if (address != null) 'address': address.toMap(),
       'cpf': cpf,
       if (createdAt != null) 'createdAt': createdAt,
       if (updateAt != null) 'updateAt': updateAt,
     };
 
-
-    for(final newImage in newImages)
-    { if(!images.contains(newImage)){
-
-      final StorageUploadTask task = storageRefCandidate.child(Uuid().v1()).putFile(newImage as File);
-      final StorageTaskSnapshot snapshot = await task.onComplete;
-      final String url = await snapshot.ref.getDownloadURL() as String;
-      images.add(url);
-    }}
-
-
     loading = false;
 
     return data;
   }
 
-  Future<Map<String, dynamic>> toMapcompany() async{
-    Map<String, dynamic> data =  {
+  Future<Map<String, dynamic>> toMapCompany() async {
+    for (final newImage in newImages) {
+      if (!images.contains(newImage)) {
+        final StorageUploadTask task =
+            storageRefCompany.child(Uuid().v1()).putFile(newImage as File);
+        final StorageTaskSnapshot snapshot = await task.onComplete;
+        final String url = await snapshot.ref.getDownloadURL() as String;
+        images.clear();
+        images.add(url);
+      }
+    }
+
+    Map<String, dynamic> data = {
       'id': id,
       'name': name,
       'email': email,
       'phone': phone,
-      if (images != null) 'images': images.map((e) => e),
+      'images': images,
       if (address != null) 'address': address.toMap(),
       'razaoSocial': razaoSocial,
       'cnpj': cnpj,
@@ -202,22 +225,9 @@ class UserHR extends ChangeNotifier {
       if (updateAt != null) 'updateAt': updateAt,
     };
 
-
-    for(final newImage in newImages)
-    { if(!images.contains(newImage)){
-
-      final StorageUploadTask task = storageRefCandidate.child(Uuid().v1()).putFile(newImage as File);
-      final StorageTaskSnapshot snapshot = await task.onComplete;
-      final String url = await snapshot.ref.getDownloadURL() as String;
-      images.add(url);
-    }}
-
-
     loading = false;
 
     return data;
-
-
   }
 
   /*
@@ -275,9 +285,6 @@ class UserHR extends ChangeNotifier {
       if (address != null) 'address': address.toMap(),
       if (cpf != null) 'cpf': cpf
     };
-
-
-
   }
 
   Future<void> setAddress(Address address, String accountType) async {

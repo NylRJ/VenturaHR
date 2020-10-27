@@ -3,7 +3,8 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ventura_rh/models/users/user_hr.dart';
-import 'package:ventura_rh/models/vaga/vaga.dart';
+import 'package:provider/provider.dart';
+import 'package:ventura_rh/models/users/user_manager.dart';
 import 'package:ventura_rh/utils/app_colors.dart';
 import 'package:ventura_rh/utils/responsive.dart';
 
@@ -28,6 +29,7 @@ class ImagesFormUser extends StatelessWidget {
           return null;
         }
       },
+      onSaved: (images) => context.read<UserManager>().userHR.newImages = images,
       builder: (state){
         void onImageSelected(File file){
           state.value.add(file);
