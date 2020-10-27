@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:ventura_rh/models/address/address.dart';
 import 'package:ventura_rh/models/users/user_hr.dart';
 import 'package:ventura_rh/models/users/user_manager.dart';
-import 'package:ventura_rh/screens/vaga/vaga_edit/components/image_source_sheet.dart';
+import 'package:ventura_rh/screens/vaga/vaga_edit/components/images_form_user.dart';
 import 'package:ventura_rh/utils/app_colors.dart';
 import 'package:ventura_rh/utils/responsive.dart';
 import 'package:ventura_rh/widgets/rounded_button.dart';
@@ -73,8 +73,7 @@ _submit(UserManager userManager, String valueSelected, Address address,
   }
 }
 
-Widget subForm(
-    UserManager userManager, Responsive responsive, String valueSelected) {
+Widget subForm(UserManager userManager, Responsive responsive, String valueSelected) {
   if (valueSelected == 'juridica') {
     return Container(
       child: Column(
@@ -172,6 +171,7 @@ Widget imagePhoto(File file, BuildContext context, Function(File) onImageSelecte
 
 class _AddressRegisterInputFieldState extends State<AddressRegisterInputField> {
   String valueSelected = 'fisica';
+
 
   File imageFileUser;
 
@@ -311,7 +311,8 @@ class _AddressRegisterInputFieldState extends State<AddressRegisterInputField> {
               const SizedBox(
                 height: 8,
               ),
-              imagePhoto(imageFileUser,context,onImageSelected,userManager),
+             // imagePhoto(imageFileUser,context,onImageSelected,userManager),
+              ImagesFormUser(user: userManager.userHR,),
               const SizedBox(
                 height: 8,
               ),

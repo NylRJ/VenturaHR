@@ -7,7 +7,9 @@ import 'package:uuid/uuid.dart';
 import 'package:ventura_rh/models/address/address.dart';
 
 class UserHR extends ChangeNotifier {
-  UserHR({this.email, this.password, this.name, this.id});
+  UserHR({this.email, this.password, this.name, this.id}){
+    images??['https://firebasestorage.googleapis.com/v0/b/venturahr-e2021.appspot.com/o/userDefault%2Fperfil.png?alt=media&token=ebaea627-a9a8-421a-8ba9-d1524df5ef63'];
+  }
 
   UserHR.fromDocument(DocumentSnapshot document) {
     id = document.documentID;
@@ -31,7 +33,7 @@ class UserHR extends ChangeNotifier {
   String id;
   String name;
   String email;
-  List<String> images;
+  List<String> images ;
   String phone;
   String password;
   String confirmPassword;
@@ -45,6 +47,7 @@ class UserHR extends ChangeNotifier {
   bool admin = false;
   Address address;
   List<dynamic> newImages;
+  String imageDefault = 'https://firebasestorage.googleapis.com/v0/b/venturahr-e2021.appspot.com/o/userDefault%2Fperfil.png?alt=media&token=ebaea627-a9a8-421a-8ba9-d1524df5ef63';
 
   bool _loading = false;
 
@@ -70,7 +73,7 @@ class UserHR extends ChangeNotifier {
     createdAt = DateTime.now();
     updateAt = DateTime.now();
     address = address;
-    images = images ?? [];
+    images.add(imageDefault);
   }
 
   UserHR.company(
@@ -89,7 +92,7 @@ class UserHR extends ChangeNotifier {
     createdAt = DateTime.now();
     updateAt = DateTime.now();
     address = address;
-    images = images ?? [];
+    images??['https://firebasestorage.googleapis.com/v0/b/venturahr-e2021.appspot.com/o/userDefault%2Fperfil.png?alt=media&token=ebaea627-a9a8-421a-8ba9-d1524df5ef63'];
   }
 
   UserHR.admin(
@@ -106,7 +109,7 @@ class UserHR extends ChangeNotifier {
     accountType = "admin";
     createdAt = DateTime.now();
     updateAt = DateTime.now();
-    images = images ?? [];
+    images??['https://firebasestorage.googleapis.com/v0/b/venturahr-e2021.appspot.com/o/userDefault%2Fperfil.png?alt=media&token=ebaea627-a9a8-421a-8ba9-d1524df5ef63'];
   }
 
   UserHR.createCep({
@@ -116,7 +119,10 @@ class UserHR extends ChangeNotifier {
     this.password,
     this.confirmPassword,
     this.phone,
-  }) {}
+    this.images
+  }) {
+    images = ['https://firebasestorage.googleapis.com/v0/b/venturahr-e2021.appspot.com/o/userDefault%2Fperfil.png?alt=media&token=ebaea627-a9a8-421a-8ba9-d1524df5ef63'];
+  }
 
   DocumentReference get firestoreRef =>
       Firestore.instance.document('users/$id');
