@@ -5,6 +5,7 @@ import 'package:ventura_rh/screens/vaga/vaga_edit/components/images_form_user.da
 import 'package:ventura_rh/utils/app_colors.dart';
 import 'package:ventura_rh/widgets/rounded_button.dart';
 
+import 'components/criterio_form.dart';
 import 'components/images_form.dart';
 
 class VagaEdit extends StatelessWidget {
@@ -32,21 +33,32 @@ class VagaEdit extends StatelessWidget {
               padding: EdgeInsets.all(16),
               child: Column(
                 children: [
-                  TextFormField(
-                    initialValue: vaga.titleVacancy,
-                    decoration: const InputDecoration(
-                      hintText: 'Titulo Vaga',
-                      labelText: 'Titulo Vaga',
-                    ),
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
-                    validator: (title) {
-                      if (title.length < 6) {
-                        return 'Titulo é muito Curto!';
-                      } else {
-                        return null;
-                      }
-                    },
+                  Divider(
+
+                    indent: 10,
+                    height: 10,
+                    thickness: 2,
+                    color: AppColors.primaryColor,
                   ),
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: TextFormField(
+                      initialValue: vaga.titleVacancy,
+                      decoration: const InputDecoration(
+                        hintText: 'Titulo Vaga',
+                        labelText: 'Titulo Vaga',
+                      ),
+                      style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+                      validator: (title) {
+                        if (title.length < 6) {
+                          return 'Titulo é muito Curto!';
+                        } else {
+                          return null;
+                        }
+                      },
+                    ),
+                  ),
+                 CriterioForm(vaga: vaga,),
                   Row(
                     children: [
                       Expanded(

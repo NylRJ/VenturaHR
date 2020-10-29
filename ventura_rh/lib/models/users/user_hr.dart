@@ -9,10 +9,7 @@ import 'package:ventura_rh/models/address/address.dart';
 class UserHR extends ChangeNotifier {
   UserHR({this.email, this.password, this.name, this.id}) {
     newImages = [];
-    images ??
-        [
-          'https://firebasestorage.googleapis.com/v0/b/venturahr-e2021.appspot.com/o/userDefault%2Fperfil.png?alt=media&token=ebaea627-a9a8-421a-8ba9-d1524df5ef63'
-        ];
+    images ??= [];
   }
 
   UserHR.fromDocument(DocumentSnapshot document) {
@@ -130,9 +127,7 @@ class UserHR extends ChangeNotifier {
       this.images,
       this.newImages}) {
     newImages = [];
-    images = [
-      'https://firebasestorage.googleapis.com/v0/b/venturahr-e2021.appspot.com/o/userDefault%2Fperfil.png?alt=media&token=ebaea627-a9a8-421a-8ba9-d1524df5ef63'
-    ];
+    images = [];
   }
 
   DocumentReference get firestoreRef =>

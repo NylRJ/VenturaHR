@@ -39,7 +39,7 @@ class ImagesFormUser extends StatelessWidget {
           return Column(
             children: [
               AspectRatio(
-                aspectRatio: 2/2,
+                aspectRatio: 4/2,
                 child: Carousel(
                   images:state.value.map<Widget>((image) {
                     return Stack(
