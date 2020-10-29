@@ -29,7 +29,7 @@ class PageHeader extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                    image: NetworkImage(userManager.userHR.images.first??'https://firebasestorage.googleapis.com/v0/b/venturahr-e2021.appspot.com/o/userDefault%2Fperfil.png?alt=media&token=ebaea627-a9a8-421a-8ba9-d1524df5ef63'),
+                    image: NetworkImage(userManager.userHR.images.first),
                     fit: BoxFit.cover,
                   ),
                 ),
