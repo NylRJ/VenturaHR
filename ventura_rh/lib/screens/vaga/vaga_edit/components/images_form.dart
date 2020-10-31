@@ -21,7 +21,8 @@ class ImagesForm extends StatelessWidget {
 
 
     return FormField<List<dynamic>>(
-      initialValue: vaga.images,
+      initialValue: List.from(vaga.images),
+
       validator: (images){
         if (images.isEmpty) {
 

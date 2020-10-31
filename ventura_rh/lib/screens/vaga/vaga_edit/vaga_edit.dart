@@ -12,16 +12,18 @@ class VagaEdit extends StatelessWidget {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   VagaEdit(Vaga v):
+        editing = v != null,
         vaga = v != null ? v.clone() : Vaga();
 
   final Vaga vaga;
+  final bool editing;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Editar Vaga'),
+        title: Text(editing?'Editar Vaga':'Criar Vaga'),
         centerTitle: true,
       ),
       body: Form(
