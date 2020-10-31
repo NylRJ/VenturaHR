@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:ventura_rh/helpers/validators.dart';
+import 'package:ventura_rh/models/users/user.dart';
+import 'package:ventura_rh/models/users/user_hr.dart';
+import 'package:ventura_rh/models/users/user_manager.dart';
 import 'package:ventura_rh/utils/app_colors.dart';
-import 'package:ventura_rh/utils/dialogs.dart';
 import 'package:ventura_rh/utils/responsive.dart';
 import 'package:ventura_rh/widgets/rounded_button.dart';
 
@@ -13,8 +16,8 @@ class RegisterForm extends StatefulWidget {
 
   const RegisterForm(
       {Key key,
-      @required this.onGoToLogin,
-      this.alignment = Alignment.bottomCenter})
+        @required this.onGoToLogin,
+        this.alignment = Alignment.bottomCenter})
       : super(key: key);
 
   @override
@@ -24,191 +27,201 @@ class RegisterForm extends StatefulWidget {
 class _RegisterFormState extends State<RegisterForm> {
   bool _agree = false;
 
-  final GlobalKey<InputTextLoginState> _namelKey =
-      GlobalKey<InputTextLoginState>();
+  final GlobalKey<InputTextLoginState> _nameKey =
+  GlobalKey<InputTextLoginState>();
 
   final GlobalKey<InputTextLoginState> _emailKey =
-      GlobalKey<InputTextLoginState>();
+  GlobalKey<InputTextLoginState>();
 
   final GlobalKey<InputTextLoginState> _passKey =
-      GlobalKey<InputTextLoginState>();
+  GlobalKey<InputTextLoginState>();
 
   final GlobalKey<InputTextLoginState> _passConfirKey =
-      GlobalKey<InputTextLoginState>();
+  GlobalKey<InputTextLoginState>();
 
-  _submit() {
-    final userName = _namelKey.currentState.value;
+  final GlobalKey<InputTextLoginState> _callKey =
+  GlobalKey<InputTextLoginState>();
+  String radioSelected ;
+
+
+
+  _buscarCEP(UserManager userManager) {
+    final userName = _nameKey.currentState.value;
     final email = _emailKey.currentState.value;
     final pass = _passKey.currentState.value;
     final passConfirm = _passConfirKey.currentState.value;
+    final call = _callKey.currentState.value;
 
-    final userNameOk = _namelKey.currentState.isOk;
+
+
+    final userNameOk = _nameKey.currentState.isOk;
     final emailOk = _emailKey.currentState.isOk;
     final passOk = _passKey.currentState.isOk;
     final passConfirmOk = _passConfirKey.currentState.isOk;
-    if (userNameOk && emailOk && passOk && passConfirmOk) {
-      if (_agree) {
-      } else {}
+    final callok = _callKey.currentState.isOk;
+
+
+
+
+    if (userNameOk && emailOk && passOk && passConfirmOk  && callok) {
+      if (pass == passConfirm) {
+
+        UserHR userHR = UserHR.createCep(email: email,password: pass,name:userName,phone: call );
+        userManager.userHR = userHR;
+        Navigator.popAndPushNamed(context, '/address', arguments: userHR);
+//        Navigator.pushNamed(context, '/base');
+      } else {
+        final snac = SnackBar(
+          content: const Text(
+            'A senha não confere',
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: AppColors.primaryColor,
+        );
+        Scaffold.of(context).showSnackBar(snac);
+      }
     } else {
-      Dialogs.alert(context, description: 'alguns campos são inválidos',title: 'Sair');
+      final snac = SnackBar(
+        content: const Text(
+          'alguns campos são inválidos',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: AppColors.primaryColor,
+      );
+      Scaffold.of(context).showSnackBar(snac);
+
     }
+
   }
+
+
 
   @override
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
 
+
     return Align(
       alignment: Alignment.bottomCenter,
       child: SafeArea(
         top: false,
+        bottom: true,
         child: GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();
           },
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            constraints: BoxConstraints(maxWidth: 400),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
+          child: Consumer<UserManager>(
+            builder: (_,userManager,child){
+              return SingleChildScrollView(
+                child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 15),
                   constraints: BoxConstraints(maxWidth: 400),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        "Nova Conta",
-                        style: TextStyle(
-                            color: AppColors.primaryColor,
-                            fontSize: 25,
-                            fontFamily: 'raleway',
-                            fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: responsive.ip(1),
-                      ),
-                      InputTextLogin(
-                        iconPath: 'assets/images/login/icons/avatar.svg',
-                        placeholder: "Username",
-                        validator: (text) {
-                          return text.trim().length > 0;
-                        },
-                      ),
-                      SizedBox(
-                        height: responsive.ip(1),
-                      ),
-                      InputTextLogin(
-                        iconPath: 'assets/images/login/icons/email.svg',
-                        placeholder: "Email Address",
-                        keyboardType: TextInputType.emailAddress,
-                        validator: (email) {
-                          if (!emailValid(email)) {
-                            return false;
-                          }
+                  child: LimitedBox(
 
-                          return true;
-                        },
-                      ),
-                      SizedBox(
-                        height: responsive.ip(1),
-                      ),
-                      InputTextLogin(
-                        iconPath: 'assets/images/login/icons/key.svg',
-                        placeholder: "Password",
-                        obscureText: true,
-                        validator: (text) {
-                          return text.trim().length >= 6;
-                        },
-                      ),
-                      SizedBox(
-                        height: responsive.ip(2),
-                      ),
-                      InputTextLogin(
-                        iconPath: 'assets/images/login/icons/key.svg',
-                        placeholder: "Confirm Password",
-                        obscureText: true,
-                        validator: (text) {
-                          return text.trim().length >= 6;
-                        },
-                      ),
-                      SizedBox(
-                        height: responsive.ip(0.1),
-                      ),
-                      Container(
-                        height: 78,
-                        child: Column(
+                    maxHeight: responsive.height,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          "Nova Conta",
+                          style: TextStyle(
+                              color: AppColors.primaryColor,
+                              fontSize: 24,
+                              fontFamily: 'raleway',
+                              fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: responsive.ip(1),
+                        ),
+                        InputTextLogin(
+                          key: _nameKey,
+                          iconPath: 'assets/images/login/icons/avatar.svg',
+                          placeholder: "Username",
+                          enable: !userManager.loading,
+                          validator: (text) {
+                            return text.trim().length > 0;
+                          },
+                        ),
+                        SizedBox(
+                          height: responsive.ip(1),
+                        ),
+                        InputTextLogin(
+                          key: _emailKey,
+                          iconPath: 'assets/images/login/icons/email.svg',
+                          placeholder: "Email Address",
+                          enable: !userManager.loading,
+                          keyboardType: TextInputType.emailAddress,
+                          validator: (email) {
+                            if (!emailValid(email)) {
+                              return false;
+                            }
+
+                            return true;
+                          },
+                        ),
+                        SizedBox(
+                          height: responsive.ip(1),
+                        ),
+                        InputTextLogin(
+                          key: _passKey,
+                          iconPath: 'assets/images/login/icons/key.svg',
+                          placeholder: "Password",
+                          enable: !userManager.loading,
+                          obscureText: true,
+                          validator: (text) {
+                            return text.trim().length >= 6;
+                          },
+                        ),
+                        SizedBox(
+                          height: responsive.ip(1),
+                        ),
+                        InputTextLogin(
+                          key: _passConfirKey,
+                          iconPath: 'assets/images/login/icons/key.svg',
+                          placeholder: "Confirm Password",
+                          enable: !userManager.loading,
+                          obscureText: true,
+                          validator: (text) {
+                            return text.trim().length >= 6;
+                          },
+                        ),
+                        SizedBox(
+                          height: responsive.ip(0.1),
+                        ),
+                        InputTextLogin(
+                          key: _callKey,
+                          iconPath: 'assets/images/login/icons/call.svg',
+                          placeholder: "Telefone",
+                          enable: !userManager.loading,
+                          obscureText: false,
+                          keyboardType: TextInputType.phone,
+                          validator: (text) {
+                            return text.trim().length >= 6;
+                          },
+                        ),
+                        Row(
                           children: [
-                            DefaultTextStyle(
-                              style: TextStyle(
-                                  fontSize: responsive.ip(1.3),
-                                  color: Theme.of(context)
-                                      .textTheme
-                                      .subtitle2
-                                      .color),
-                              child: Wrap(
-                                crossAxisAlignment: WrapCrossAlignment.center,
-                                children: <Widget>[
-                                  Checkbox(
-                                    value: _agree,
-                                    onChanged: (isChecked) {
-                                      setState(() {
-                                        _agree = isChecked;
-                                      });
-                                    },
-                                  ),
-                                  Text("Estou de acordo com "),
-                                  InkWell(
-                                    onTap: () {},
-                                    child: Text(
-                                      "Termos de serviços",
-                                      style: TextStyle(
-                                          color: AppColors.primaryColor,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                  Text(" & "),
-                                  InkWell(
-                                    onTap: () {},
-                                    child: Text(
-                                      "Política de Privacidade",
-                                      style: TextStyle(
-                                          color: AppColors.primaryColor,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                            FlatButton(
+                                onPressed: widget.onGoToLogin,
+                                child: Text('← Voltar')),
+                            RoundedButton(
+                              label: 'Continuar',
+                              backgroundColor: AppColors.primaryColor,
+                              disableColor:AppColors.primaryColor.withAlpha(100) ,
+                              onPressed: (){
+                                _buscarCEP(userManager);
+                              },
                             ),
                           ],
                         ),
-                      ),
-                      SizedBox(
-                        height: responsive.ip(0.1),
-                      ),
-                      Row(
-                        children: [
-                          FlatButton(
-                              onPressed: widget.onGoToLogin,
-                              child: Text('← Voltar')),
-                          RoundedButton(
-                            label: 'Inscrever-se',
-                            backgroundColor: AppColors.button,
-                            onPressed: () {},
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: responsive.ip(0.1),
-                      ),
-                    ],
+
+                      ],
+                    ),
                   ),
                 ),
-              ],
-            ),
+              );
+            },
           ),
         ),
       ),

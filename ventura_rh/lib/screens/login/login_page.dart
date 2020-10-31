@@ -1,4 +1,5 @@
 import 'package:after_layout/after_layout.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ventura_rh/utils/app_colors.dart';
@@ -67,7 +68,6 @@ class _LoginPageState extends State<LoginPage> with AfterLayoutMixin {
             _switchForm(LoginFormType.login);
           },
         ),
-
         ForgotPasswordForm(
           onGoToLogin: (){
             _switchForm(LoginFormType.login);
@@ -84,6 +84,7 @@ class _LoginPageState extends State<LoginPage> with AfterLayoutMixin {
     final bool _isTablet = MediaQuery.of(context).size.shortestSide >= 600;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: GestureDetector(
         onTap: () {
           FocusScope.of(context).unfocus();
@@ -91,7 +92,7 @@ class _LoginPageState extends State<LoginPage> with AfterLayoutMixin {
         child: Container(
           width: double.infinity,
           height: double.infinity,
-          color: AppColors.textColor,
+
           child: OrientationBuilder(builder: (_, Orientation orientation) {
             if (isPortrait) {
               return SingleChildScrollView(
@@ -100,25 +101,47 @@ class _LoginPageState extends State<LoginPage> with AfterLayoutMixin {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Stack(
-                        children: [
-                          Welcome(),
-                          if (_isTablet)
-                            Transform.translate(
-                                offset: Offset(
-                                    responsive.wp(42.05), responsive.hp(45)),
-                                child: IconContainer(
-                                  size: responsive.ip(7),
-                                ))
-                          else
-                            Transform.translate(
-                                offset: Offset(
-                                    responsive.wp(35), responsive.hp(32)),
-                                child: IconContainer(
-                                  size: responsive.ip(7),
-                                )),
-                        ],
+                      Expanded(
+                        child: Stack(
+                          children: [
+                            Welcome(),
+
+                            if (_isTablet)
+                              Transform.translate(
+                                  offset: Offset(
+                                      responsive.wp(38.05), responsive.hp(35)),
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        width: 150,
+                                        height: 80,
+                                        child: IconContainer(
+                                          size: responsive.ip(6),
+                                        ),
+                                      ),
+
+                                    ],
+                                  ),
+                              )
+                            else
+                              Transform.translate(
+                                  offset: Offset(
+                                      responsive.wp(35), responsive.hp(30.5)),
+                                child: Column(
+                                  children: [
+                                    IconContainer(
+                                      size: responsive.ip(7),
+                                    ),
+
+
+                                  ],
+                                ),
+                              ),
+
+                          ],
+                        ),
                       ),
+
                       Expanded(
                         child: _getForm(),
                       ),
@@ -131,12 +154,27 @@ class _LoginPageState extends State<LoginPage> with AfterLayoutMixin {
                 children: <Widget>[
                   Expanded(
                     child: SingleChildScrollView(
-                      physics: NeverScrollableScrollPhysics(),
+                     //TODO: physics: NeverScrollableScrollPhysics(),
                       child: Container(
                         padding: EdgeInsets.only(left: 20),
                         height: responsive.height,
-                        child: Center(
-                          child: Welcome(),
+                        child:  Center(
+                          child: Stack(
+                            children: [
+                              Column(
+                                children: [
+                                  SizedBox(height: 100,),
+                                  IconContainer(
+                                    size: responsive.ip(7),
+                                  ),
+                                  SizedBox(height: 20,),
+                                  Welcome(),
+                                ],
+                              )
+
+
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -145,19 +183,15 @@ class _LoginPageState extends State<LoginPage> with AfterLayoutMixin {
                     child: SingleChildScrollView(
                       child: Container(
                         height: responsive.height,
-                        child: Center(
-                            child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        child: Wrap(
                           children: [
-                            Transform.translate(
-                              offset: Offset(10,70),
-                              child: IconContainer(
-                                size: responsive.ip(7),
-                              ),
-                            ),
-                            Expanded(child: _getForm()),
+                            Center(
+                                child: LimitedBox(
+                                  maxHeight: responsive.height -10,
+                                  child: Expanded(child: _getForm()),
+                                ))
                           ],
-                        )),
+                        ),
                       ),
                     ),
                   ),

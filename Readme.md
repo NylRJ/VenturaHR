@@ -99,4 +99,34 @@ _-_2_-_
 _-_3_-_
 # **UI**
 ## Tela de Login
-![Tela de Login](https://github.com/NylRJ/VenturaHR/blob/master/Imagens/Screen/LoginScreen-2020-08-17-180748.png)
+![Tela de Login](https://github.com/NylRJ/VenturaHR/blob/sprint-4/Imagens/Screen/Screenshot_1604006853.png)
+
+## Redefinir Senha
+![forget Passwor](https://github.com/NylRJ/VenturaHR/blob/sprint-4/Imagens/Screen/Screenshot_1604006876.png)
+
+## Registro
+![Resgister 1stp](https://github.com/NylRJ/VenturaHR/blob/sprint-4/Imagens/Screen/Screenshot_1604006887.png)
+
+## Busca de Endereço
+![Resgister 2stp](https://github.com/NylRJ/VenturaHR/blob/sprint-4/Imagens/Screen/Screenshot_1604006925.png)
+
+
+## Complemento de Endereço escolha  do Tipo de Usuário Cndidato
+![[Resgister 3stp](https://github.com/NylRJ/VenturaHR/blob/sprint-4/Imagens/Screen/Screenshot_1604006943.png)
+
+
+## Complemento de Endereço escolha  do Tipo de Usuário Empresa
+![Resgister 4stp ](https://github.com/NylRJ/VenturaHR/blob/sprint-4/Imagens/Screen/Screenshot_1604006946.png)
+
+
+
+
+## Inico
+![Pagina inicial ](https://github.com/NylRJ/VenturaHR/blob/sprint-4/Imagens/Screen/Screenshot_1604007024.png)
+
+
+## Drawer 
+![Sem Usuário ](https://github.com/NylRJ/VenturaHR/blob/sprint-4/Imagens/Screen/Screenshot_1604007029.png)
+
+## Drawer 
+![Com Usuário ](https://github.com/NylRJ/VenturaHR/blob/sprint-4/Imagens/Screen/Screenshot_1604007050.png)

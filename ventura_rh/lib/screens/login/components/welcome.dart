@@ -13,7 +13,7 @@ class Welcome extends StatelessWidget {
 
 
     return AspectRatio(
-      aspectRatio: 16 / 11,
+      aspectRatio: 2,
       child: LayoutBuilder(
         builder: (_, constraints) {
           return Container(
@@ -38,7 +38,6 @@ class Welcome extends StatelessWidget {
                     width: constraints.maxHeight * 0.21,
                   ),
                 ),
-
                 Positioned(
                   top: constraints.maxHeight*0.18,
                   left: 35,
@@ -47,7 +46,6 @@ class Welcome extends StatelessWidget {
                     width: constraints.maxHeight * 0.25,
                   ),
                 ),
-
                 Positioned(
                   top: constraints.maxHeight *0.74,
                   child: Column(
@@ -71,7 +69,6 @@ class Welcome extends StatelessWidget {
                     ],
                   ),
                 ),
-
 
                 Positioned(
                   top: constraints.maxHeight*0.48,

@@ -17,8 +17,12 @@ class User {
   String id;
   String name;
   String email;
+  String phone;
   String password;
   String confirmPassword;
+  String accountType;
+  DateTime createdAt;
+  DateTime updateAt;
   bool admin = false;
   Address address;
 
@@ -45,8 +49,6 @@ class User {
     this.address = address;
     saveData();
   }
-
-
 
 
 }
