@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ventura_rh/common/components/custom_drawer/custom_drawer.dart';
+import 'package:ventura_rh/models/users/user_manager.dart';
 import 'package:ventura_rh/models/vaga/vaga_manager.dart';
 
 import 'components/search_dialog.dart';
@@ -68,6 +69,21 @@ class VagaScreen extends StatelessWidget {
                     onPressed: () async {
                       vagaManager.search = '';
                     });
+              }
+            },
+          ),
+
+          Consumer<UserManager>(
+            builder: (_,userManager,__){
+              if (userManager.isLoggedIn && userManager.userHR.accountType == 'juridica') {
+                return IconButton(
+                  icon: const Icon(Icons.add),
+                  onPressed: (){
+                    Navigator.of(context).pushNamed('/vaga_edit',);
+                  }
+              );
+              } else {
+                return Container();
               }
             },
           ),

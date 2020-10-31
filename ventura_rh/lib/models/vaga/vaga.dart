@@ -26,6 +26,28 @@ class Vaga extends ChangeNotifier {
         .toList();
   }
 
+  Vaga(
+      {this.id,
+        this.userId,
+        this.user,
+        this.companyTitle,
+        this.titleVacancy,
+        this.descriptionVacancy,
+        this.images,
+        this.workplace,
+        this.workload,
+        this.numberOfVacancies,
+        this.address,
+        this.criterios,
+        this.newImages,
+        this.deleted = false}) {
+    images = images ?? [];
+    criterios =  criterios ?? [];
+    newImages = newImages ?? [];
+  }
+
+
+
   final Firestore firestore = Firestore.instance;
   final FirebaseStorage storage = FirebaseStorage.instance;
 
@@ -56,23 +78,6 @@ class Vaga extends ChangeNotifier {
     notifyListeners();
   }
 
-  Vaga(
-      {this.id,
-      this.userId,
-      this.user,
-      this.companyTitle,
-      this.titleVacancy,
-      this.descriptionVacancy,
-      this.images,
-      this.workplace,
-      this.workload,
-      this.numberOfVacancies,
-      this.address,
-      this.criterios,
-      this.newImages,
-      this.deleted = false}) {
-      images = images ?? user.images;
-  }
 
   List<Map<String, dynamic>> exportSizeList(){
     return criterios.map((c) => c.toMap()).toList();
@@ -139,5 +144,23 @@ class Vaga extends ChangeNotifier {
 
   void delete(){
     firestoreRef.updateData({'deleted': true});
+  }
+
+
+  Vaga clone(){
+    return Vaga(
+      id: id,
+      userId: userId,
+      companyTitle:companyTitle,
+      titleVacancy:titleVacancy,
+      descriptionVacancy:descriptionVacancy,
+      workplace:workplace,
+      workload:workload,
+      numberOfVacancies:numberOfVacancies,
+      images: List.from(images),
+      criterios: criterios.map((c) => c.clone()).toList(),
+      address: address,
+
+    );
   }
 }

@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:ventura_rh/common/custom_icon_button.dart';
 import 'package:ventura_rh/models/vaga/aggregates/criterio.dart';
 import 'package:ventura_rh/models/vaga/vaga.dart';
+import 'package:ventura_rh/utils/app_colors.dart';
 
 import 'edit_item_criterio.dart';
 
-class CriterioForm extends StatelessWidget {
+class VagaForm extends StatelessWidget {
   final Vaga vaga;
 
-  const CriterioForm({Key key, this.vaga}) : super(key: key);
+  const VagaForm({Key key, this.vaga}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class CriterioForm extends StatelessWidget {
       children: [
 
         FormField<List<Criterio>>(
-              initialValue: List.from(vaga.criterios),
+              initialValue: vaga.criterios,
           validator: (criterio){
                 if (criterio.isEmpty) {
                   return 'Insira Um Critério';
@@ -26,7 +27,7 @@ class CriterioForm extends StatelessWidget {
                 }
           },
           builder: (state){
-                print(state.value);
+
                 return Column(
                   children: [
                     Row(
@@ -50,7 +51,14 @@ class CriterioForm extends StatelessWidget {
                         ),
                       ],
                     ),
+                    Divider(
 
+                      indent:5,
+                      endIndent: 5,
+                      height: 10,
+                      thickness: 1,
+                      color: AppColors.primaryColor,
+                    ),
                     Column(
                       children: state.value.map((criterio) {
                         return EditItemCriterio(
@@ -76,6 +84,7 @@ class CriterioForm extends StatelessWidget {
                         );
                       }).toList(),
                     ),
+
                     if (state.hasError)
                       Container(
                         alignment: Alignment.centerLeft,

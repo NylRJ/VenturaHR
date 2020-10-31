@@ -18,10 +18,10 @@ class ImagesForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Responsive responsive = Responsive.of(context);
+
 
     return FormField<List<dynamic>>(
-      initialValue: List.from(vaga.images),
+      initialValue: vaga.images,
       validator: (images){
         if (images.isEmpty) {
 
