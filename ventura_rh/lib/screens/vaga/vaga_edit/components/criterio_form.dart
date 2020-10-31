@@ -17,6 +17,14 @@ class CriterioForm extends StatelessWidget {
 
         FormField<List<Criterio>>(
               initialValue: List.from(vaga.criterios),
+          validator: (criterio){
+                if (criterio.isEmpty) {
+                  return 'Insira Um Critério';
+
+                }else{
+                  return null;
+                }
+          },
           builder: (state){
                 print(state.value);
                 return Column(
@@ -68,6 +76,19 @@ class CriterioForm extends StatelessWidget {
                         );
                       }).toList(),
                     ),
+                    if (state.hasError)
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                            state.errorText,
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.red,
+                          ),
+
+                        ),
+                      ),
+
                   ],
                 );
           },

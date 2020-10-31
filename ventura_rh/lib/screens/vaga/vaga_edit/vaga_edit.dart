@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ventura_rh/common/custom_icon_button.dart';
 import 'package:ventura_rh/models/vaga/vaga.dart';
-import 'package:ventura_rh/screens/vaga/vaga_edit/components/images_form_user.dart';
 import 'package:ventura_rh/utils/app_colors.dart';
 import 'package:ventura_rh/widgets/rounded_button.dart';
 
@@ -111,6 +109,7 @@ class VagaEdit extends StatelessWidget {
                     onPressed: () {
                       if (formKey.currentState.validate()) {
                         // ignore: avoid_print
+
                         print('valido');
                       } else {
                         print('invalido');
