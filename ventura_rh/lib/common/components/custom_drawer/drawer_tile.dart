@@ -16,7 +16,7 @@ class DrawerTile extends StatelessWidget {
     return InkWell(
       onTap: (){
         context.read<PageManager>().setPage(page);
-        debugPrint('toquei $page Atual $curPage');
+
       },
       child: SizedBox(
         height: MediaQuery.of(context).size.width * 0.1,

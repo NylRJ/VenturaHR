@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:ventura_rh/common/components/custom_drawer/drawer_tile.dart';
 import 'package:ventura_rh/common/components/custom_drawer/page_header.dart';
+import 'package:ventura_rh/utils/responsive.dart';
 
 import 'custom_drawer_header.dart';
 
 class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final Responsive responsive = Responsive.of(context);
+    final bool isTablet = MediaQuery.of(context).size.shortestSide >= 600;
+
     return ClipRRect(
       borderRadius: const BorderRadius.horizontal(right:  Radius.circular(50)),
       child: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.65,
+        width: isTablet? MediaQuery.of(context).size.width * 0.50:MediaQuery.of(context).size.width * 0.60,
         child: Drawer(
           child: ListView(
             children: <Widget>[
-              PageHeader(),
+              PageHeader(isTablet: isTablet,),
               const SizedBox(height: 10,),
               const DrawerTile(
                 iconData: Icons.home,

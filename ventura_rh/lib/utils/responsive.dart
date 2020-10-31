@@ -1,34 +1,34 @@
 import 'dart:math' as math;
+import 'package:flutter/widgets.dart';
+import 'package:meta/meta.dart' show required;
 
-import 'package:flutter/material.dart';
 
 class Responsive {
-  double _width, _height, _diagonal;
-  bool _isTablet;
+  final double width, height, inch;
 
-  double get width => _width;
+  Responsive({
+    @required this.width,
+    @required this.height,
+    @required this.inch,
+  });
 
-  double get height => _height;
-
-  double get diagonal => _diagonal;
-
-  bool get isTablet => _isTablet;
-
-  static Responsive of(BuildContext context) => Responsive(context);
-
-  Responsive(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    this._width = size.width;
-    this._height = size.height;
-
-    //c2+ a2+b2 => c = srt(a2+b2)
-    this. _diagonal = math.sqrt(math.pow(_width, 2) + math.pow(_height, 2));
-    this._isTablet = size.shortestSide >= 600;
+  factory Responsive.of(BuildContext context) {
+    final MediaQueryData data = MediaQuery.of(context);
+    final size = data.size;
+    // c2 = a2+b2 => c = sqrt(a2+b2)
+    final inch = math.sqrt(math.pow(size.width, 2) + math.pow(size.height, 2));
+    return Responsive(width: size.width, height: size.height, inch: inch);
   }
 
-  double wp(double percent) => _width * percent / 100;
+  double wp(double percent) {
+    return this.width * percent / 100;
+  }
 
-  double hp(double percent) => _height * percent / 100;
+  double hp(double percent) {
+    return this.height * percent / 100;
+  }
 
-  double dp(double percent) => _diagonal * percent / 100;
+  double ip(double percent) {
+    return this.inch * percent / 100;
+  }
 }
