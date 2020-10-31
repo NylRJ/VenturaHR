@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ventura_rh/helpers/validators.dart';
 import 'package:ventura_rh/models/users/user.dart';
+import 'package:ventura_rh/models/users/user_hr.dart';
 import 'package:ventura_rh/models/users/user_manager.dart';
 import 'package:ventura_rh/utils/app_colors.dart';
 import 'package:ventura_rh/utils/dialogs.dart';
@@ -44,7 +45,7 @@ class _LoginPageFormState extends State<LoginPageForm> {
     final passOk = _passKey.currentState.isOk;
     if (userNameOk && passOk) {
       context.read<UserManager>().signIn(
-          user: User(
+          user: UserHR(
             email: userName,
             password: pass,
           ),
@@ -102,7 +103,7 @@ class _LoginPageFormState extends State<LoginPageForm> {
                   InputTextLogin(
                     key: _emailKey,
                     enable: !userManager.loading,
-                    initValue: 'moises.souza@gmail',
+                    initValue: 'moises.souza@gmail.com',
                     iconPath: 'assets/images/login/icons/email.svg',
                     placeholder: 'Endereço de E-mail',
                     keyboardType: TextInputType.emailAddress,

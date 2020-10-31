@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:ventura_rh/models/users/user_manager.dart';
 import 'package:ventura_rh/models/vaga/vaga.dart';
 import 'package:ventura_rh/utils/app_colors.dart';
 import 'package:ventura_rh/utils/responsive.dart';
 
-import 'component/tabela_criterio.dart';
+import 'components/tabela_criterio.dart';
+
 
 class VagaDetails extends StatelessWidget {
   const VagaDetails(this.vaga);
@@ -21,6 +24,26 @@ class VagaDetails extends StatelessWidget {
       appBar: AppBar(
         title: Text(vaga.companyTitle.toUpperCase(),style: TextStyle(fontWeight: FontWeight.bold),),
         centerTitle: true,
+        actions: [
+          Consumer<UserManager>(
+            builder: (_,userManager,__){
+             if(userManager.isLoggedIn){
+               if ( userManager.isCompany()  && userManager.userHR.id == vaga.userId ) {
+                return IconButton(
+                  icon: Icon(Icons.edit),
+                  onPressed: (){
+                    Navigator.of(context).pushReplacementNamed('/vaga_edit',arguments: vaga);
+                  },
+              );
+              }else{
+                return Container();
+              }
+             }else{
+               return Container();
+             }
+            },
+          ),
+        ],
       ),
       body: ListView(
         children: [
@@ -34,7 +57,7 @@ class VagaDetails extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                  image: NetworkImage(vaga.image),
+                  image: NetworkImage(vaga.images.first),
                   fit: BoxFit.cover,
                 ),
               ),

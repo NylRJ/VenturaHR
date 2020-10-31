@@ -9,7 +9,7 @@ class City {
   State _state;
 
   State set(State state) {
-    _state = state;
+   return _state = state;
   }
 
   State get() {

@@ -2,6 +2,8 @@
 
 class Criterio{
 
+
+  Criterio();
   Criterio.fromMap(Map<String, dynamic> map){
 
     name = map['name'] as String;
@@ -15,6 +17,16 @@ class Criterio{
   String description;
   int pmd;
   int weight;
+
+
+  Map<String, dynamic> toMap(){
+    return {
+      'name': name,
+      'description': description,
+      'pmd': pmd,
+      'weight':weight
+    };
+  }
 
   @override
   String toString() {

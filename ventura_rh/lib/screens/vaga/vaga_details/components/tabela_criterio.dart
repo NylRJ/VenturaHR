@@ -16,7 +16,7 @@ class _TabelaCriterioState extends State<TabelaCriterio> {
   @override
   Widget build(BuildContext context) {
     return                 SingleChildScrollView(
-      
+
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: DataTable(
@@ -32,10 +32,10 @@ class _TabelaCriterioState extends State<TabelaCriterio> {
                   numeric: false,
                   onSort: (i, b) {
                     print("$i $b");
-                   setState(() {
-                     widget.vaga.criterio
-                         .sort((a, b) => a.name.compareTo(b.name));
-                   });
+                    setState(() {
+                      widget.vaga.criterios
+                          .sort((a, b) => a.name.compareTo(b.name));
+                    });
                   },
                   tooltip: "To display first name of the Name",
                   label: Text(
@@ -47,7 +47,7 @@ class _TabelaCriterioState extends State<TabelaCriterio> {
                   onSort: (i, b) {
                     print("$i $b");
                     setState(() {
-                      widget.vaga.criterio
+                      widget.vaga.criterios
                           .sort((a, b) => a.description.compareTo(b.description));
                     });
                   },
@@ -61,7 +61,7 @@ class _TabelaCriterioState extends State<TabelaCriterio> {
                   onSort: (i, b) {
                     print("$i $b");
                     setState(() {
-                      widget.vaga.criterio
+                      widget.vaga.criterios
                           .sort((a, b) => a.pmd.compareTo(b.pmd));
                     });
                   },
@@ -74,55 +74,55 @@ class _TabelaCriterioState extends State<TabelaCriterio> {
                 onSort: (i, b) {
                   print("$i $b");
                   setState(() {
-                    widget.vaga.criterio
+                    widget.vaga.criterios
                         .sort((a, b) => a.weight.compareTo(b.weight));
                   });
                 },
                 tooltip: "para exibir o primeiro nome do Nome",
                 label: const Text(
-                 'Descrição',
-                 style: TextStyle(
-                   fontWeight: FontWeight.bold,
-                 ),
-                    ),
+                  'Descrição',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
 
 
               ),
             ],
-            rows: widget.vaga.criterio
+            rows: widget.vaga.criterios
                 .map((e) => DataRow(
 
               cells:
-               [
+              [
 
-                  DataCell(
+                DataCell(
 
-                      SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
-                        child: Wrap(
-                          children: [
-                            Text(e.name),
-                          ],
-                        ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Wrap(
+                        children: [
+                          Text(e.name),
+                        ],
                       ),
-                      showEditIcon: false, placeholder: false),
+                    ),
+                    showEditIcon: false, placeholder: false),
 
-                  DataCell(Text('${e.pmd}'),
-                      showEditIcon: false, placeholder: false),
-                  DataCell(Text('${e.weight}'),
-                      showEditIcon: false, placeholder: false),
-                 DataCell(
+                DataCell(Text('${e.pmd}'),
+                    showEditIcon: false, placeholder: false),
+                DataCell(Text('${e.weight}'),
+                    showEditIcon: false, placeholder: false),
+                DataCell(
 
 
-                     SingleChildScrollView(
-                       scrollDirection: Axis.vertical,
-                       child: Wrap(
-                         children: [
-                           Text('${e.description}'),
-                         ],
-                       ),
-                     ),
-                     showEditIcon: false, placeholder: false),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Wrap(
+                        children: [
+                          Text('${e.description}'),
+                        ],
+                      ),
+                    ),
+                    showEditIcon: false, placeholder: false),
 
               ],
             ))
