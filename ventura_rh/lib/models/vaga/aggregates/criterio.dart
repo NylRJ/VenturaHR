@@ -2,6 +2,8 @@
 
 class Criterio{
 
+
+  Criterio();
   Criterio.fromMap(Map<String, dynamic> map){
 
     name = map['name'] as String;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ventura_rh/common/custom_icon_button.dart';
 import 'package:ventura_rh/models/vaga/vaga.dart';
 import 'package:ventura_rh/screens/vaga/vaga_edit/components/images_form_user.dart';
 import 'package:ventura_rh/utils/app_colors.dart';
@@ -41,7 +42,8 @@ class VagaEdit extends StatelessWidget {
                     color: AppColors.primaryColor,
                   ),
                   Align(
-                    alignment: Alignment.topRight,
+                    alignment: Alignment.centerRight,
+
                     child: TextFormField(
                       initialValue: vaga.titleVacancy,
                       decoration: const InputDecoration(
@@ -89,26 +91,7 @@ class VagaEdit extends StatelessWidget {
                       ),
                     ],
                   ),
-                  TextFormField(
-                    autocorrect: false,
-                    textCapitalization: TextCapitalization.characters,
-                    decoration: const InputDecoration(
-                        isDense: true,
-                        labelText: "UF",
-                        hintText: 'RJ',
-                        counterText: ''),
-                    maxLength: 2,
-                    validator: (e) {
-                      if (e.isEmpty) {
-                        return 'Campo Obrigatório';
-                      } else if (e.length != 2) {
-                        return 'Inválido';
-                      } else {
-                        return null;
-                      }
-                    },
 
-                  ),
                   TextFormField(
                     initialValue: vaga.workplace,
                     decoration: const InputDecoration(
@@ -123,6 +106,7 @@ class VagaEdit extends StatelessWidget {
                       }
                     },
                   ),
+
                   RoundedButton(
                     onPressed: () {
                       if (formKey.currentState.validate()) {

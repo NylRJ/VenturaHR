@@ -27,7 +27,8 @@ class VagaDetails extends StatelessWidget {
         actions: [
           Consumer<UserManager>(
             builder: (_,userManager,__){
-              if (userManager.isCompany()  && userManager.userHR.id == vaga.userId ) {
+             if(userManager.isLoggedIn){
+               if ( userManager.isCompany()  && userManager.userHR.id == vaga.userId ) {
                 return IconButton(
                   icon: Icon(Icons.edit),
                   onPressed: (){
@@ -37,6 +38,9 @@ class VagaDetails extends StatelessWidget {
               }else{
                 return Container();
               }
+             }else{
+               return Container();
+             }
             },
           ),
         ],
