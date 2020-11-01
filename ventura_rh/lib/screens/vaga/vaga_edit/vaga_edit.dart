@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ventura_rh/models/users/user_manager.dart';
 import 'package:ventura_rh/models/vaga/vaga.dart';
 import 'package:ventura_rh/utils/app_colors.dart';
 import 'package:ventura_rh/widgets/rounded_button.dart';
 import 'components/images_form.dart';
 import 'components/vaga_form.dart';
+import 'package:provider/provider.dart';
 
 class VagaEdit extends StatelessWidget {
 
@@ -20,6 +22,8 @@ class VagaEdit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    vaga.userId = context.watch<UserManager>().userHR.id;
+    vaga.address = context.watch<UserManager>().userHR.address;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -64,6 +68,7 @@ class VagaEdit extends StatelessWidget {
                                 return null;
                               }
                             },
+                            onSaved: (title) => vaga.titleVacancy = title,
                           ),
                         ),
                       ),
@@ -86,6 +91,7 @@ class VagaEdit extends StatelessWidget {
                                 return null;
                               }
                             },
+                            onSaved: (titleC) => vaga.companyTitle = titleC,
                           ),
                         ),
                       ),
@@ -100,6 +106,7 @@ class VagaEdit extends StatelessWidget {
                               isDense: true,
                               labelText: 'Numero de Vagas',
                               hintText: '10'),
+                          onSaved: (titleNumberOfVacancies) => vaga.numberOfVacancies = int.tryParse(titleNumberOfVacancies),
                           inputFormatters: [
                             FilteringTextInputFormatter.digitsOnly
                           ],
@@ -116,8 +123,9 @@ class VagaEdit extends StatelessWidget {
                               isDense: true,
                               labelText: "Carga Horária",
                               hintText: '06'),
-
+                          onSaved: (titleWorkload) => vaga.workload = int.tryParse(titleWorkload),
                         ),
+
                       ),
                     ],
                   ),
@@ -135,6 +143,7 @@ class VagaEdit extends StatelessWidget {
                         return null;
                       }
                     },
+                    onSaved: (titleWorkplace) => vaga.workplace = titleWorkplace,
                   ),
 
                   VagaForm(vaga: vaga,),
@@ -159,9 +168,14 @@ class VagaEdit extends StatelessWidget {
                       border: OutlineInputBorder(
 
                       ),
+
                     ),
-
-
+                    validator: (description){
+                      if (!description.isEmpty && description.length > 10 && description.length < 10000 ) {
+                        return null;
+                      }  else{return 'Invalido';}
+                    },
+                    onSaved: (titleDescriptionVacancy) => vaga.descriptionVacancy = titleDescriptionVacancy,
 
                   ),
                   Divider(
@@ -184,8 +198,12 @@ class VagaEdit extends StatelessWidget {
                     onPressed: () {
                       if (formKey.currentState.validate()) {
                         // ignore: avoid_print
+                        formKey.currentState.save();
+                        print(vaga.userId);
+                        print(vaga.id);
+                        print(vaga.criterios.map((e) => e.name));
+                       vaga.save();
 
-                        print('valido');
                       } else {
                         print('invalido');
                       }

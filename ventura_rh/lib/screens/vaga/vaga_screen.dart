@@ -79,7 +79,7 @@ class VagaScreen extends StatelessWidget {
                 return IconButton(
                   icon: const Icon(Icons.add),
                   onPressed: (){
-                    Navigator.of(context).pushNamed('/vaga_edit',);
+                    Navigator.of(context).pushNamed('/vaga_edit');
                   }
               );
               } else {
