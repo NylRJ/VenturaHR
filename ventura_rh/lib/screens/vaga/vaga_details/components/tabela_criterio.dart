@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:ventura_rh/models/users/user_manager.dart';
 import 'package:ventura_rh/models/vaga/vaga.dart';
+
+import 'dropdown_custon.dart';
 
 class TabelaCriterio extends StatefulWidget {
 
@@ -19,114 +23,150 @@ class _TabelaCriterioState extends State<TabelaCriterio> {
 
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        child: DataTable(
-            dividerThickness: 2,
-            columnSpacing: 23,
-            horizontalMargin: 6,
-            dataRowHeight: 60,
-            onSelectAll: (b) {},
-            sortColumnIndex: 0,
-            sortAscending: true,
-            columns: [
-              DataColumn(
-                  numeric: false,
-                  onSort: (i, b) {
-                    print("$i $b");
-                    setState(() {
-                      widget.vaga.criterios
-                          .sort((a, b) => a.name.compareTo(b.name));
-                    });
-                  },
-                  tooltip: "To display first name of the Name",
-                  label: Text(
-                    'Critério',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  )),
-              DataColumn(
-                  numeric: true,
-                  onSort: (i, b) {
-                    print("$i $b");
-                    setState(() {
-                      widget.vaga.criterios
-                          .sort((a, b) => a.description.compareTo(b.description));
-                    });
-                  },
-                  tooltip: "To display first name of the Name",
-                  label: Text(
-                    'PMD',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  )),
-              DataColumn(
-                  numeric: true,
-                  onSort: (i, b) {
-                    print("$i $b");
-                    setState(() {
-                      widget.vaga.criterios
-                          .sort((a, b) => a.pmd.compareTo(b.pmd));
-                    });
-                  },
-                  tooltip: "To display first name of the Name",
-                  label: const Text('PESO',
-                      style:
-                      TextStyle(fontWeight: FontWeight.bold))),
-              DataColumn(
-                numeric: false,
-                onSort: (i, b) {
-                  print("$i $b");
-                  setState(() {
-                    widget.vaga.criterios
-                        .sort((a, b) => a.weight.compareTo(b.weight));
-                  });
-                },
-                tooltip: "para exibir o primeiro nome do Nome",
-                label: const Text(
-                  'Descrição',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
+        child: Consumer<UserManager>(
+          builder: (_,userManager,__){
+            return DataTable(
+                dividerThickness: 2,
+                columnSpacing: 23,
+                horizontalMargin: 6,
+                dataRowHeight: 60,
+                onSelectAll: (b) {},
+                sortColumnIndex: 0,
+                sortAscending: true,
+                columns: [
+                  DataColumn(
+                      numeric: false,
+                      onSort: (i, b) {
+                        print("$i $b");
+                        setState(() {
+                          widget.vaga.criterios
+                              .sort((a, b) => a.name.compareTo(b.name));
+                        });
+                      },
+                      tooltip: "To display first name of the Name",
+                      label: Text(
+                        'Critério',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      )),
+                  if (userManager.isLoggedIn)
+                    if(userManager.isCompany() )
+                    DataColumn(
+                        numeric: true,
+                        onSort: (i, b) {
+                          print("$i $b");
+                          setState(() {
+                            widget.vaga.criterios
+                                .sort((a, b) => a.description.compareTo(b.description));
+                          });
+                        },
+                        tooltip: "To display first name of the Name",
+                        label: Text(
+                          'PMD',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
+
+
+                  if (userManager.isLoggedIn)
+                    if(userManager.isCompany() )
+                  DataColumn(
+                      numeric: true,
+                      onSort: (i, b) {
+                        print("$i $b");
+                        setState(() {
+                          widget.vaga.criterios
+                              .sort((a, b) => a.pmd.compareTo(b.pmd));
+                        });
+                      },
+                      tooltip: "To display first name of the Name",
+                      label: const Text('PESO',
+                          style:
+                          TextStyle(fontWeight: FontWeight.bold))),
+                  if (userManager.isLoggedIn)
+                    if(!userManager.isCompany() )
+                  DataColumn(
+                    numeric: false,
+                    tooltip: "para exibir o primeiro nome do Nome",
+                    label: const Text(
+                      'Conhecimento',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+
+
                   ),
-                ),
-
-
-              ),
-            ],
-            rows: widget.vaga.criterios
-                .map((e) => DataRow(
-
-              cells:
-              [
-
-                DataCell(
-
-                    SingleChildScrollView(
-                      scrollDirection: Axis.vertical,
-                      child: Wrap(
-                        children: [
-                          Text(e.name),
-                        ],
+                  DataColumn(
+                    numeric: false,
+                    onSort: (i, b) {
+                      print("$i $b");
+                      setState(() {
+                        widget.vaga.criterios
+                            .sort((a, b) => a.weight.compareTo(b.weight));
+                      });
+                    },
+                    tooltip: "para exibir o primeiro nome do Nome",
+                    label: const Text(
+                      'Descrição',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    showEditIcon: false, placeholder: false),
-
-                DataCell(Text('${e.pmd}'),
-                    showEditIcon: false, placeholder: false),
-                DataCell(Text('${e.weight}'),
-                    showEditIcon: false, placeholder: false),
-                DataCell(
 
 
-                    SingleChildScrollView(
-                      scrollDirection: Axis.vertical,
-                      child: Wrap(
-                        children: [
-                          Text('${e.description}'),
-                        ],
+                  ),
+
+                ],
+                rows: widget.vaga.criterios
+                    .map((e) => DataRow(
+
+                  cells:
+                  [
+
+                    DataCell(
+
+                        SingleChildScrollView(
+                          scrollDirection: Axis.vertical,
+                          child: Wrap(
+                            children: [
+                              Text(e.name),
+                            ],
+                          ),
+                        ),
+                        showEditIcon: false, placeholder: false),
+                    if (userManager.isLoggedIn)
+                      if(userManager.isCompany() )
+
+                    DataCell(Text('${e.pmd}'),
+                        showEditIcon: false, placeholder: false),
+                    if (userManager.isLoggedIn)
+                      if(userManager.isCompany() )
+                    DataCell(Text('${e.weight}'),
+                        showEditIcon: false, placeholder: false),
+                    if (userManager.isLoggedIn)
+                      if(!userManager.isCompany() )
+                      DataCell(
+                          DropdownCuston(),
+                          showEditIcon: false,
+                          placeholder: false
                       ),
-                    ),
-                    showEditIcon: false, placeholder: false),
+                      DataCell(
+                        Container(
+                          width: 200,
+                          child: SingleChildScrollView(
+                            child: Text('${e.description}',textAlign: TextAlign.justify,
+                              maxLines: 4,
+                            ),
+                          ),
+                        ),
+                        showEditIcon: false, placeholder: false),
 
-              ],
-            ))
-                .toList()),
+
+
+                  ],
+                ))
+                    .toList());
+          },
+        ),
       ),
     );
   }

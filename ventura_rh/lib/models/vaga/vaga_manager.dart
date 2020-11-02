@@ -43,7 +43,7 @@ class VagaManager extends ChangeNotifier {
   }
 
   void update(Vaga vaga){
-    allVagas.removeWhere((p) => p.id == vaga.id);
+    allVagas.removeWhere((v) => v.id == vaga.id);
     allVagas.add(vaga);
     notifyListeners();
   }

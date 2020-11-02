@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
@@ -102,7 +101,7 @@ class Vaga extends ChangeNotifier {
     if (id == null) {
       final doc = await firestore.collection('vaga').add(data);
       id = doc.documentID;
-      firestoreRef.updateData({'id':id});
+      firestoreRef.updateData({'id': id});
     } else {
       await firestoreRef.updateData(data);
     }

@@ -51,7 +51,7 @@ class PageHeader extends StatelessWidget {
                     if (userManager.isLoggedIn)
                       Text(
                       'Olá ${userManager.userHR?.name ?? ''}',
-                      overflow: TextOverflow.ellipsis,
+                      overflow: TextOverflow.clip,
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: isTablet ? 22 : 16,

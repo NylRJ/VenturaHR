@@ -122,6 +122,12 @@ flutter:
     - family: editar_vagas
       fonts:
         - asset: assets/fonts/ic_editar_vagas.ttf
+    - family: ranking_vagas
+      fonts:
+        - asset: assets/fonts/ic_ranking.ttf
+    - family: ic_mala
+      fonts:
+        - asset: assets/fonts/briefcase.ttf
     - family: sans
       fonts:
         - asset: assets/fonts/OpenSans-Light.ttf

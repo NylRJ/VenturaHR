@@ -3,10 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:ventura_rh/models/page_manager.dart';
 
 class DrawerTile extends StatelessWidget {
-  const DrawerTile({this.iconData,this.title,this.page});
+  const DrawerTile({this.iconData,this.title,this.page, this.size});
   final IconData iconData;
   final String title;
   final int page;
+  final double size;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class DrawerTile extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Icon(
                 iconData,
-              size: 30,
+              size: size==null?30:size,
                 color: curPage == page ?primaryColor:Colors.grey[700],
               ),
             ),

@@ -7,6 +7,7 @@ import 'package:ventura_rh/screens/base/base_screen.dart';
 import 'package:ventura_rh/screens/login/login_page.dart';
 import 'package:ventura_rh/screens/splash/splash_screen.dart';
 import 'package:ventura_rh/screens/vaga/vaga_details/vaga_details.dart';
+import 'package:ventura_rh/screens/vaga/vaga_details/vaga_details2.dart';
 import 'package:ventura_rh/screens/vaga/vaga_edit/vaga_edit.dart';
 
 
@@ -83,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
               return MaterialPageRoute(builder: (_) => SplashScreen());
             case '/vagaDetails':
               return MaterialPageRoute(
-                  builder: (_) => VagaDetails(settings.arguments as Vaga));
+                  builder: (_) => VagaDetails2(settings.arguments as Vaga));
 
             case '/vaga_edit':
               return MaterialPageRoute(

@@ -42,7 +42,7 @@ class EditItemCriterio extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 4,
           ),
           Expanded(
@@ -65,7 +65,7 @@ class EditItemCriterio extends StatelessWidget {
               onChanged: (pmd) => criterio.pmd = int.tryParse(pmd) ,
             ),
           ),
-          SizedBox(
+         const SizedBox(
             width: 4,
           ),
           Expanded(
@@ -88,7 +88,7 @@ class EditItemCriterio extends StatelessWidget {
               onChanged: (peso) => criterio.weight = int.tryParse(peso) ,
             ),
           ),
-          SizedBox(
+         const SizedBox(
             width: 4,
           ),
           Expanded(
@@ -98,7 +98,7 @@ class EditItemCriterio extends StatelessWidget {
                 style: TextStyle(fontSize: 12),
                 textAlignVertical: TextAlignVertical.top,
                 maxLines: 3,
-                initialValue: criterio.description.toString(),
+                initialValue: criterio.description == null ?'':criterio.description.toString(),
                 decoration: const InputDecoration(
                   isDense: true,
                   labelStyle: TextStyle(fontSize: 12),
