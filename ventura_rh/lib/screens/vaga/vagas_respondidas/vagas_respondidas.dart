@@ -6,7 +6,7 @@ import 'package:ventura_rh/models/vaga/vaga.dart';
 import 'package:ventura_rh/models/vaga/vaga_manager.dart';
 import 'package:ventura_rh/screens/vaga/components/vaga_list_tile.dart';
 
-class VagasPublicadas extends StatelessWidget {
+class VagasRespondidas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
   final userManager = context.watch<UserManager>();

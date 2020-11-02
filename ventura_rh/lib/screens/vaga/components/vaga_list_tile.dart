@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ventura_rh/models/users/user_manager.dart';
 import 'package:ventura_rh/models/vaga/vaga.dart';
+import 'package:ventura_rh/utils/app_colors.dart';
 import 'package:ventura_rh/utils/responsive.dart';
+import 'package:provider/provider.dart';
 
 class VagaListTile extends StatelessWidget {
   final Vaga vaga ;
@@ -12,9 +15,20 @@ class VagaListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
+    final userManager  = context.watch<UserManager>() ;
     return GestureDetector(
-      onTap: (){
+      onTap:userManager.isLoggedIn? (){
         Navigator.of(context).pushNamed('/vagaDetails',arguments: vaga);
+      }:(){
+        Scaffold.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                'Cadastre-se ou Entre Para Visualizar Os Detalhes das Vagas',
+                style: TextStyle(color: Colors.white),
+              ),
+              backgroundColor: AppColors.secondaryColor,
+            ),
+        );
       },
       child: Container(
         margin: EdgeInsets.all(4),

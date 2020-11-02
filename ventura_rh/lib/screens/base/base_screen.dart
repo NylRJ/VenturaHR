@@ -13,6 +13,10 @@ class BaseScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
+
+
     return Provider(
       create: (_) => PageManager(pageController),
       child: PageView(
@@ -26,7 +30,14 @@ class BaseScreen extends StatelessWidget {
           Scaffold(
             drawer: CustomDrawer(),
             appBar: AppBar(
-              title: const Text('Vagas Publicadas '),
+              title: const Text('Rankign'),
+              centerTitle: true,
+            ),
+          ),
+          Scaffold(
+            drawer: CustomDrawer(),
+            appBar: AppBar(
+              title: const Text('Vagas Respondidas'),
               centerTitle: true,
             ),
           ),

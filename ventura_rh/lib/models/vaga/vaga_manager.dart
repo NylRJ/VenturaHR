@@ -10,6 +10,7 @@ class VagaManager extends ChangeNotifier {
   final Firestore firestore = Firestore.instance;
 
   List<Vaga> allVagas = [];
+  List<Vaga> allVagasRespondidas = [];
 
   String _search = '';
 
@@ -34,6 +35,7 @@ class VagaManager extends ChangeNotifier {
   }
 
   Future<void> _loadVagas() async {
+
     final QuerySnapshot snapVagas =
         await firestore.collection('vaga').getDocuments();
 
