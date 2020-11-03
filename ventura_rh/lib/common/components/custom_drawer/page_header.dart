@@ -15,7 +15,7 @@ class PageHeader extends StatelessWidget {
     final Responsive responsive = Responsive.of(context);
     return Container(
       color: Theme.of(context).primaryColor,
-      height: isTablet ? 200 : 95,
+      height: isTablet ? 200 : 100,
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Consumer<UserManager>(
         builder: (_,userManager,__){
@@ -25,7 +25,6 @@ class PageHeader extends StatelessWidget {
               Container(
                 width: responsive.ip(10),
                 height: responsive.ip(15),
-                margin: const EdgeInsets.fromLTRB(0, 5, 5, 0),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
@@ -34,6 +33,7 @@ class PageHeader extends StatelessWidget {
                   ),
                 ),
               ),
+
               if (!userManager.isLoggedIn)
               Icon(
                 Icons.person,
@@ -42,6 +42,7 @@ class PageHeader extends StatelessWidget {
               ),
               const SizedBox(
                 width: 20,
+                height: 10,
               ),
               Expanded(
                 child: Column(
@@ -78,6 +79,7 @@ class PageHeader extends StatelessWidget {
                         ),
                       ),
                     ),
+
                   ],
                 ),
               ),

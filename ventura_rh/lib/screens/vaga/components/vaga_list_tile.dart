@@ -43,15 +43,23 @@ class VagaListTile extends StatelessWidget {
               children: [
                 //Logo
                 Container(
-                  width: responsive.ip(15),
-                  height: responsive.ip(14),
-                  margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                      image: NetworkImage(vaga.images.first),
-                      fit: BoxFit.cover,
+                  width:isTablet? responsive.wp(30):responsive.ip(14),
+                  height:isTablet? responsive.hp(12):responsive.ip(12),
+                margin: EdgeInsets.all(5),
+                  //margin: EdgeInsets.fromLTRB(left, top, right, bottom),
+
+                  child: Container(
+
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+
+                        image: DecorationImage(
+                        image: NetworkImage(vaga.images.first,),
+                        fit:isTablet? BoxFit.contain:BoxFit.cover,
+                      ),
                     ),
+                   // margin: EdgeInsets.all(20),
+                    //padding: EdgeInsets.all(25.0),
                   ),
                 ),
                 Transform.translate(
@@ -66,31 +74,45 @@ class VagaListTile extends StatelessWidget {
                       Text(vaga.titleVacancy),
                       SizedBox(height: responsive.ip(1.2),),
                       Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
+
                         children: [
-                          Icon(Icons.work_outlined),
-                          SizedBox(width:responsive.ip(1) ,),
-                          Text('${(vaga.numberOfVacancies <=9)?"0${vaga.numberOfVacancies} vagas":"${vaga.numberOfVacancies} vagas"}',style: TextStyle(fontSize: 13),),
-                          SizedBox(width:responsive.ip(4),),
-                          Icon(Icons.alarm_rounded),
-                          SizedBox(width:responsive.ip(0.5) ,),
-                          Text('${(vaga.workload <=9)?"0${vaga.workload}h":"${vaga.workload}h"}',style: TextStyle(fontSize: 13)),
+                          Row(
+                            children: [
+                              Icon(Icons.work_outlined),
+                              SizedBox(width:responsive.ip(1) ,),
+                              Text('${(vaga.numberOfVacancies <=9)?"0${vaga.numberOfVacancies} vagas":"${vaga.numberOfVacancies} vagas"}',style: TextStyle(fontSize: 13),),
+                              SizedBox(width:responsive.ip(4),),
+                            ],
+                          ),
+                         Row(
+                           children: [
+                             Icon(Icons.alarm_rounded),
+                             SizedBox(width:responsive.ip(0.5) ,),
+                             Text('${(vaga.workload <=9)?"0${vaga.workload}h":"${vaga.workload}h"}',style: TextStyle(fontSize: 13)),
+                           ],
+                         ),
 
                         ],
                       ),
                       SizedBox(height: responsive.ip(2),),
                       Row(
 
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Icon(Icons.location_on_outlined),
-                          SizedBox(width:3 ,),
-                          Text('${vaga.workplace }',style: TextStyle(fontSize: 13)),
-                          SizedBox(width:responsive.ip(2.5),),
-                          Icon(Icons.edit_location_rounded),
-                          SizedBox(width:responsive.ip(0.1) ,),
-                          Text('${vaga.address.city}',style: TextStyle(fontSize: 13),),
+                          Row(
+                            children: [
+                              Icon(Icons.location_on_outlined),
+                              SizedBox(width:3 ,),
+                              Text('${vaga.workplace }',style: TextStyle(fontSize: 13)),
+                              SizedBox(width:responsive.ip(2.5),),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Icon(Icons.edit_location_rounded),
+                              SizedBox(width:responsive.ip(0.1) ,),
+                              Text('${vaga.address.city}',style: TextStyle(fontSize: 13),)
+                            ],
+                          ),
                            ],
                       ),
                     ],

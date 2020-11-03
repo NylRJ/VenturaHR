@@ -9,6 +9,7 @@ class PageManager {
   void setPage(int value) {
     if(value == page)return;
     page = value;
+
     _pageController.jumpToPage(value);
 
 

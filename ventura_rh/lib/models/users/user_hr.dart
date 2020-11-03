@@ -16,29 +16,24 @@ class UserHR extends ChangeNotifier {
     id = document.documentID;
     name = document.data['name'] as String;
     email = document.data['email'] as String;
+    phone = document.data['phone'] as String;
+    admin = document.data['admin'] as bool;
     images = List<String>.from(document.data['images'] as List<dynamic>);
-    accountType = document.data['accountType'] as String;
-    if (document.data['accountType'] == 'juridica') {
-      cnpj = document.data['cnpj'] as String;
-      razaoSocial = document.data['razaoSocial'] as String;
-    } else if (document.data['accountType'] == 'fisica') {
-      cpf = document.data['cpf'] as String;
-    }
-    if (document.data.containsKey('address')) {
-      address =
-          Address.fromMap(document.data['address'] as Map<String, dynamic>);
-    }
+//  accountType = document.data['accountType'] as String;
+    cnpj = document.data['cnpj'] as String;
+    razaoSocial = document.data['razaoSocial'] as String;
+    cpf = document.data['cpf'] as String;
+    address = Address.fromMap(document.data['address'] as Map<String, dynamic>);
   }
 
   String id;
   String name;
   String email;
   List<String> images;
-
   String phone;
   String password;
   String confirmPassword;
-  String cep;
+  String zipCode;
   String cnpj;
   String razaoSocial;
   String cpf;
@@ -297,6 +292,6 @@ class UserHR extends ChangeNotifier {
 
   @override
   String toString() {
-    return 'UserHR{id: $id, name: $name, email: $email, phone: $phone, password: $password, confirmPassword: $confirmPassword, cep: $cep, cnpj: $cnpj, razaoSocial: $razaoSocial, cpf: $cpf, accountType: $accountType, createdAt: $createdAt, updateAt: $updateAt, admin: $admin, address: $address}';
+    return 'UserHR{id: $id, name: $name, email: $email, phone: $phone, password: $password, confirmPassword: $confirmPassword, zipCode: $zipCode, cnpj: $cnpj, razaoSocial: $razaoSocial, cpf: $cpf, accountType: $accountType, createdAt: $createdAt, updateAt: $updateAt, admin: $admin, address: $address}';
   }
 }

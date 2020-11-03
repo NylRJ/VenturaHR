@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ventura_rh/common/components/custom_drawer/custom_drawer.dart';
 import 'package:ventura_rh/models/users/user_manager.dart';
 import 'package:ventura_rh/models/vaga/vaga.dart';
 import 'package:ventura_rh/models/vaga/vaga_manager.dart';
@@ -16,7 +17,7 @@ class VagaEdit extends StatelessWidget {
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  VagaEdit(Vaga v):
+  VagaEdit({Key key , Vaga v}):
         editing = v != null,
         vaga = v != null ? v.clone() : Vaga();
 
@@ -25,13 +26,13 @@ class VagaEdit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    vaga.userId = context.watch<UserManager>().userHR.id;
-    vaga.address = context.watch<UserManager>().userHR.address;
+
     List<bool> _selections = List.generate(3, (_) => false);
 
     return ChangeNotifierProvider.value(
       value: vaga,
       child: Scaffold(
+        drawer: CustomDrawer(),
         backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text(editing?'Editar Vaga':'Criar Vaga'),
@@ -92,8 +93,8 @@ class VagaEdit extends StatelessWidget {
                               ),
                               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
                               validator: (title) {
-                                if (title.length < 6) {
-                                  return 'Titulo é muito Curto!';
+                                if (title.length < 1) {
+                                  return 'Nome da Empresa é muito Curto!';
                                 } else {
                                   return null;
                                 }
@@ -145,7 +146,7 @@ class VagaEdit extends StatelessWidget {
                       style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
                       validator: (title) {
                         if (title.length < 6) {
-                          return 'Titulo é muito Curto!';
+                          return 'local de trabalhoTitulo é muito Curto!';
                         } else {
                           return null;
                         }
@@ -202,28 +203,27 @@ class VagaEdit extends StatelessWidget {
                       thickness: 1,
                       color: AppColors.primaryColor,
                     ),
-                    Consumer<Vaga>(
-                      builder: (_,vaga,__){
-                        return  RoundedButton(
-                          onPressed: !vaga.loading? () async{
-                            if (formKey.currentState.validate()) {
-                              // ignore: avoid_print
-                              formKey.currentState.save();
-                              context.read<VagaManager>().update(vaga);
-                              Navigator.of(context).pop();
+                    RoundedButton(
+                      onPressed: !vaga.loading? () async{
+                        if (formKey.currentState.validate()) {
+                          // ignore: avoid_print
+                          vaga.userId = context.read<UserManager>().userHR.id;
+                          vaga.address = context.read<UserManager>().userHR.address;
+                          formKey.currentState.save();
+                          await vaga.save();
+                          context.read<VagaManager>().update(vaga);
+                          Navigator.of(context).pushNamed('/base');
 
-                            } else {
-                              print('invalido');
-                            }
-                          }:null,
-                          progress: vaga.loading?const CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation(Colors.white),
-                          ):null,
-                          label:'Salvar',
-                          backgroundColor: AppColors.primaryColor,
-                          disableColor: AppColors.secondaryColorlighter,
-                        );
-                      },
+                        } else {
+                          print('invalido');
+                        }
+                      }:null,
+                      progress: vaga.loading?const CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation(Colors.white),
+                      ):null,
+                      label:'Salvar',
+                      backgroundColor: AppColors.primaryColor,
+                      disableColor: AppColors.secondaryColorlighter,
                     ),
                   ],
                 ),

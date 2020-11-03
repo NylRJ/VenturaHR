@@ -17,7 +17,7 @@ class VagaDetails2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
-
+    final bool isTablet = MediaQuery.of(context).size.shortestSide >= 600;
 
     return Consumer<UserManager>(
       builder: (_,userManager,__){
@@ -38,23 +38,23 @@ class VagaDetails2 extends StatelessWidget {
          Container(),
 
 
-         Container(),
+         //Container(),
             ],
           ),
           body: ListView(
             children: [
               Container(
-                height: 250,
+                height: 300,
                 color: Colors.white,
+                margin: EdgeInsets.all(8),
                 child: Container(
-                  width: responsive.ip(20),
-                  height: responsive.ip(25),
-                  margin: const EdgeInsets.fromLTRB(0, 5, 5, 0),
+
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
+
                       image: NetworkImage(vaga.images.first),
-                      fit: BoxFit.cover,
+                      fit:isTablet?BoxFit.contain:BoxFit.cover,
                     ),
                   ),
                 ),

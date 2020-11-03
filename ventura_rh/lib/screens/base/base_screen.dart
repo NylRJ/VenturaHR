@@ -25,12 +25,12 @@ class BaseScreen extends StatelessWidget {
         children: [
           HomeScreen(),
           VagaScreen(),
-          VagaEdit(Vaga()),
+          VagaEdit(v: Vaga(),),
           VagasPublicadas(),
           Scaffold(
             drawer: CustomDrawer(),
             appBar: AppBar(
-              title: const Text('Rankign'),
+              title: const Text('Ranking'),
               centerTitle: true,
             ),
           ),

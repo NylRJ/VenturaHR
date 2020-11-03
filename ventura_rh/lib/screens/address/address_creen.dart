@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ventura_rh/models/users/user_hr.dart';
 import 'package:ventura_rh/models/users/user_manager.dart';
 import 'package:ventura_rh/screens/login/components/input_text_login.dart';
 import 'package:ventura_rh/utils/responsive.dart';
@@ -7,9 +6,7 @@ import 'package:ventura_rh/utils/responsive.dart';
 import 'components/address_card.dart';
 
 class AddressScreen extends StatelessWidget {
-
-
-  Widget subFormPF(UserManager userManager,Responsive responsive){
+  Widget subFormPF(UserManager userManager, Responsive responsive) {
     return Container(
       child: Column(
         children: [
@@ -42,21 +39,17 @@ class AddressScreen extends StatelessWidget {
               return true;
             },
           ),
-
         ],
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
-
-
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Endereço'),
         centerTitle: true,
-
       ),
       body: ListView(
         children: [

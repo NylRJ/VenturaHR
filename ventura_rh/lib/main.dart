@@ -11,6 +11,7 @@ import 'package:ventura_rh/screens/vaga/vaga_details/vaga_details2.dart';
 import 'package:ventura_rh/screens/vaga/vaga_edit/vaga_edit.dart';
 
 
+import 'models/page_manager.dart';
 import 'models/users/user_manager.dart';
 
 void main() async {
@@ -56,6 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
           create: (_) => VagaManager(),
           lazy: false,
         ),
+
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -88,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
             case '/vaga_edit':
               return MaterialPageRoute(
-                  builder: (_) => VagaEdit(settings.arguments as Vaga));
+                  builder: (_) => VagaEdit(v: settings.arguments as Vaga,));
 
             default:
               return MaterialPageRoute(builder: (_) => BaseScreen());
