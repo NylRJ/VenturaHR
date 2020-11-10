@@ -44,31 +44,24 @@ class CustomDrawer extends StatelessWidget {
                   ),
                   if(userManager.isLoggedIn)
                     if(userManager.isCompany())
-                       DrawerTile(
+                      const DrawerTile(
                         iconData:  IconData(0xe9ae, fontFamily: 'ic_mala'),
                         title:'Vagas Publicadas',
                         page: 3,
 
                       ),
+
                   if(userManager.isLoggedIn)
-                    if(userManager.isCompany())
-                      Transform.translate(
-                        offset: Offset(-25,0),
-                        child: const DrawerTile(
-                          iconData:  IconData(0xe901, fontFamily: 'ranking_vagas',),
-                          title: 'Ranking',
-                          page: 4,
-                          size: 50,
-                        ),
-                      ),
-                  if(userManager.isLoggedIn)
-                    if(!userManager.isCompany())
-                  const DrawerTile(
-                    iconData:  IconData(0xe900, fontFamily: 'editar_vagas'),
-                    title: 'Vagas Respondidas',
-                    page: 5,
+                   Transform.translate(
+                     offset: Offset(-16,0),
+                     child: DrawerTile(
+                       size: 45,
+                      iconData: userManager.isCompany()?  IconData(0xe901, fontFamily: 'ranking_vagas'):const IconData(0xe900, fontFamily: 'editar_vagas'),
+                      title: userManager.isCompany()?' Ranking':'Vagas Respondidas',
+                      page: 4,
 
                   ),
+                   ),
                 ],
               );
             },

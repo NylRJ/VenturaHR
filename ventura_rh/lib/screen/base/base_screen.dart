@@ -28,13 +28,6 @@ class BaseScreen extends StatelessWidget {
           VagaScreen(),
           VagaEdit(Vaga()),
           VagasPublicadas(),
-          Scaffold(
-            drawer: CustomDrawer(),
-            appBar: AppBar(
-              title: const Text('Rankign'),
-              centerTitle: true,
-            ),
-          ),
           VagasRespondidas(),
         ],
       ),

@@ -18,13 +18,11 @@ class VagasRespondidas extends StatelessWidget {
     return  Scaffold(
       drawer: CustomDrawer(),
       appBar: AppBar(
-        title:const Text('Vagas Respondidas'),
+        title: Text(!userManager.isCompany()?'Vagas Respondidas':'Ranking'),
         centerTitle: true,
       ),
       body: Consumer<VagaManager>(
         builder: (_, vagaManager, __) {
-          print(vagaManager.allVacanciesAnswered.map((e) => e.userName));
-
           return ListView.builder(
               padding: EdgeInsets.all(4),
               itemCount: vagaManager.allVacanciesAnswered.length,

@@ -23,7 +23,8 @@ class VacanciesAnswered {
   VacanciesAnswered.fromMapCompany(DocumentSnapshot document){
     vagaId = document['vagaId'] as String;
     userId = document['userId'] as String;
-    userImage = document['image'] as String;
+    userName = document['userName'] as String;
+    userImage = document['userImage'] as String;
     companyTitle = document['companyTitle'] as String;
     titleVacancy = document['titleVacancy'] as String;
     score = document['score'] as double;
@@ -35,6 +36,7 @@ class VacanciesAnswered {
   VacanciesAnswered.responseVacancyUser({this.vaga, this.userHR}) {
     vagaId = vaga.id;
     userId = userHR.id;
+    userName =userHR.name;
     userImage = userHR.images.first;
     companyTitle = vaga.companyTitle;
     titleVacancy = vaga.titleVacancy;

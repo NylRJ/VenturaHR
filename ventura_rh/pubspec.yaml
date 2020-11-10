@@ -102,6 +102,7 @@ flutter:
     - assets/images/login/icons/call.svg
     - assets/images/login/icons/mail2.svg
     - assets/images/rede_social/google.svg
+    - assets/images/score/score.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -119,6 +120,9 @@ flutter:
     - family: busca_vaga
       fonts:
         - asset: assets/fonts/ic_busca_vaga.ttf
+    - family: score
+      fonts:
+        - asset: assets/fonts/score.ttf
     - family: editar_vagas
       fonts:
         - asset: assets/fonts/ic_editar_vagas.ttf
@@ -162,3 +166,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+

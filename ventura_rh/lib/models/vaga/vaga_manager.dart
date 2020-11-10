@@ -80,8 +80,6 @@ class VagaManager extends ChangeNotifier {
       if (docCompany.exists) {
         userHR.accountType = ACCOUNT_TYPE_JURIDICA;
         notifyListeners();
-
-        print(userHR);
       } else {
         final docCandidate =
         await firestore.collection('candidate').document(userHR.id).get();
@@ -89,7 +87,6 @@ class VagaManager extends ChangeNotifier {
         if (docCandidate.exists) {
           userHR.accountType = ACCOUNT_TYPE_FISICA;
           notifyListeners();
-          print(userHR);
         } else {
           final docAdmin =
           await firestore.collection('admins').document(userHR.id).get();
@@ -104,6 +101,7 @@ class VagaManager extends ChangeNotifier {
   }
 
   Future<void> _loadAnsweredVacancies() async {
+
     if (userHR.accountType.contains(ACCOUNT_TYPE_FISICA)  ) {
       final QuerySnapshot snapVacancies =
       await firestoreRefVacanciesAnswered.collection('vacanciesAnswered')
@@ -118,8 +116,9 @@ class VagaManager extends ChangeNotifier {
     await firestoreRefVacanciesAnswered.collection('vacancyResponse')
         .getDocuments();
     allVacanciesAnswered =
-    snapVacancies.documents.map((e) => VacanciesAnswered.fromMapUser(e))
+    snapVacancies.documents.map((e) => VacanciesAnswered.fromMapCompany(e))
         .toList();
+
 
     notifyListeners();
     }
