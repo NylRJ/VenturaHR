@@ -1,9 +1,7 @@
-
-
 import 'package:ventura_rh/models/enum/type.dart';
 
-class Phone{
+class Phone {
   int Id;
- String numero;
-  TypePhone Tipo ;
+  String numero;
+  TypePhone Tipo;
 }

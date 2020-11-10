@@ -1,13 +1,15 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:uuid/uuid.dart';
 import 'package:ventura_rh/models/address/address.dart';
+import 'package:ventura_rh/models/vaga/resposta_vaga/vacancies_answered.dart';
+
 
 class UserHR extends ChangeNotifier {
-  UserHR({this.email, this.password, this.name, this.id}) {
+  UserHR({this.email, this.password, this.name, this.id,this.score}) {
+    score  ??= 0.0;
     newImages = [];
     images ??= [];
   }
@@ -23,6 +25,7 @@ class UserHR extends ChangeNotifier {
     cnpj = document.data['cnpj'] as String;
     razaoSocial = document.data['razaoSocial'] as String;
     cpf = document.data['cpf'] as String;
+    score = document.data['score'] as double;
     address = Address.fromMap(document.data['address'] as Map<String, dynamic>);
   }
 
@@ -37,12 +40,14 @@ class UserHR extends ChangeNotifier {
   String cnpj;
   String razaoSocial;
   String cpf;
+  double score;
   String accountType;
   DateTime createdAt;
   DateTime updateAt;
   bool admin = false;
   Address address;
   List<dynamic> newImages;
+  List<VacanciesAnswered> vacanciesAnswered;
   String imageDefault =
       'https://firebasestorage.googleapis.com/v0/b/venturahr-e2021.appspot.com/o/userDefault%2Fperfil.png?alt=media&token=ebaea627-a9a8-421a-8ba9-d1524df5ef63';
 
@@ -179,6 +184,7 @@ class UserHR extends ChangeNotifier {
       'email': email,
       'phone': phone,
       'images': images,
+      'score':score,
       if (address != null) 'address': address.toMap(),
       'cpf': cpf,
       if (createdAt != null) 'createdAt': createdAt,

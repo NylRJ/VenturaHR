@@ -5,10 +5,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:uuid/uuid.dart';
 import 'package:ventura_rh/models/address/address.dart';
 import 'package:ventura_rh/models/users/user_hr.dart';
-
 import 'aggregates/criterio.dart';
 
 class Vaga extends ChangeNotifier {
+
   Vaga.fromDocument(DocumentSnapshot document) {
     id = document.documentID;
     userId = document['userId'] as String;

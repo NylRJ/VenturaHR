@@ -1,21 +1,24 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ventura_rh/models/vaga/vaga.dart';
-import 'package:ventura_rh/models/vaga/vaga_manager.dart';
-import 'package:ventura_rh/screens/address/address_creen.dart';
-import 'package:ventura_rh/screens/base/base_screen.dart';
-import 'package:ventura_rh/screens/login/login_page.dart';
-import 'package:ventura_rh/screens/splash/splash_screen.dart';
-import 'package:ventura_rh/screens/vaga/vaga_details/vaga_details.dart';
-import 'package:ventura_rh/screens/vaga/vaga_details/vaga_details2.dart';
-import 'package:ventura_rh/screens/vaga/vaga_edit/vaga_edit.dart';
-
-
-import 'models/page_manager.dart';
+import 'package:ventura_rh/screen/address/address_creen.dart';
+import 'package:ventura_rh/screen/base/base_screen.dart';
+import 'package:ventura_rh/screen/login/login_page.dart';
+import 'package:ventura_rh/screen/splash/splash_screen.dart';
+import 'package:ventura_rh/screen/vaga/vaga_details/vaga_details2.dart';
+import 'package:ventura_rh/screen/vaga/vaga_edit/vaga_edit.dart';
 import 'models/users/user_manager.dart';
+import 'models/vaga/vaga.dart';
+import 'models/vaga/vaga_manager.dart';
 
 void main() async {
   runApp(MyApp());
+  //final QuerySnapshot doc1 = await Firestore.instance.document('users/k3TMcoVPXbdTXrGMhCrLg7zl31p1').collection('vacanciesAnswered').getDocuments();
+  //final QuerySnapshot doc2 = await Firestore.instance.document('users/B4RFyDIQmIVCCYsfirTqSFQcWxi1').collection('vacancyResponse').getDocuments();
+  //final DocumentSnapshot doc2 = await Firestore.instance.document('users/k3TMcoVPXbdTXrGMhCrLg7zl31p1').collection('vacancyResponse').document('UXLmUvgzRmFCtovMw1VT').get();
+  //final DocumentSnapshot doc3 = await Firestore.instance.document('users/k3TMcoVPXbdTXrGMhCrLg7zl31p1').collection('vacancyResponse').document('UXLmUvgzRmFCtovMw1VT').get();
+ // print(doc1.documents.map((e) => print(e.data)));
+  //print(doc2.documents.map((e) => print(e.data)));
 }
 
 class MyApp extends StatelessWidget {
@@ -84,13 +87,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
             case '/splash':
               return MaterialPageRoute(builder: (_) => SplashScreen());
+
             case '/vagaDetails':
               return MaterialPageRoute(
                   builder: (_) => VagaDetails2(settings.arguments as Vaga));
 
             case '/vaga_edit':
               return MaterialPageRoute(
-                  builder: (_) => VagaEdit(v: settings.arguments as Vaga,));
+                  builder: (_) => VagaEdit(settings.arguments as Vaga,));
 
             default:
               return MaterialPageRoute(builder: (_) => BaseScreen());

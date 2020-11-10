@@ -1,12 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ventura_rh/models/address/address.dart';
 
+class UserCepCreateDto {
+  UserCepCreateDto({this.email, this.password, this.name, this.id});
 
-class UserCepCreateDto
-{
-  UserCepCreateDto({this.email, this.password, this.name,this.id});
-
-  UserCepCreateDto.fromDocument(DocumentSnapshot document){
+  UserCepCreateDto.fromDocument(DocumentSnapshot document) {
     // id = document.documentID;
     //  name = document.data['name'] as String;
     //  email = document.data['email'] as String;
@@ -30,19 +28,17 @@ class UserCepCreateDto
   DocumentReference get firestoreRef =>
       Firestore.instance.document('users/$id');
 
-  CollectionReference get cartReference =>
-      firestoreRef.collection('cart');
+  CollectionReference get cartReference => firestoreRef.collection('cart');
 
-  Future<void> saveData() async{
+  Future<void> saveData() async {
     await firestoreRef.setData(toMap());
   }
 
-  Map<String, dynamic> toMap(){
+  Map<String, dynamic> toMap() {
     return {
-      'name':name,
-      'email':email,
-      if(address != null)
-        'address':address.toMap(),
+      'name': name,
+      'email': email,
+      if (address != null) 'address': address.toMap(),
     };
   }
 
@@ -50,8 +46,4 @@ class UserCepCreateDto
     this.address = address;
     saveData();
   }
-
-
-
-
 }

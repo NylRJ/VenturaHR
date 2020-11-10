@@ -44,7 +44,7 @@ class CustomDrawer extends StatelessWidget {
                   ),
                   if(userManager.isLoggedIn)
                     if(userManager.isCompany())
-                     const DrawerTile(
+                       DrawerTile(
                         iconData:  IconData(0xe9ae, fontFamily: 'ic_mala'),
                         title:'Vagas Publicadas',
                         page: 3,

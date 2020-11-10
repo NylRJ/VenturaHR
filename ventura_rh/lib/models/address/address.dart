@@ -1,6 +1,6 @@
 class Address {
   Address({this.street, this.number, this.complement, this.district,
-      this.zipCode, this.city, this.state, this.lat, this.long,this.siglaState});
+      this.zipCode, this.city, this.state, this.lat, this.long});
 
   String street;
   String number;
@@ -9,7 +9,6 @@ class Address {
   String zipCode;
   String city;
   String state;
-  String siglaState;
 
   double lat;
   double long;
@@ -24,7 +23,7 @@ class Address {
     state = data['state'] as String;
     lat = data['lat'] as double;
     long = data['long'] as double;
-    siglaState = data['siglaState'] as String;
+
   }
 
   @override
@@ -40,10 +39,10 @@ class Address {
       'district':district,
       'zipCode':zipCode,
       'city':city,
-      'siglaState':siglaState,
       'state':state,
       'lat':lat,
       'long':long,
+
     };
   }
 
