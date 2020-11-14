@@ -20,16 +20,13 @@ class VagasPublicadas extends StatelessWidget {
       body: Consumer<VagaManager>(
         builder: (_, vagaManager, __) {
           final List<Vaga>filteredVagas = [];
-          vagaManager.allVagas.map<Vaga>((v) {
+          vagaManager.allVagas.map((v) {
             if(v.userId == userManager.userHR.id) {
-              filteredVagas.add(v);
-
-            }else{
-
+               filteredVagas.add(v);
             }
           } ).toList();
           return ListView.builder(
-              padding: EdgeInsets.all(4),
+              padding: const EdgeInsets.all(4),
               itemCount: filteredVagas.length,
               itemBuilder: (_, index) {
                 return LimitedBox(

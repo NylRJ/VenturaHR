@@ -56,8 +56,10 @@ class _MyHomePageState extends State<MyHomePage> {
           create: (_) => UserManager(),
           lazy: false,
         ),
-        ChangeNotifierProvider(
+        ChangeNotifierProxyProvider<UserManager, VagaManager>(
           create: (_) => VagaManager(),
+          update: (_,userManager, vagaManager) =>
+          vagaManager..updateUser(userManager),
           lazy: false,
         ),
 

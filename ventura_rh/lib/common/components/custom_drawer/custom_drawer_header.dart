@@ -36,7 +36,7 @@ class CustomDrawerHeader extends StatelessWidget {
                 ),
               ),
               if (!userManager.isLoggedIn)
-              Icon(Icons.person, color: Colors.white,size: 35,),
+             const Icon(Icons.person, color: Colors.white,size: 35,),
 
               //'Olá ${userManager.user?.name ?? ''}'
               GestureDetector(

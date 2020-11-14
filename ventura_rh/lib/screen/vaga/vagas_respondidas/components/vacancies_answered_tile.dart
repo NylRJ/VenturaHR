@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:ventura_rh/models/users/user_manager.dart';
 import 'package:ventura_rh/models/vaga/resposta_vaga/vacancies_answered.dart';
 import 'package:ventura_rh/utils/app_colors.dart';
@@ -20,7 +20,9 @@ class VacanciesAnsweredTile extends StatelessWidget {
     final userManager  = context.watch<UserManager>() ;
     return GestureDetector(
       onTap:userManager.isLoggedIn? (){
-        Navigator.of(context).pushNamed('/vagaDetails',arguments: vacanciesAnswered);
+        if (!userManager.isCompany()) {
+          Navigator.of(context).pushNamed('/vagaDetails',arguments: vacanciesAnswered.vaga);
+        }
       }:(){
         Scaffold.of(context).showSnackBar(
           SnackBar(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ventura_rh/models/users/user_manager.dart';
 import 'package:ventura_rh/models/vaga/vaga.dart';
+import 'package:ventura_rh/models/vaga/vaga_manager.dart';
 import 'package:ventura_rh/utils/app_colors.dart';
 import 'package:ventura_rh/utils/responsive.dart';
 import 'package:ventura_rh/widgets/rounded_button.dart';
@@ -18,6 +19,7 @@ class VagaDetails2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
+    final vagaManager = context.watch<VagaManager>();
 
 
     return Consumer<UserManager>(
@@ -100,8 +102,14 @@ class VagaDetails2 extends StatelessWidget {
                       RoundedButton(
                         disableColor: AppColors.primaryColorlighter,
                           backgroundColor: AppColors.primaryColor,
-                          onPressed: (){
+                          onPressed:vagaManager.vacancyIsAnswered(vaga)?null:(){
                           //TODO:SALVAR RESPOSTA
+                          //   vagaManager.vacanciesAnsweredUser.saveUser();
+                          //   vagaManager.vacanciesAnsweredCompany.saveCompany();
+                            print(vagaManager.vacanciesAnsweredUser);
+                            print(vagaManager.vacanciesAnsweredCompany);
+
+                            vagaManager.updateListVacanciesAnswered();
                           },
                           label: 'Responder'
                       )

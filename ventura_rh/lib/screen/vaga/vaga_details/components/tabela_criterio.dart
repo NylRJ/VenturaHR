@@ -4,6 +4,7 @@ import 'package:ventura_rh/models/users/user_manager.dart';
 import 'package:ventura_rh/models/vaga/resposta_vaga/criteria_answer.dart';
 import 'package:ventura_rh/models/vaga/resposta_vaga/vacancies_answered.dart';
 import 'package:ventura_rh/models/vaga/vaga.dart';
+import 'package:ventura_rh/models/vaga/vaga_manager.dart';
 
 import 'dropdown_custon.dart';
 
@@ -20,15 +21,21 @@ class TabelaCriterio extends StatefulWidget {
 }
 
 class _TabelaCriterioState extends State<TabelaCriterio> {
-  VacanciesAnswered vacanciesAnswered;
+
   @override
   Widget build(BuildContext context) {
+ final vagaManager = VagaManager();
+
     return SingleChildScrollView(
 
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Consumer<UserManager>(
           builder: (_,userManager,__){
+
+
+            vagaManager.vacanciesAnsweredCompany = VacanciesAnswered.responseVacancyCompany(vaga: widget.vaga,userHR: userManager.userHR);
+            vagaManager.vacanciesAnsweredUser = VacanciesAnswered.responseVacancyUser(vaga: widget.vaga,userHR: userManager.userHR);
 
             return FormField<List<dynamic>>(
               initialValue: widget.vaga.criterios,
@@ -68,7 +75,7 @@ class _TabelaCriterioState extends State<TabelaCriterio> {
                                 });
                               },
                               tooltip: "To display first name of the Name",
-                              label: Text(
+                              label:const Text(
                                 'PMD',
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               )),
@@ -152,7 +159,7 @@ class _TabelaCriterioState extends State<TabelaCriterio> {
                         if (userManager.isLoggedIn)
                           if(!userManager.isCompany() )
                             DataCell(
-                                DropdownCuston(),
+                                DropdownCuston(criterio: e,vagaManager:vagaManager),
                                 showEditIcon: false,
                                 placeholder: false
                             ),

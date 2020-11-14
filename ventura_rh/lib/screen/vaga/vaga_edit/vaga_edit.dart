@@ -209,6 +209,7 @@ class VagaEdit extends StatelessWidget {
                             if (formKey.currentState.validate()) {
                               // ignore: avoid_print
                               formKey.currentState.save();
+                             // vaga.save();
                               context.read<VagaManager>().update(vaga);
                               Navigator.of(context).pop();
 

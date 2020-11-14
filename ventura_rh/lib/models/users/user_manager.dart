@@ -27,6 +27,12 @@ class UserManager extends ChangeNotifier {
 
   bool get loading => _loading;
 
+  set loading(bool value) {
+    _loading = value;
+    notifyListeners();
+  }
+
+
   bool get isLoggedIn => userHR != null;
 
   Future<void> signIn(
@@ -46,10 +52,6 @@ class UserManager extends ChangeNotifier {
     loading = false;
   }
 
-  set loading(bool value) {
-    _loading = value;
-    notifyListeners();
-  }
 
   Future<void> signUp(
       {UserHR user, Function onFail, Function onSuccess}) async {

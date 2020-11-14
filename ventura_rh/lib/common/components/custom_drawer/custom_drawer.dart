@@ -53,9 +53,9 @@ class CustomDrawer extends StatelessWidget {
 
                   if(userManager.isLoggedIn)
                    Transform.translate(
-                     offset: Offset(-16,0),
+                     offset: userManager.isCompany()?const Offset(-16,0):const Offset(0,0),
                      child: DrawerTile(
-                       size: 45,
+                       size:!userManager.isCompany()?30:45,
                       iconData: userManager.isCompany()?  IconData(0xe901, fontFamily: 'ranking_vagas'):const IconData(0xe900, fontFamily: 'editar_vagas'),
                       title: userManager.isCompany()?' Ranking':'Vagas Respondidas',
                       page: 4,
