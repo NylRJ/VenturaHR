@@ -38,6 +38,25 @@ class CriteriaAnswer {
     );
   }
 
+  void updatePm(){
+    switch (answer) {
+      case 'Júnior':
+        pm = 2;
+        break;
+      case 'Pleno':
+        pm = 3;
+        break;
+      case 'Sênior':
+        pm = 4;
+        break;
+      case 'Master':
+        pm = 5;
+        break;
+      default:
+        pm = 1;
+    }
+  }
+
   Map<String, dynamic> toMap() {
     return {'name': name, 'answer': answer, 'pm': pm, 'weight': weight};
   }

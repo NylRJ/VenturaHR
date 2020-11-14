@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ventura_rh/models/users/user_hr.dart';
-import 'package:ventura_rh/models/vaga/aggregates/criterio.dart';
 import 'package:ventura_rh/models/vaga/vaga.dart';
 
 import 'criteria_answer.dart';
@@ -67,10 +66,8 @@ class VacanciesAnswered extends ChangeNotifier {
 
   Firestore firestore = Firestore.instance;
 
-
   DocumentReference get firestoreRef =>
       firestore.document('users/${userHR.id}');
-
 
   Vaga vaga;
   String id;
@@ -119,41 +116,64 @@ class VacanciesAnswered extends ChangeNotifier {
     List<CriteriaAnswer> listCriteriaAnswerNew = List.from(listCriteriaAnswer);
     int index;
 
-      if (listCriteriaAnswerNew.isNotEmpty) {
-        listCriteriaAnswerNew.forEach((e){
-          if (e.name != criteriaAnswer.name) {
-            listCriteriaAnswer.add(criteriaAnswer);
-            listCriteriaAnswerNew = List.from(listCriteriaAnswer);
-          } else {
-            index = listCriteriaAnswer
-                .indexWhere((element) => element.name == criteriaAnswer.name);
-            listCriteriaAnswer.removeAt(index);
-            listCriteriaAnswer.add(criteriaAnswer);
-            listCriteriaAnswerNew = List.from(listCriteriaAnswer);
-          }
-        } );
-      }  else{
-        listCriteriaAnswer.add(criteriaAnswer);
-        listCriteriaAnswerNew = List.from(listCriteriaAnswer);
-      }
+    if (listCriteriaAnswerNew.isNotEmpty) {
 
-    //     listCriteriaAnswer.forEach((e) {
-    //     if (!(e.name == criteriaAnswer.name)) {
-    //       listCriteriaAnswer.add(criteriaAnswer);
-    //     } else {
-    //       index = listCriteriaAnswer
-    //           .indexWhere((element) => element.name == criteriaAnswer.name);
-    //       listCriteriaAnswer.removeAt(index);
-    //       listCriteriaAnswer.add(criteriaAnswer);
-    //     }
-    //
-    // });
+        if (!listCriteriaAnswerNew.contains(criteriaAnswer)) {
+          listCriteriaAnswer.add(criteriaAnswer);
+        } else {
+          index = listCriteriaAnswer
+              .indexWhere((element) => element.name == criteriaAnswer.name);
+          listCriteriaAnswer.removeAt(index);
+          listCriteriaAnswer.insert(index, criteriaAnswer);
 
+        }
 
+    } else {
+      listCriteriaAnswer.add(criteriaAnswer);
+
+    }
   }
-  List<Map<String, dynamic>> exportSizeList(){
+
+  // void updateListCriteriaAnswer(CriteriaAnswer criteriaAnswer) {
+  //   List<CriteriaAnswer> listUpdateCriteriaAnswerNew =  [];
+  //
+  //   int index;
+  //
+  //   if (listUpdateCriteriaAnswerNew.isNotEmpty) {
+  //     listUpdateCriteriaAnswerNew.forEach((e) {
+  //       if (e.name != criteriaAnswer.name) {
+  //         listCriteriaAnswer.add(criteriaAnswer);
+  //         listUpdateCriteriaAnswerNew = List.from(listCriteriaAnswer);
+  //       } else {
+  //         index = listCriteriaAnswer
+  //             .indexWhere((element) => element.name == criteriaAnswer.name);
+  //         listCriteriaAnswer.removeAt(index);
+  //         listCriteriaAnswer.add(criteriaAnswer);
+  //         listUpdateCriteriaAnswerNew = List.from(listCriteriaAnswer);
+  //       }
+  //     });
+  //   } else {
+  //     listCriteriaAnswer.add(criteriaAnswer);
+  //     listCriteriaAnswerNew = List.from(listCriteriaAnswer);
+  //   }
+  //
+  //   //     listCriteriaAnswer.forEach((e) {
+  //   //     if (!(e.name == criteriaAnswer.name)) {
+  //   //       listCriteriaAnswer.add(criteriaAnswer);
+  //   //     } else {
+  //   //       index = listCriteriaAnswer
+  //   //           .indexWhere((element) => element.name == criteriaAnswer.name);
+  //   //       listCriteriaAnswer.removeAt(index);
+  //   //       listCriteriaAnswer.add(criteriaAnswer);
+  //   //     }
+  //   //
+  //   // });
+  // }
+
+  List<Map<String, dynamic>> exportSizeList() {
     return listCriteriaAnswer.map((c) => c.toMap()).toList();
   }
+
   Future<void> saveCompany() async {
     loading = true;
 
@@ -166,14 +186,17 @@ class VacanciesAnswered extends ChangeNotifier {
       'userImage': userImage,
       'companyImage': companyImage,
       'score': calc2(),
-      'listCriteriaAnswer':exportSizeList()
+      'listCriteriaAnswer': exportSizeList()
     };
 
     if (id == null) {
-      final  doc = await firestoreRef.collection('vacancyResponse').add(data);
+      final doc = await firestoreRef.collection('vacancyResponse').add(data);
       id = doc.documentID;
     } else {
-      await firestoreRef.collection('vacancyResponse').document('$id').updateData(data);
+      await firestoreRef
+          .collection('vacancyResponse')
+          .document('$id')
+          .updateData(data);
     }
 
     loading = false;
@@ -186,14 +209,17 @@ class VacanciesAnswered extends ChangeNotifier {
       'titleVacancy': titleVacancy,
       'companyTitle': companyTitle,
       'companyImage': companyImage,
-      'listCriteriaAnswer':exportSizeList()
+      'listCriteriaAnswer': exportSizeList()
     };
 
     if (id == null) {
-      final  doc = await firestoreRef.collection('vacanciesAnswered').add(data);
+      final doc = await firestoreRef.collection('vacanciesAnswered').add(data);
       id = doc.documentID;
     } else {
-      await firestoreRef.collection('vacanciesAnswered').document('$id').updateData(data);
+      await firestoreRef
+          .collection('vacanciesAnswered')
+          .document('$id')
+          .updateData(data);
     }
   }
 }
