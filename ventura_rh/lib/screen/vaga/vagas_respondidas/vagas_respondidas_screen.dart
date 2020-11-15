@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ventura_rh/common/components/custom_drawer/custom_drawer.dart';
 import 'package:provider/provider.dart';
 import 'package:ventura_rh/models/users/user_manager.dart';
-import 'package:ventura_rh/models/vaga/resposta_vaga/vacancies_answered.dart';
-import 'package:ventura_rh/models/vaga/vaga.dart';
 import 'package:ventura_rh/models/vaga/vaga_manager.dart';
-import 'package:ventura_rh/screen/vaga/components/vaga_list_tile.dart';
-
 import 'components/vacancies_answered_tile.dart';
 
 class VagasRespondidas extends StatelessWidget {

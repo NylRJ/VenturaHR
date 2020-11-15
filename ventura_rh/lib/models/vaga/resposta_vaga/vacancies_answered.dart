@@ -13,7 +13,7 @@ class VacanciesAnswered extends ChangeNotifier {
     vagaId = document['vagaId'] as String;
     companyTitle = document['companyTitle'] as String;
     titleVacancy = document['titleVacancy'] as String;
-    userImage = document['image'] as String;
+    companyImage = document['companyImage'] as String;
     firestore
         .document('vaga/$vagaId')
         .get()
@@ -46,8 +46,7 @@ class VacanciesAnswered extends ChangeNotifier {
   VacanciesAnswered.responseVacancyUser({this.vaga, this.userHR}) {
     vagaId = vaga.id;
     userId = userHR.id;
-    userName = userHR.name;
-    userImage = userHR.images.first;
+    companyImage = vaga.images.first;
     companyTitle = vaga.companyTitle;
     titleVacancy = vaga.titleVacancy;
     listCriteriaAnswer = [];
@@ -60,14 +59,18 @@ class VacanciesAnswered extends ChangeNotifier {
     userImage = userHR.images.first;
     companyTitle = vaga.companyTitle;
     titleVacancy = vaga.titleVacancy;
-    //score = double.tryParse(calc2(vaga.criterios).toStringAsFixed(2));
     listCriteriaAnswer = [];
+    score = 0;
   }
 
   Firestore firestore = Firestore.instance;
 
-  DocumentReference get firestoreRef =>
+  DocumentReference get firestoreUser =>
       firestore.document('users/${userHR.id}');
+
+  DocumentReference get firestoreCompany =>
+      firestore.document('users/${vaga.userId}');
+
 
   Vaga vaga;
   String id;
@@ -98,14 +101,14 @@ class VacanciesAnswered extends ChangeNotifier {
   double calc2() {
     double sumProduct = 0.0;
     double sumWeight = 0.0;
-    listCriteriaAnswer.map((e) {
+    listCriteriaAnswer.forEach((e) {
       sumProduct += e.pm * e.weight;
       sumWeight += e.weight;
     });
 
-    score = sumProduct / sumWeight;
+    final scor = (sumProduct / sumWeight).toStringAsFixed(2);
 
-    return score;
+    return double.tryParse(scor) ;
   }
 
   String toString() {
@@ -146,22 +149,23 @@ class VacanciesAnswered extends ChangeNotifier {
     loading = true;
 
     final Map<String, dynamic> data = {
+      'id':id,
       'vagaId': vagaId,
       'userId': userId,
       'userName': userName,
       'titleVacancy': titleVacancy,
       'companyTitle': companyTitle,
       'userImage': userImage,
-      'companyImage': companyImage,
       'score': calc2(),
-      'listCriteriaAnswer': exportSizeList()
+      'answerCriteria': exportSizeList()
     };
 
     if (id == null) {
-      final doc = await firestoreRef.collection('vacancyResponse').add(data);
+      final doc = await firestoreCompany.collection('vacancyResponse').add(data);
       id = doc.documentID;
+      firestoreCompany.collection('vacancyResponse').document('$id').updateData({'id': id});
     } else {
-      await firestoreRef
+      await firestoreCompany
           .collection('vacancyResponse')
           .document('$id')
           .updateData(data);
@@ -173,21 +177,27 @@ class VacanciesAnswered extends ChangeNotifier {
   Future<void> saveUser() async {
     loading = true;
     final Map<String, dynamic> data = {
+      'id':id,
       'vagaId': vagaId,
       'titleVacancy': titleVacancy,
       'companyTitle': companyTitle,
       'companyImage': companyImage,
-      'listCriteriaAnswer': exportSizeList()
+      'answerCriteria': exportSizeList()
     };
 
     if (id == null) {
-      final doc = await firestoreRef.collection('vacanciesAnswered').add(data);
+      final doc = await firestoreUser.collection('vacanciesAnswered').add(data);
       id = doc.documentID;
+      firestoreUser.collection('vacanciesAnswered').document('$id').updateData({'id': id});
     } else {
-      await firestoreRef
+      await firestoreUser
           .collection('vacanciesAnswered')
           .document('$id')
           .updateData(data);
     }
-  }
+
+     loading = false;
+
+
+    }
 }

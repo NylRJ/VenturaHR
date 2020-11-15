@@ -52,7 +52,7 @@ class VacanciesAnsweredTile extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                      image: NetworkImage(vacanciesAnswered.userImage),
+                      image: NetworkImage(vacanciesAnswered.companyImage),
                       fit: BoxFit.cover,
                     ),
                   ),

@@ -33,7 +33,7 @@ class _TabelaCriterioState extends State<TabelaCriterio> {
           builder: (_,userManager,__){
 
             vagaManager.addVacanciesAnsweredUser(userManager.userHR,widget.vaga);
-            print(vagaManager.vacanciesAnsweredCompany);
+
 
         //    print(widget.vaga.criterios,);
 

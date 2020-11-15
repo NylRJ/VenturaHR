@@ -31,7 +31,7 @@ class VagaManager extends ChangeNotifier {
   VacanciesAnswered vacanciesAnsweredUser;
   VacanciesAnswered vacanciesAnsweredCompany;
 
-  VacanciesAnswered addVacanciesAnsweredUser(UserHR userHR, Vaga vaga){
+  void addVacanciesAnsweredUser(UserHR userHR, Vaga vaga){
     vacanciesAnsweredUser = VacanciesAnswered.responseVacancyUser(userHR:userHR, vaga: vaga);
     vacanciesAnsweredCompany = VacanciesAnswered.responseVacancyCompany(userHR: userHR, vaga:vaga);
 

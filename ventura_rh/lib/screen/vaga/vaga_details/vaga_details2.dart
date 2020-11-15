@@ -112,6 +112,7 @@ class VagaDetails2 extends StatelessWidget {
                            print(vagaManager.vacanciesAnsweredUser);
 
                            vagaManager.updateListVacanciesAnswered();
+                           Navigator.of(context).pop();
                           },
                           label: 'Responder'
                       )
