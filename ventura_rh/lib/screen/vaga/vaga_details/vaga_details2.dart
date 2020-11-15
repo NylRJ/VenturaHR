@@ -17,15 +17,15 @@ class VagaDetails2 extends StatelessWidget {
 
   final Vaga vaga;
 
+
   @override
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
-    final vagaManager = context.watch<VagaManager>();
     final userManager = context.watch<UserManager>();
 
 
-    return Consumer<UserManager>(
-      builder: (_,userManager,__){
+    return Consumer<VagaManager>(
+      builder: (_,vagaManager,__){
         return Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(
@@ -106,12 +106,12 @@ class VagaDetails2 extends StatelessWidget {
                           backgroundColor: AppColors.primaryColor,
                           onPressed:vagaManager.vacancyIsAnswered(vaga)?null:(){
                           //TODO:SALVAR RESPOSTA
-                          //   vagaManager.vacanciesAnsweredUser.saveUser();
-                          //   vagaManager.vacanciesAnsweredCompany.saveCompany();
-                            print(vagaManager.vacanciesAnsweredUser);
-                            print(vagaManager.vacanciesAnsweredCompany);
+                          vagaManager.vacanciesAnsweredUser.saveUser();
+                          vagaManager.vacanciesAnsweredCompany.saveCompany();
 
-                            vagaManager.updateListVacanciesAnswered();
+                           print(vagaManager.vacanciesAnsweredUser);
+
+                           vagaManager.updateListVacanciesAnswered();
                           },
                           label: 'Responder'
                       )

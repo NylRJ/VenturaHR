@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ventura_rh/models/users/user_manager.dart';
-import 'package:ventura_rh/models/vaga/resposta_vaga/criteria_answer.dart';
-import 'package:ventura_rh/models/vaga/resposta_vaga/vacancies_answered.dart';
 import 'package:ventura_rh/models/vaga/vaga.dart';
 import 'package:ventura_rh/models/vaga/vaga_manager.dart';
 
@@ -24,7 +22,8 @@ class _TabelaCriterioState extends State<TabelaCriterio> {
 
   @override
   Widget build(BuildContext context) {
- final vagaManager = VagaManager();
+ final vagaManager = context.watch<VagaManager>();
+ print(widget.vaga.criterios,);
 
     return SingleChildScrollView(
 
@@ -33,9 +32,10 @@ class _TabelaCriterioState extends State<TabelaCriterio> {
         child: Consumer<UserManager>(
           builder: (_,userManager,__){
 
+            vagaManager.addVacanciesAnsweredUser(userManager.userHR,widget.vaga);
+            print(vagaManager.vacanciesAnsweredCompany);
 
-            vagaManager.vacanciesAnsweredCompany = VacanciesAnswered.responseVacancyCompany(vaga: widget.vaga,userHR: userManager.userHR);
-            vagaManager.vacanciesAnsweredUser = VacanciesAnswered.responseVacancyUser(vaga: widget.vaga,userHR: userManager.userHR);
+        //    print(widget.vaga.criterios,);
 
             return FormField<List<dynamic>>(
               initialValue: widget.vaga.criterios,

@@ -133,43 +133,10 @@ class VacanciesAnswered extends ChangeNotifier {
       listCriteriaAnswer.add(criteriaAnswer);
 
     }
+    notifyListeners();
   }
 
-  // void updateListCriteriaAnswer(CriteriaAnswer criteriaAnswer) {
-  //   List<CriteriaAnswer> listUpdateCriteriaAnswerNew =  [];
-  //
-  //   int index;
-  //
-  //   if (listUpdateCriteriaAnswerNew.isNotEmpty) {
-  //     listUpdateCriteriaAnswerNew.forEach((e) {
-  //       if (e.name != criteriaAnswer.name) {
-  //         listCriteriaAnswer.add(criteriaAnswer);
-  //         listUpdateCriteriaAnswerNew = List.from(listCriteriaAnswer);
-  //       } else {
-  //         index = listCriteriaAnswer
-  //             .indexWhere((element) => element.name == criteriaAnswer.name);
-  //         listCriteriaAnswer.removeAt(index);
-  //         listCriteriaAnswer.add(criteriaAnswer);
-  //         listUpdateCriteriaAnswerNew = List.from(listCriteriaAnswer);
-  //       }
-  //     });
-  //   } else {
-  //     listCriteriaAnswer.add(criteriaAnswer);
-  //     listCriteriaAnswerNew = List.from(listCriteriaAnswer);
-  //   }
-  //
-  //   //     listCriteriaAnswer.forEach((e) {
-  //   //     if (!(e.name == criteriaAnswer.name)) {
-  //   //       listCriteriaAnswer.add(criteriaAnswer);
-  //   //     } else {
-  //   //       index = listCriteriaAnswer
-  //   //           .indexWhere((element) => element.name == criteriaAnswer.name);
-  //   //       listCriteriaAnswer.removeAt(index);
-  //   //       listCriteriaAnswer.add(criteriaAnswer);
-  //   //     }
-  //   //
-  //   // });
-  // }
+
 
   List<Map<String, dynamic>> exportSizeList() {
     return listCriteriaAnswer.map((c) => c.toMap()).toList();

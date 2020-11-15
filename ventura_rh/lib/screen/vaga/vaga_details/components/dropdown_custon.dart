@@ -36,7 +36,7 @@ class _DropdownCustonState extends State<DropdownCuston> {
 
   @override
   Widget build(BuildContext context) {
-    //final vagaManager = context.watch<VagaManager>();
+
 
 
     if (cont <1) {
@@ -47,6 +47,7 @@ class _DropdownCustonState extends State<DropdownCuston> {
       );
       cont++;
       widget.vagaManager.vacanciesAnsweredUser.updateListCriteriaAnswer(criteriaAnswer);
+      widget.vagaManager.vacanciesAnsweredCompany.updateListCriteriaAnswer(criteriaAnswer);
 
     }
 

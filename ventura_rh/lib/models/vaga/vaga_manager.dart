@@ -28,10 +28,14 @@ class VagaManager extends ChangeNotifier {
 
   UserHR userHR;
   //CriteriaAnswer criteriaAnswer = CriteriaAnswer();
-  VacanciesAnswered vacanciesAnsweredUser ;
-  VacanciesAnswered vacanciesAnsweredCompany ;
+  VacanciesAnswered vacanciesAnsweredUser;
+  VacanciesAnswered vacanciesAnsweredCompany;
 
+  VacanciesAnswered addVacanciesAnsweredUser(UserHR userHR, Vaga vaga){
+    vacanciesAnsweredUser = VacanciesAnswered.responseVacancyUser(userHR:userHR, vaga: vaga);
+    vacanciesAnsweredCompany = VacanciesAnswered.responseVacancyCompany(userHR: userHR, vaga:vaga);
 
+  }
 
   static String ACCOUNT_TYPE_FISICA = 'fisica';
   static String ACCOUNT_TYPE_JURIDICA = 'juridica';
