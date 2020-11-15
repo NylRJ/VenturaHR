@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ventura_rh/models/users/user_manager.dart';
+import 'package:ventura_rh/models/vaga/resposta_vaga/vacancies_answered.dart';
 import 'package:ventura_rh/models/vaga/vaga.dart';
 import 'package:ventura_rh/models/vaga/vaga_manager.dart';
 import 'package:ventura_rh/utils/app_colors.dart';
@@ -20,6 +21,7 @@ class VagaDetails2 extends StatelessWidget {
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
     final vagaManager = context.watch<VagaManager>();
+    final userManager = context.watch<UserManager>();
 
 
     return Consumer<UserManager>(

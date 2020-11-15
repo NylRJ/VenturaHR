@@ -23,7 +23,7 @@ class _DropdownCustonState extends State<DropdownCuston> {
   List<String> drop = ['Trainee', 'Júnior', 'Pleno', 'Sênior', 'Master'];
   int cont = 0;
   String selected = 'Trainee';
-
+  CriteriaAnswer criteriaAnswer;
   void loadData() {
     lisDrop = [];
     lisDrop = drop
@@ -37,16 +37,17 @@ class _DropdownCustonState extends State<DropdownCuston> {
   @override
   Widget build(BuildContext context) {
     //final vagaManager = context.watch<VagaManager>();
-    int value = 0;
-    CriteriaAnswer criteriaAnswer;
-    if (value <1) {
+
+
+    if (cont <1) {
       criteriaAnswer = CriteriaAnswer(
         name: widget.criterio.name,
         answer: selected,
         weight: widget.criterio.weight,
       );
-      value++;
+      cont++;
       widget.vagaManager.vacanciesAnsweredUser.updateListCriteriaAnswer(criteriaAnswer);
+
     }
 
     loadData();
@@ -62,10 +63,10 @@ class _DropdownCustonState extends State<DropdownCuston> {
           });
 
 
-                  criteriaAnswer.name = widget.criterio.name;
-                  criteriaAnswer.answer = selected;
-                  criteriaAnswer.weight = widget.criterio.weight;
-                  criteriaAnswer.updatePm();
+          criteriaAnswer.name = widget.criterio.name;
+          criteriaAnswer.answer = selected;
+          criteriaAnswer.weight = widget.criterio.weight;
+          criteriaAnswer.updatePm();
 
 
           widget.vagaManager.vacanciesAnsweredUser.updateListCriteriaAnswer(criteriaAnswer);

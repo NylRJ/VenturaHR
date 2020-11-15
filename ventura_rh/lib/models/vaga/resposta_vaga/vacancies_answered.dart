@@ -121,6 +121,7 @@ class VacanciesAnswered extends ChangeNotifier {
         if (!listCriteriaAnswerNew.contains(criteriaAnswer)) {
           listCriteriaAnswer.add(criteriaAnswer);
         } else {
+          //mudar listCriteriaAnswer por listCriteriaAnswerNew
           index = listCriteriaAnswer
               .indexWhere((element) => element.name == criteriaAnswer.name);
           listCriteriaAnswer.removeAt(index);

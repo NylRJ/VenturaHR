@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ventura_rh/models/users/user_hr.dart';
 import 'package:ventura_rh/models/users/user_manager.dart';
+import 'package:ventura_rh/models/vaga/resposta_vaga/criteria_answer.dart';
 import 'package:ventura_rh/models/vaga/resposta_vaga/vacancies_answered.dart';
 import 'package:ventura_rh/models/vaga/vaga.dart';
 
@@ -26,23 +27,10 @@ class VagaManager extends ChangeNotifier {
       firestore.document('users/${userHR.id}');
 
   UserHR userHR;
-  VacanciesAnswered _vacanciesAnsweredUser ;
-  VacanciesAnswered _vacanciesAnsweredCompany  ;
+  //CriteriaAnswer criteriaAnswer = CriteriaAnswer();
+  VacanciesAnswered vacanciesAnsweredUser ;
+  VacanciesAnswered vacanciesAnsweredCompany ;
 
-
-  VacanciesAnswered get vacanciesAnsweredUser => _vacanciesAnsweredUser;
-
-  set vacanciesAnsweredUser(VacanciesAnswered vacanciesAnsweredUser) {
-    _vacanciesAnsweredUser = vacanciesAnsweredUser;
-    notifyListeners();
-  }
-
-  VacanciesAnswered get vacanciesAnsweredCompany => _vacanciesAnsweredCompany;
-
-  set vacanciesAnsweredCompany(VacanciesAnswered vacanciesAnsweredCompany) {
-    _vacanciesAnsweredCompany = vacanciesAnsweredCompany;
-    notifyListeners();
-  }
 
 
   static String ACCOUNT_TYPE_FISICA = 'fisica';
