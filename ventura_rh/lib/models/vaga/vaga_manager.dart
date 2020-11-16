@@ -143,7 +143,7 @@ class VagaManager extends ChangeNotifier {
   bool vacancyIsAnswered(Vaga vaga) {
     bool value = false;
       allVacanciesAnswered.forEach((e) {
-        if(e.vaga.id == vaga.id){
+        if(e.vagaId == vaga.id){
           value =true;
         }
       });

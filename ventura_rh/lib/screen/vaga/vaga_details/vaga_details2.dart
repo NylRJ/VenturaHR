@@ -36,7 +36,7 @@ class VagaDetails2 extends StatelessWidget {
             centerTitle: true,
             actions: [
             if(userManager.isLoggedIn)
-              if ( userManager.isCompany()  && userManager.userHR.id == vaga.userId )
+              if ( userManager.isCompany()  && userManager.userHR.id == vaga.userId && !vagaManager.vacancyIsAnswered(vaga) )
             IconButton(
             icon: Icon(Icons.edit),
                   onPressed: (){

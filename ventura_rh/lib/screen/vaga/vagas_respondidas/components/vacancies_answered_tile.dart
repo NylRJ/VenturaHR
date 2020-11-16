@@ -98,7 +98,7 @@ class VacanciesAnsweredTile extends StatelessWidget {
 
             children: [
               Transform.translate(
-                offset: Offset(100,0),
+                offset: isTablet?Offset(100,0):Offset(10,0),
                 child: Material(
                   elevation: 14.0,
                   borderRadius: isTablet?BorderRadius.circular(70):BorderRadius.circular(60),
@@ -119,7 +119,7 @@ class VacanciesAnsweredTile extends StatelessWidget {
                 width: 25,
               ),
               Transform.translate(
-                offset: Offset(160,20),
+                offset: isTablet?Offset(160,20):Offset(5,20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
