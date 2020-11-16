@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:ventura_rh/models/users/user_manager.dart';
 import 'package:ventura_rh/models/vaga/resposta_vaga/vacancies_answered.dart';
+import 'package:ventura_rh/screen/vaga/vaga_details/vaga_details2.dart';
 import 'package:ventura_rh/utils/app_colors.dart';
 import 'package:ventura_rh/utils/responsive.dart';
 import 'package:provider/provider.dart';
@@ -21,7 +22,8 @@ class VacanciesAnsweredTile extends StatelessWidget {
     return GestureDetector(
       onTap:userManager.isLoggedIn? (){
         if (!userManager.isCompany()) {
-          Navigator.of(context).pushNamed('/vagaDetails',arguments: vacanciesAnswered.vaga);
+          Navigator.of(context).pushNamed('/vagaDetails',arguments: vacanciesAnswered.vaga,);
+
         }
       }:(){
         Scaffold.of(context).showSnackBar(
@@ -41,32 +43,38 @@ class VacanciesAnsweredTile extends StatelessWidget {
           elevation: 14.0,
           borderRadius: isTablet?BorderRadius.circular(40):BorderRadius.circular(24),
           child: Transform.translate(
-            offset:isTablet ?const Offset(40,0.0):const Offset(0.0,0.0),
+            offset:isTablet ?const Offset(50,0.0):const Offset(0.0,0.0),
             child: Row(
               children: [
                 //Logo
-                Container(
-                  width: responsive.ip(15),
-                  height: responsive.ip(14),
-                  margin:const EdgeInsets.fromLTRB(0, 0, 5, 0),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: NetworkImage(vacanciesAnswered.companyImage),
-                      fit: BoxFit.cover,
+                Transform.translate(
+                  offset:isTablet ?const Offset(100,0.0):const Offset(10,0.0),
+                  child: Material(
+                    elevation: 14.0,
+                    borderRadius: isTablet?BorderRadius.circular(79):BorderRadius.circular(60),
+                    child: Container(
+                      width:isTablet?160:120,
+                      height:isTablet?160:120,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: NetworkImage(vacanciesAnswered.companyImage),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                   ),
                 ),
                 Transform.translate(
-                  offset:isTablet ? const Offset(20,20):const Offset(15,20),
+                  offset:isTablet ? const Offset(160,20):const Offset(20,20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     //mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                     children: [
-                      Text(vacanciesAnswered.companyTitle,style: const TextStyle(fontSize: 24,fontWeight: FontWeight.bold),),
+                      Text(vacanciesAnswered.companyTitle,style:  TextStyle(fontSize:isTablet?25:24,fontWeight: FontWeight.bold),),
                       const SizedBox(height: 1),
-                      Text(vacanciesAnswered.titleVacancy),
+                      Text(vacanciesAnswered.titleVacancy, style:  TextStyle(fontSize:isTablet?22:21,),),
                       SizedBox(height: responsive.ip(1.2),),
 
 
@@ -90,13 +98,13 @@ class VacanciesAnsweredTile extends StatelessWidget {
 
             children: [
               Transform.translate(
-                offset: Offset(10,0),
+                offset: Offset(100,0),
                 child: Material(
                   elevation: 14.0,
-                  borderRadius: isTablet?BorderRadius.circular(40):BorderRadius.circular(60),
+                  borderRadius: isTablet?BorderRadius.circular(70):BorderRadius.circular(60),
                   child: Container(
-                    width: 120,
-                    height: 120,
+                    width:isTablet?160:120,
+                    height:isTablet?160:120,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
@@ -111,31 +119,31 @@ class VacanciesAnsweredTile extends StatelessWidget {
                 width: 25,
               ),
               Transform.translate(
-                offset: Offset(0,20),
+                offset: Offset(160,20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
 
-                      const Text('Vaga',
+                       Text('Vaga',
                        style: TextStyle(
-                           fontSize: 17,fontWeight: FontWeight.bold,fontFamily: 'sans'),
+                           fontSize:isTablet?25:17,fontWeight: FontWeight.bold,fontFamily: 'sans'),
                      ),
 
                      Text(vacanciesAnswered.titleVacancy,
-                      style:const TextStyle(
-                          fontSize: 17,fontWeight: FontWeight.w500,fontFamily: 'sans'),
+                      style: TextStyle(
+                          fontSize:isTablet?25:17,fontWeight: FontWeight.w500,fontFamily: 'sans'),
                      ),
                     Row(
                       children: [
                         Text(vacanciesAnswered.userName,
                           style: TextStyle(
-                              fontSize: 17,fontWeight: FontWeight.bold,fontFamily: 'sans'),
+                              fontSize: isTablet?25:17,fontWeight: FontWeight.bold,fontFamily: 'sans'),
                         ),
                         const SizedBox(
                           width: 25,
                         ),
                          Transform.translate(
-                           offset: Offset(0,15),
+                           offset:isTablet? Offset(90,-90):Offset(0,15),
                            child: Column(
                              crossAxisAlignment: CrossAxisAlignment.center,
                              children: [

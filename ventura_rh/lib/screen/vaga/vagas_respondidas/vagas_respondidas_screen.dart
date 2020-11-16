@@ -25,7 +25,6 @@ class VagasRespondidas extends StatelessWidget {
               itemBuilder: (_, index) {
                 return LimitedBox(
                   maxHeight: isTablet?200:160,
-
                   child: VacanciesAnsweredTile(
                     isTablet: isTablet,
                     vacanciesAnswered:vagaManager.allVacanciesAnswered[index],

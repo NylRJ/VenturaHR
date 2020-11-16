@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:ventura_rh/common/components/custom_drawer/custom_drawer.dart';
 import 'package:ventura_rh/models/users/user_manager.dart';
 import 'package:ventura_rh/models/vaga/resposta_vaga/vacancies_answered.dart';
 import 'package:ventura_rh/models/vaga/vaga.dart';
@@ -13,8 +14,9 @@ import 'components/tabela_criterio.dart';
 
 
 class VagaDetails2 extends StatelessWidget {
-  const VagaDetails2(this.vaga);
 
+  const VagaDetails2(this.vaga,{this.vagaRespondida});
+  final bool vagaRespondida;
   final Vaga vaga;
 
 
@@ -22,6 +24,7 @@ class VagaDetails2 extends StatelessWidget {
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
     final userManager = context.watch<UserManager>();
+    final bool isTablet = MediaQuery.of(context).size.shortestSide >= 600;
 
 
     return Consumer<VagaManager>(
@@ -59,7 +62,7 @@ class VagaDetails2 extends StatelessWidget {
                     shape: BoxShape.circle,
                     image: DecorationImage(
                       image: NetworkImage(vaga.images.first),
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ),

@@ -92,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
             case '/vagaDetails':
               return MaterialPageRoute(
-                  builder: (_) => VagaDetails2(settings.arguments as Vaga));
+                  builder: (_) => VagaDetails2(settings.arguments as Vaga,vagaRespondida: false,));
 
             case '/vaga_edit':
               return MaterialPageRoute(

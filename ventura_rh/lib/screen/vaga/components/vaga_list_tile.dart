@@ -38,24 +38,28 @@ class VagaListTile extends StatelessWidget {
           elevation: 14.0,
           borderRadius: isTablet?BorderRadius.circular(40):BorderRadius.circular(24),
           child: Transform.translate(
-            offset:isTablet ? Offset(40,0.0):Offset(0.0,0.0),
+            offset:isTablet ? const Offset(40,0.0):const Offset(5.0,0.0),
             child: Row(
               children: [
                 //Logo
-                Container(
-                  width: responsive.ip(15),
-                  height: responsive.ip(14),
-                  margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                  decoration: BoxDecoration(
+                Material(
+                  elevation:isTablet?14:10.0,
+                  borderRadius: isTablet?BorderRadius.circular(79):BorderRadius.circular(60),
+                  child: Container(
+                    width:isTablet?160:120,
+                    height:isTablet?160:120,
+                    decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
-                      image: NetworkImage(vaga.images.first),
-                      fit: BoxFit.cover,
+                        image: NetworkImage(vaga.images.first),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
+
                 Transform.translate(
-                  offset:isTablet ? const Offset(20,20):const Offset(15,20),
+                  offset:isTablet ? const Offset(20,20):const Offset(10,20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     //mainAxisAlignment: MainAxisAlignment.spaceBetween,
