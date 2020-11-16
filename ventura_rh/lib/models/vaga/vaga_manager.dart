@@ -27,7 +27,7 @@ class VagaManager extends ChangeNotifier {
       firestore.document('users/${userHR.id}');
 
   UserHR userHR;
-  //CriteriaAnswer criteriaAnswer = CriteriaAnswer();
+
   VacanciesAnswered vacanciesAnsweredUser;
   VacanciesAnswered vacanciesAnsweredCompany;
 
@@ -126,9 +126,6 @@ class VagaManager extends ChangeNotifier {
         allVacanciesAnswered.add(vacanciesAnsweredCompany);
       }
     }
-
-    //TODO: apagar print
-    //print(allVacanciesAnswered.map((e) => e.listCriteriaAnswer.map((c) => c)));
   }
 
   void update(Vaga vaga) {

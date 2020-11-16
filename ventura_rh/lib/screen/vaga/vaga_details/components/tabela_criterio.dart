@@ -7,39 +7,30 @@ import 'package:ventura_rh/models/vaga/vaga_manager.dart';
 import 'dropdown_custon.dart';
 
 class TabelaCriterio extends StatefulWidget {
-
-
   final Vaga vaga;
 
   const TabelaCriterio({Key key, this.vaga}) : super(key: key);
-
 
   @override
   _TabelaCriterioState createState() => _TabelaCriterioState();
 }
 
 class _TabelaCriterioState extends State<TabelaCriterio> {
-
   @override
   Widget build(BuildContext context) {
- final vagaManager = context.watch<VagaManager>();
- print(widget.vaga.criterios,);
+    final vagaManager = context.watch<VagaManager>();
 
     return SingleChildScrollView(
-
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Consumer<UserManager>(
-          builder: (_,userManager,__){
-
-            vagaManager.addVacanciesAnsweredUser(userManager.userHR,widget.vaga);
-
-
-        //    print(widget.vaga.criterios,);
+          builder: (_, userManager, __) {
+            vagaManager.addVacanciesAnsweredUser(
+                userManager.userHR, widget.vaga);
 
             return FormField<List<dynamic>>(
               initialValue: widget.vaga.criterios,
-              builder: (state){
+              builder: (state) {
                 return DataTable(
                     dividerThickness: 2,
                     columnSpacing: 23,
@@ -52,7 +43,6 @@ class _TabelaCriterioState extends State<TabelaCriterio> {
                       DataColumn(
                           numeric: false,
                           onSort: (i, b) {
-
                             setState(() {
                               widget.vaga.criterios
                                   .sort((a, b) => a.name.compareTo(b.name));
@@ -64,29 +54,25 @@ class _TabelaCriterioState extends State<TabelaCriterio> {
                             style: TextStyle(fontWeight: FontWeight.bold),
                           )),
                       if (userManager.isLoggedIn)
-                        if(userManager.isCompany() )
+                        if (userManager.isCompany())
                           DataColumn(
                               numeric: true,
                               onSort: (i, b) {
-
                                 setState(() {
-                                  widget.vaga.criterios
-                                      .sort((a, b) => a.description.compareTo(b.description));
+                                  widget.vaga.criterios.sort((a, b) =>
+                                      a.description.compareTo(b.description));
                                 });
                               },
                               tooltip: "To display first name of the Name",
-                              label:const Text(
+                              label: const Text(
                                 'PMD',
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               )),
-
-
                       if (userManager.isLoggedIn)
-                        if(userManager.isCompany() )
+                        if (userManager.isCompany())
                           DataColumn(
                               numeric: true,
                               onSort: (i, b) {
-
                                 setState(() {
                                   widget.vaga.criterios
                                       .sort((a, b) => a.pmd.compareTo(b.pmd));
@@ -95,25 +81,22 @@ class _TabelaCriterioState extends State<TabelaCriterio> {
                               tooltip: "To display first name of the Name",
                               label: const Text('PESO',
                                   style:
-                                  TextStyle(fontWeight: FontWeight.bold))),
+                                      TextStyle(fontWeight: FontWeight.bold))),
                       if (userManager.isLoggedIn)
-                        if(!userManager.isCompany() )
+                        if (!userManager.isCompany())
                           const DataColumn(
                             numeric: false,
                             tooltip: "para exibir o primeiro nome do Nome",
-                            label:  Text(
+                            label: Text(
                               'Conhecimento',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-
-
                           ),
                       DataColumn(
                         numeric: false,
                         onSort: (i, b) {
-
                           setState(() {
                             widget.vaga.criterios
                                 .sort((a, b) => a.weight.compareTo(b.weight));
@@ -126,61 +109,55 @@ class _TabelaCriterioState extends State<TabelaCriterio> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-
-
                       ),
-
                     ],
                     rows: widget.vaga.criterios
                         .map((e) => DataRow(
-
-                      cells:
-                      [
-
-                        DataCell(
-
-                            SingleChildScrollView(
-                              child: Wrap(
-                                children: [
-                                  Text(e.name),
-                                ],
-                              ),
-                            ),
-                            showEditIcon: false, placeholder: false),
-                        if (userManager.isLoggedIn)
-                          if(userManager.isCompany() )
-
-                            DataCell(Text('${e.pmd}'),
-                                showEditIcon: false, placeholder: false),
-                        if (userManager.isLoggedIn)
-                          if(userManager.isCompany() )
-                            DataCell(Text('${e.weight}'),
-                                showEditIcon: false, placeholder: false),
-                        if (userManager.isLoggedIn)
-                          if(!userManager.isCompany() )
-                            DataCell(
-                                DropdownCuston(criterio: e,vagaManager:vagaManager),
-                                showEditIcon: false,
-                                placeholder: false
-                            ),
-                        DataCell(
-                            SingleChildScrollView(
-                              child: Container(
-                                width: 150,
-                                child: Text(e.description,
-                                  maxLines: 4,
-                                ),
-                              ),
-                            ),
-                            showEditIcon: false, placeholder: false),
-
-
-
-                      ],
-                    ))
+                              cells: [
+                                DataCell(
+                                    SingleChildScrollView(
+                                      child: Wrap(
+                                        children: [
+                                          Text(e.name),
+                                        ],
+                                      ),
+                                    ),
+                                    showEditIcon: false,
+                                    placeholder: false),
+                                if (userManager.isLoggedIn)
+                                  if (userManager.isCompany())
+                                    DataCell(Text('${e.pmd}'),
+                                        showEditIcon: false,
+                                        placeholder: false),
+                                if (userManager.isLoggedIn)
+                                  if (userManager.isCompany())
+                                    DataCell(Text('${e.weight}'),
+                                        showEditIcon: false,
+                                        placeholder: false),
+                                if (userManager.isLoggedIn)
+                                  if (!userManager.isCompany())
+                                    DataCell(
+                                        DropdownCuston(
+                                            criterio: e,
+                                            vagaManager: vagaManager),
+                                        showEditIcon: false,
+                                        placeholder: false),
+                                DataCell(
+                                    SingleChildScrollView(
+                                      child: Container(
+                                        width: 150,
+                                        child: Text(
+                                          e.description,
+                                          maxLines: 4,
+                                        ),
+                                      ),
+                                    ),
+                                    showEditIcon: false,
+                                    placeholder: false),
+                              ],
+                            ))
                         .toList());
               },
-
             );
           },
         ),

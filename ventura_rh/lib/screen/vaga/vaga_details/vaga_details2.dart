@@ -76,7 +76,7 @@ class VagaDetails2 extends StatelessWidget {
 
                       child: Text(
                         '${vaga.titleVacancy}',
-                        style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
+                        style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),
 
                       ),
                     ),
@@ -105,12 +105,8 @@ class VagaDetails2 extends StatelessWidget {
                         disableColor: AppColors.primaryColorlighter,
                           backgroundColor: AppColors.primaryColor,
                           onPressed:vagaManager.vacancyIsAnswered(vaga)?null:(){
-                          //TODO:SALVAR RESPOSTA
                           vagaManager.vacanciesAnsweredUser.saveUser();
                           vagaManager.vacanciesAnsweredCompany.saveCompany();
-
-                           print(vagaManager.vacanciesAnsweredUser);
-
                            vagaManager.updateListVacanciesAnswered();
                            Navigator.of(context).pop();
                           },

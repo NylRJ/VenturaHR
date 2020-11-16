@@ -27,7 +27,7 @@ class VagaEdit extends StatelessWidget {
   Widget build(BuildContext context) {
     vaga.userId = context.watch<UserManager>().userHR.id;
     vaga.address = context.watch<UserManager>().userHR.address;
-    List<bool> _selections = List.generate(3, (_) => false);
+
 
     return ChangeNotifierProvider.value(
       value: vaga,
@@ -207,11 +207,14 @@ class VagaEdit extends StatelessWidget {
                         return  RoundedButton(
                           onPressed: !vaga.loading? () async{
                             if (formKey.currentState.validate()) {
-                              // ignore: avoid_print
+
                               formKey.currentState.save();
-                             // vaga.save();
+
+                              await vaga.save();
+
                               context.read<VagaManager>().update(vaga);
-                              Navigator.of(context).pop();
+
+                              Navigator.of(context).popAndPushNamed('/home');
 
                             } else {
                               print('invalido');

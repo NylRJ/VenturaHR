@@ -106,7 +106,7 @@ class VacanciesAnswered extends ChangeNotifier {
       sumWeight += e.weight;
     });
 
-    final scor = (sumProduct / sumWeight).toStringAsFixed(2);
+    final scor = (sumProduct / sumWeight).toStringAsFixed(1);
 
     return double.tryParse(scor) ;
   }
