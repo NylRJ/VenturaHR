@@ -27,7 +27,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> with AfterLayoutMixin {
-  PageController _pageController =
+  final PageController _pageController =
       PageController(initialPage: LoginFormType.login);
 
   @override
@@ -47,12 +47,12 @@ class _LoginPageState extends State<LoginPage> with AfterLayoutMixin {
 
   void _switchForm(int page) {
     _pageController.animateToPage(page,
-        duration: Duration(milliseconds: 300), curve: Curves.linear);
+        duration: const Duration(milliseconds: 300), curve: Curves.linear);
   }
 
   Widget _getForm(){
     return PageView(
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       controller: _pageController,
       children: [
         LoginPageForm(

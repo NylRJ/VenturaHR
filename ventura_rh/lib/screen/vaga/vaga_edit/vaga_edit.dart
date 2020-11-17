@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ventura_rh/common/components/custom_drawer/custom_drawer.dart';
 import 'package:ventura_rh/models/users/user_manager.dart';
 import 'package:ventura_rh/models/vaga/vaga.dart';
 import 'package:ventura_rh/models/vaga/vaga_manager.dart';
@@ -32,6 +33,7 @@ class VagaEdit extends StatelessWidget {
     return ChangeNotifierProvider.value(
       value: vaga,
       child: Scaffold(
+        drawer: CustomDrawer(),
         backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text(editing?'Editar Vaga':'Criar Vaga'),

@@ -24,6 +24,8 @@ class VacanciesAnsweredTile extends StatelessWidget {
         if (!userManager.isCompany()) {
           Navigator.of(context).pushNamed('/vagaDetails',arguments: vacanciesAnswered.vaga,);
 
+        }else if (userManager.isCompany()) {
+          Navigator.of(context).pushNamed('/userVagaDetails',arguments: vacanciesAnswered,);
         }
       }:(){
         Scaffold.of(context).showSnackBar(
