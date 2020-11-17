@@ -38,7 +38,7 @@ class VagaDetails2 extends StatelessWidget {
             if(userManager.isLoggedIn)
               if ( userManager.isCompany()  && userManager.userHR.id == vaga.userId && !vagaManager.vacancyIsAnswered(vaga) )
             IconButton(
-            icon: Icon(Icons.edit),
+            icon: const Icon(Icons.edit),
                   onPressed: (){
         Navigator.of(context).pushReplacementNamed('/vaga_edit',arguments: vaga);
             },
