@@ -7,6 +7,7 @@ import 'package:ventura_rh/screen/home/home_screen.dart';
 import 'package:ventura_rh/screen/vaga/vaga_edit/vaga_edit.dart';
 import 'package:ventura_rh/screen/vaga/vaga_screen.dart';
 import 'package:ventura_rh/screen/vaga/vagas_publicadas/vagas_publicadas.dart';
+import 'package:ventura_rh/screen/vaga/vagas_respondidas/vagas_respondida_2.dart';
 import 'package:ventura_rh/screen/vaga/vagas_respondidas/vagas_respondidas_screen.dart';
 
 class BaseScreen extends StatelessWidget {
@@ -28,7 +29,8 @@ class BaseScreen extends StatelessWidget {
           VagaScreen(),
           VagaEdit(Vaga()),
           VagasPublicadas(),
-          VagasRespondidas(),
+          VagasRespondida2(),
+
         ],
       ),
     );

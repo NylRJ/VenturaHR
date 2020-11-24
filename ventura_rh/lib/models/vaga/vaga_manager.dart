@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ventura_rh/models/users/user_hr.dart';
 import 'package:ventura_rh/models/users/user_manager.dart';
-import 'package:ventura_rh/models/vaga/resposta_vaga/criteria_answer.dart';
 import 'package:ventura_rh/models/vaga/resposta_vaga/vacancies_answered.dart';
 import 'package:ventura_rh/models/vaga/vaga.dart';
 
@@ -55,6 +54,7 @@ class VagaManager extends ChangeNotifier {
 
   List<VacanciesAnswered> allVacanciesAnswered = [];
 
+
   String _search = '';
 
   String get search => _search;
@@ -75,6 +75,17 @@ class VagaManager extends ChangeNotifier {
     }
 
     return filteredVagas;
+  }
+
+  List<VacanciesAnswered> filterResponseByVacancy(Vaga vaga) {
+    List<VacanciesAnswered> allVacanciesAnsweredFilter = [];
+    allVacanciesAnswered.forEach((e) {
+      if (e.vagaId == vaga.id) {
+        allVacanciesAnsweredFilter.add(e);
+      }
+    });
+
+    return allVacanciesAnsweredFilter;
   }
 
   void updateUser(UserManager userManager) {

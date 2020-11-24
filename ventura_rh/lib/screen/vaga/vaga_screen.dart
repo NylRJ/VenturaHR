@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ventura_rh/common/components/custom_drawer/custom_drawer.dart';
+import 'package:ventura_rh/models/page_manager.dart';
 import 'package:ventura_rh/models/users/user_manager.dart';
 import 'package:ventura_rh/models/vaga/vaga_manager.dart';
 
@@ -13,7 +14,7 @@ class VagaScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isTablet = MediaQuery.of(context).size.shortestSide >= 600;
-
+    final pageManager = context.watch<PageManager>();
     return Scaffold(
       drawer: CustomDrawer(),
       appBar: AppBar(
@@ -79,7 +80,9 @@ class VagaScreen extends StatelessWidget {
                 return IconButton(
                   icon: const Icon(Icons.add),
                   onPressed: (){
-                    Navigator.of(context).pushNamed('/vaga_edit');
+
+                    pageManager.setPage(2);
+                    //Navigator.of(context).pushNamed('/vaga_edit',arguments: Vaga());
                   }
               );
               } else {

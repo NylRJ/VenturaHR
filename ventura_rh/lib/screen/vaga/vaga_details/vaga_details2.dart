@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ventura_rh/common/components/custom_drawer/custom_drawer.dart';
+import 'package:ventura_rh/models/page_manager.dart';
 import 'package:ventura_rh/models/users/user_manager.dart';
 import 'package:ventura_rh/models/vaga/resposta_vaga/vacancies_answered.dart';
 import 'package:ventura_rh/models/vaga/vaga.dart';
@@ -27,6 +28,7 @@ class VagaDetails2 extends StatelessWidget {
     final bool isTablet = MediaQuery.of(context).size.shortestSide >= 600;
 
 
+
     return Consumer<VagaManager>(
       builder: (_,vagaManager,__){
         return Scaffold(
@@ -40,7 +42,10 @@ class VagaDetails2 extends StatelessWidget {
             IconButton(
             icon: const Icon(Icons.edit),
                   onPressed: (){
+
         Navigator.of(context).pushReplacementNamed('/vaga_edit',arguments: vaga);
+
+
             },
         ),
          Container(),

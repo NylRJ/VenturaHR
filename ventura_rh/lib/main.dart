@@ -8,6 +8,8 @@ import 'package:ventura_rh/screen/splash/splash_screen.dart';
 import 'package:ventura_rh/screen/vaga/vaga_details/vaga_details2.dart';
 import 'package:ventura_rh/screen/vaga/vaga_edit/vaga_edit.dart';
 import 'package:ventura_rh/screen/vaga/vagas_respondidas/user_vaga_details2.dart';
+import 'package:ventura_rh/screen/vaga/vagas_respondidas/vagas_respondidas_screen.dart';
+import 'models/page_manager.dart';
 import 'models/users/user_manager.dart';
 import 'models/vaga/resposta_vaga/vacancies_answered.dart';
 import 'models/vaga/vaga.dart';
@@ -102,6 +104,9 @@ class _MyHomePageState extends State<MyHomePage> {
             case '/userVagaDetails':
               return MaterialPageRoute(
                   builder: (_) => UserVagaDetails2(settings.arguments as VacanciesAnswered,));
+            case '/vagasRespondidas':
+              return MaterialPageRoute(
+                  builder: (_) => VagasRespondidas(vaga: settings.arguments as Vaga,));
 
             default:
               return MaterialPageRoute(builder: (_) => BaseScreen());
