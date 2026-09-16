@@ -1,0 +1,82 @@
+name: VenturaHR V2 Flutter
+
+on:
+  push:
+    branches: [ventura-2.0]
+    paths:
+      - 'apps/ventura_hr/**'
+      - 'packages/ventura_domain/**'
+      - '.github/workflows/flutter-v2.yml'
+  pull_request:
+    paths:
+      - 'apps/ventura_hr/**'
+      - 'packages/ventura_domain/**'
+      - '.github/workflows/flutter-v2.yml'
+
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/ventura_hr
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.47.2'
+          channel: stable
+          cache: true
+
+      - name: Flutter version
+        run: flutter --version
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Verify formatting
+        run: dart format --output=none --set-exit-if-changed lib test
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Test
+        run: flutter test
+
+      - name: Build Web
+        run: flutter build web
+
+  android-smoke:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/ventura_hr
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.47.2'
+          channel: stable
+          cache: true
+
+      - name: Generate Android platform scaffold
+        run: flutter create --platforms=android --org br.com.venturahr .
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build Android debug APK
+        run: flutter build apk --debug
