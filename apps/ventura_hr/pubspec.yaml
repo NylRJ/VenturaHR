@@ -1,0 +1,21 @@
+name: ventura_hr
+description: VenturaHR 2.0 - Flutter Web-first client.
+publish_to: none
+version: 2.0.0-dev.1+1
+
+environment:
+  sdk: '>=3.13.0 <4.0.0'
+
+flutter:
+  uses-material-design: true
+
+dependencies:
+  flutter:
+    sdk: flutter
+  go_router: ^18.0.1
+  ventura_domain:
+    path: ../../packages/ventura_domain
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
