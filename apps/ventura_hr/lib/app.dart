@@ -6,14 +6,8 @@ import 'src/features/match_demo/match_demo_page.dart';
 
 final GoRouter _router = GoRouter(
   routes: [
-    GoRoute(
-      path: '/',
-      builder: (context, state) => const HomePage(),
-    ),
-    GoRoute(
-      path: '/match',
-      builder: (context, state) => const MatchDemoPage(),
-    ),
+    GoRoute(path: '/', builder: (context, state) => const HomePage()),
+    GoRoute(path: '/match', builder: (context, state) => const MatchDemoPage()),
   ],
 );
 
@@ -34,10 +28,7 @@ class VenturaHrApp extends StatelessWidget {
         colorScheme: colorScheme,
         useMaterial3: true,
         scaffoldBackgroundColor: const Color(0xFFF6F7FB),
-        cardTheme: const CardThemeData(
-          elevation: 0,
-          margin: EdgeInsets.zero,
-        ),
+        cardTheme: const CardThemeData(elevation: 0, margin: EdgeInsets.zero),
       ),
       routerConfig: _router,
     );
