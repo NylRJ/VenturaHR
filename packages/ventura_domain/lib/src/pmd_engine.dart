@@ -9,7 +9,11 @@ class PmdEngine {
     required List<CandidateCriterionEvidence> evidence,
   }) {
     if (criteria.isEmpty) {
-      throw ArgumentError.value(criteria, 'criteria', 'At least one criterion is required.');
+      throw ArgumentError.value(
+        criteria,
+        'criteria',
+        'At least one criterion is required.',
+      );
     }
 
     _ensureUniqueCriterionIds(criteria);
@@ -89,7 +93,9 @@ class PmdEngine {
     final ids = <String>{};
     for (final item in evidence) {
       if (!ids.add(item.criterionId)) {
-        throw ArgumentError('Duplicate evidence for criterion: ${item.criterionId}');
+        throw ArgumentError(
+          'Duplicate evidence for criterion: ${item.criterionId}',
+        );
       }
     }
   }
