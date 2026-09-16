@@ -204,9 +204,8 @@ class _CriteriaEditor extends StatelessWidget {
           children: [
             Text(
               'Critérios e evidências do candidato',
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.w800,
-                  ),
+              style: Theme.of(context).textTheme.titleLarge
+                  ?.copyWith(fontWeight: FontWeight.w800),
             ),
             const SizedBox(height: 8),
             Text(
@@ -290,7 +289,10 @@ class _CriterionControl extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 12),
-            Text(levelLabel, style: const TextStyle(fontWeight: FontWeight.w700)),
+            Text(
+              levelLabel,
+              style: const TextStyle(fontWeight: FontWeight.w700),
+            ),
           ],
         ),
         Slider(
@@ -334,18 +336,17 @@ class _MatchSummary extends StatelessWidget {
               children: [
                 Text(
                   'Resultado explicável',
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.w800,
-                      ),
+                  style: Theme.of(context).textTheme.titleLarge
+                      ?.copyWith(fontWeight: FontWeight.w800),
                 ),
                 const SizedBox(height: 20),
                 Center(
                   child: Text(
                     '${result.fitPercentage.toStringAsFixed(1)}%',
                     style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                          fontWeight: FontWeight.w900,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
+                      fontWeight: FontWeight.w900,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
                   ),
                 ),
                 const Center(child: Text('aderência ponderada à vaga')),
@@ -366,16 +367,14 @@ class _MatchSummary extends StatelessWidget {
                 ),
                 _MetricRow(
                   label: 'Completude dos dados',
-                  value: '${result.dataCompletenessPercentage.toStringAsFixed(0)}%',
+                  value:
+                      '${result.dataCompletenessPercentage.toStringAsFixed(0)}%',
                 ),
                 _MetricRow(
                   label: 'Obrigatórios atendidos',
                   value: result.meetsAllRequired ? 'Sim' : 'Não',
                 ),
-                _MetricRow(
-                  label: 'Algoritmo',
-                  value: result.algorithmVersion,
-                ),
+                _MetricRow(label: 'Algoritmo', value: result.algorithmVersion),
               ],
             ),
           ),
@@ -389,9 +388,8 @@ class _MatchSummary extends StatelessWidget {
               children: [
                 Text(
                   'Explicação por critério',
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.w800,
-                      ),
+                  style: Theme.of(context).textTheme.titleMedium
+                      ?.copyWith(fontWeight: FontWeight.w800),
                 ),
                 const SizedBox(height: 14),
                 for (final component in result.components)
@@ -471,8 +469,8 @@ class _ComponentRow extends StatelessWidget {
                   missing
                       ? 'Sem evidência confirmada • PMD ${component.pmd}'
                       : provisional
-                          ? 'Evidência provisória ignorada no score'
-                          : 'Candidato ${component.candidateLevel} • PMD ${component.pmd} • fit ${(component.normalizedFit * 100).toStringAsFixed(0)}%',
+                      ? 'Evidência provisória ignorada no score'
+                      : 'Candidato ${component.candidateLevel} • PMD ${component.pmd} • fit ${(component.normalizedFit * 100).toStringAsFixed(0)}%',
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
