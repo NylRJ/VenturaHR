@@ -61,7 +61,6 @@ class MatchResult {
   final List<MatchComponent> components;
 
   List<MatchComponent> get requiredGaps => components
-      .where((component) =>
-          component.requiredCriterion && !component.meetsPmd)
+      .where((component) => component.requiredCriterion && !component.meetsPmd)
       .toList(growable: false);
 }
