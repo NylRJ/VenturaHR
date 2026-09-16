@@ -30,8 +30,11 @@ jobs:
       - name: Install dependencies
         run: dart pub get
 
+      - name: Format
+        run: dart format .
+
       - name: Verify formatting
-        run: dart format --output=none --set-exit-if-changed .
+        run: git diff --exit-code -- .
 
       - name: Analyze
         run: dart analyze
