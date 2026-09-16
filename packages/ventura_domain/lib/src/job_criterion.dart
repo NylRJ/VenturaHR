@@ -13,7 +13,11 @@ class JobCriterion {
       throw ArgumentError.value(id, 'id', 'Criterion id cannot be empty.');
     }
     if (name.trim().isEmpty) {
-      throw ArgumentError.value(name, 'name', 'Criterion name cannot be empty.');
+      throw ArgumentError.value(
+        name,
+        'name',
+        'Criterion name cannot be empty.',
+      );
     }
     if (pmd < 1 || pmd > 5) {
       throw RangeError.range(pmd, 1, 5, 'pmd');
