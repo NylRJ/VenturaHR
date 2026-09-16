@@ -102,10 +102,8 @@ class _IntroPanel extends StatelessWidget {
       children: [
         Text(
           'O VenturaHR voltou como uma plataforma de inteligência de talentos.',
-          style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                fontWeight: FontWeight.w900,
-                height: 1.05,
-              ),
+          style: Theme.of(context).textTheme.displaySmall
+              ?.copyWith(fontWeight: FontWeight.w900, height: 1.05),
         ),
         const SizedBox(height: 18),
         Text(
@@ -113,9 +111,9 @@ class _IntroPanel extends StatelessWidget {
           'Você já pode simular uma vaga, alterar o nível do candidato e entender exatamente '
           'como o match foi calculado — sem Firebase e sem IA escondendo a regra.',
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                height: 1.5,
-                color: Theme.of(context).colorScheme.onSurfaceVariant,
-              ),
+            height: 1.5,
+            color: Theme.of(context).colorScheme.onSurfaceVariant,
+          ),
         ),
         const SizedBox(height: 28),
         FilledButton.icon(
@@ -156,9 +154,8 @@ class _StatusPanel extends StatelessWidget {
           children: [
             Text(
               'Estado da V2',
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.w800,
-                  ),
+              style: Theme.of(context).textTheme.titleLarge
+                  ?.copyWith(fontWeight: FontWeight.w800),
             ),
             const SizedBox(height: 20),
             const _StatusItem(
@@ -179,7 +176,8 @@ class _StatusPanel extends StatelessWidget {
             const _StatusItem(
               icon: Icons.psychology_outlined,
               title: 'IA vem depois do núcleo',
-              subtitle: 'Evidência sugerida por IA não altera score sem confirmação.',
+              subtitle:
+                  'Evidência sugerida por IA não altera score sem confirmação.',
             ),
           ],
         ),
@@ -212,7 +210,10 @@ class _StatusItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title, style: const TextStyle(fontWeight: FontWeight.w700)),
+                Text(
+                  title,
+                  style: const TextStyle(fontWeight: FontWeight.w700),
+                ),
                 const SizedBox(height: 3),
                 Text(
                   subtitle,
