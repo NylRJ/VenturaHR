@@ -1,0 +1,10 @@
+name: ventura_domain
+description: Pure Dart domain model and deterministic matching rules for VenturaHR 2.0.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: '>=3.13.0 <4.0.0'
+
+dev_dependencies:
+  test: ^1.25.0
